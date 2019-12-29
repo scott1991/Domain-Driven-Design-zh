@@ -4,7 +4,8 @@
 
 在线阅读：[http://gdut_yy.gitee.io/doc-ddd/](http://gdut_yy.gitee.io/doc-ddd/)
 
-<img src="./docs/cover.jpg" width=40%>
+<img src="./docs/cover_en.jpg" width="210px" height="280px" />
+<img src="./docs/cover_zh.jpg" width="210px" height="280px" />
 
 ## 前言
 
