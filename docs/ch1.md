@@ -14,15 +14,13 @@ The first few meetings were discouraging, but there was a glimmer of hope in the
 
 > 最初的几次会面令人气馁，但我们在他们要求的报告中也看到了一丝希望。这些报告中总是涉及 net 这个词以及与其相关的各种细节。在这个领域中，net 实质上是一种导线，它可以连接 PCB 上任意数量的元件，并向它连接的所有元件传递电子信号。这样，我们就得到了领域模型的第一个元素，如图 1-1 所示。
 
-![](./figures/01fig01.jpg)
-Figure 1.1
+<Figures figure="1-1"></Figures>
 
 I started drawing diagrams for them as we discussed the things they wanted the software to do. I used an informal variant of object interaction diagrams to walk through scenarios.
 
 > 就这样，我们一边讨论所需的软件功能，一边开始画图。我使用一种非正式的、稍加变化的对象交互图来走查[插图]各种场景，如图 1-2 所示。
 
-![](./figures/01fig02.jpg)
-Figure 1.2
+<Figures figure="1-2"></Figures>
 
 PCB Expert 1: The components wouldn’t have to be chips.
 
@@ -84,8 +82,7 @@ Developer: OK, how about this?
 
 > 开发人员：嗯，这样画如何（如图 1-3 所示）？
 
-![](./figures/01fig03.jpg)
-Figure 1.3
+<Figures figure="1-3"></Figures>
 
 To focus our exploration, we limited ourselves, for a while, to studying one particular feature. A “probe simulation” would trace the propagation of a signal to detect likely sites of certain kinds of problems in the design.
 
@@ -115,8 +112,7 @@ Developer: Something like this?
 
 > （经过反复的尝试和修改，我们终于共同绘制出了一个草图，如图 1-4 所示。）
 
-![](./figures/01fig04.jpg)
-Figure 1.4
+<Figures figure="1-4"></Figures>
 
 Developer: But what exactly do you need to know from this computation?
 
@@ -138,8 +134,7 @@ Developer: So we could pass the number of hops along, and a Net could increment 
 
 > 开发人员：那么我们可以沿着电路来计算跳数，每遇到一个 net，跳数就加 1，如图 1-5 所示。
 
-![](./figures/01fig05.jpg)
-Figure 1.5
+<Figures figure="1-5"></Figures>
 
 Developer: The only part that isn’t clear to me is where the “pushes” come from. Do we store that data for every Component Instance?
 
@@ -153,8 +148,7 @@ Developer: So the type of component determines the pushes. They’ll be the same
 
 > 开发人员：那么元件的类型决定了推动行为，而每个实例的推动行为都是相同的（如图 1-6 所示）？
 
-![](./figures/01fig06.jpg)
-Figure 1.6
+<Figures figure="1-6"></Figures>
 
 Expert 2: I’m not sure exactly what some of this means, but I would imagine storing push-throughs for each component would look something like that.
 
@@ -176,8 +170,7 @@ And so it went (with much more stumbling than is shown here). Brainstorming and 
 
 > 就这样，我们的讨论一直进行下去（其中遇到的困难比上面显示的多得多）。我们一边进行“头脑风暴”式的讨论，一边对模型进行精化，边提问边回答。随着我对领域理解的加深，以及他们对模型在解决方案中作用的理解的加深，模型不断发展。图 1-7 显示了那个早期模型的类图。
 
-![](./figures/01fig07.jpg)
-Figure 1.7
+<Figures figure="1-7"></Figures>
 
 After a couple more part-time days of this, I felt I understood enough to attempt some code. I wrote a very simple prototype, driven by an automated test framework. I avoided all infrastructure. There was no persistence, and no user interface (UI). This allowed me to concentrate on the behavior. I was able to demonstrate a simple probe simulation in just a few more days. Although it used dummy data and wrote raw text to the console, it was nonetheless doing the actual computation of path lengths using Java objects. Those Java objects reflected a model shared by the domain experts and myself.
 
@@ -305,8 +298,7 @@ Let’s start with a very simple domain model that could be the basis of an appl
 
 > 我们从一个非常简单的领域模型开始学习，基于此模型的应用程序用来预订一艘船在一次航程中要运载的货物，如图 1-8 所示。
 
-Image
-Figure 1.8
+<Figures figure="1-8"></Figures>
 
 We can state that the booking application’s responsibility is to associate each Cargo with a Voyage, recording and tracking that relationship. So far so good. Somewhere in the application code there could be a method like this:
 
@@ -340,8 +332,7 @@ The class diagram and code now look like this:
 
 > 现在，类图就应该像图 1-9 这样，代码如下：
 
-Image
-Figure 1.9
+<Figures figure="1-9"></Figures>
 
 ```java
 public int makeBooking(Cargo cargo, Voyage voyage) {

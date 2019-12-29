@@ -1,7 +1,8 @@
 # 领域驱动设计 中文
 
-<div style="margin: 0 auto; width: 40%;">
-  <img src='./cover.jpg'/>
+<div style="margin: 0 auto;">
+  <img src="./cover_en.jpg" width="210px" height="280px" />
+  <img src="./cover_zh.jpg" width="210px" height="280px" />
 </div>
 
 ## 序
