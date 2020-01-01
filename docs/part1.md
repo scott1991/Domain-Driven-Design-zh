@@ -5,7 +5,7 @@
 Image
 This eighteenth-century Chinese map represents the whole world. In the center and taking up most of the space is China, surrounded by perfunctory representations of other countries. This was a model of the world appropriate to that society, which had intentionally turned inward. The worldview that the map represents must not have been helpful in dealing with foreigners. Certainly it would not serve modern China at all. Maps are models, and every model represents some aspect of reality or an idea that is of interest. A model is a simplification. It is an interpretation of reality that abstracts the aspects relevant to solving the problem at hand and ignores extraneous detail.
 
-> 上面这张图是18世纪中国描绘的世界地图。图中央最大的部分是中国，其周围散布着其他国家，但这些国家只是草草地表示了一下。这是适用于当时中国社会的世界模型，它意在关注中国自身。然而，这幅地图所呈现的世界观对于处理外交事务并无助益。当然，它对现代中国也毫无用处。地图就是模型，而模型被用来描绘人们所关注的现实或想法的某个方面。模型是一种简化。它是对现实的解释——把与解决问题密切相关的方面抽象出来，而忽略无关的细节。
+> 上面这张图是 18 世纪中国描绘的世界地图。图中央最大的部分是中国，其周围散布着其他国家，但这些国家只是草草地表示了一下。这是适用于当时中国社会的世界模型，它意在关注中国自身。然而，这幅地图所呈现的世界观对于处理外交事务并无助益。当然，它对现代中国也毫无用处。地图就是模型，而模型被用来描绘人们所关注的现实或想法的某个方面。模型是一种简化。它是对现实的解释——把与解决问题密切相关的方面抽象出来，而忽略无关的细节。
 
 Every software program relates to some activity or interest of its user. That subject area to which the user applies the program is the domain of the software. Some domains involve the physical world: The domain of an airline-booking program involves real people getting on real aircraft. Some domains are intangible: The domain of an accounting program is money and finance. Software domains usually have little to do with computers, though there are exceptions: The domain of a source-code control system is software development itself.
 
@@ -24,9 +24,10 @@ Domain modeling is not a matter of making as “realistic” a model as possible
 > 领域建模并不是要尽可能建立一个符合“现实”的模型。即使是对具体、真实世界中的事物进行建模，所得到的模型也不过是对事物的一种模拟。它也不单单是为了实现某种目的而构造出来的软件机制。建模更像是制作电影——出于某种目的而概括地反映现实。即使是一部纪录片也不会原封不动地展现真实生活。就如同电影制片人讲述故事或阐明观点时，他们会选择素材，并以一种特殊方式将它们呈现给观众，领域建模人员也会依据模型的作用来选择具体的模型。
 
 ## THE UTILITY OF A MODEL IN DOMAIN-DRIVEN DESIGN 模型在领域驱动设计中的作用
+
 In domain-driven design, three basic uses determine the choice of a model.
 
-> 在领域驱动的设计中，3个基本用途决定了模型的选择。
+> 在领域驱动的设计中，3 个基本用途决定了模型的选择。
 
 1. The model and the heart of the design shape each other. It is the intimate link between the model and the implementation that makes the model relevant and ensures that the analysis that went into it applies to the final product, a running program. This binding of model and implementation also helps during maintenance and continuing development, because the code can be interpreted based on understanding the model. (See Chapter 3.)
 2. The model is the backbone of a language used by all team members. Because of the binding of model and implementation, developers can talk about the program in this language. They can communicate with domain experts without translation. And because the language is based on the model, our natural linguistic abilities can be turned to refining the model itself. (See Chapter 2.)
@@ -34,16 +35,16 @@ In domain-driven design, three basic uses determine the choice of a model.
 
 ---
 
-
-> 1. 模型和设计的核心互相影响。正是模型与实现之间的紧密联系才使模型变得有用，并确保我们在模型中所进行的分析能够转化为最终产品（即一个可运行的程序）。模型与实现之间的这种紧密结合在维护和后续开发期间也会很有用，因为我们可以基于对模型的理解来解释代码。（参见第3章）
-> 2. 模型是团队所有成员使用的通用语言的中枢。由于模型与实现之间的关联，开发人员可以使用该语言来讨论程序。他们可以在无需翻译的情况下与领域专家进行沟通。而且，由于该语言是基于模型的，因此我们可借助自然语言对模型本身进行精化。（参见第2章）
-> 3. 模型是浓缩的知识。模型是团队一致认同的领域知识的组织方式和重要元素的区分方式。透过我们如何选择术语、分解概念以及将概念联系起来，模型记录了我们看待领域的方式。当开发人员和领域专家在将信息组织为模型时，这一共同的语言（模型）能够促使他们高效地协作。模型与实现之间的紧密结合使来自软件早期版本的经验可以作为反馈应用到建模过程中。（参见第1章）
+> 1. 模型和设计的核心互相影响。正是模型与实现之间的紧密联系才使模型变得有用，并确保我们在模型中所进行的分析能够转化为最终产品（即一个可运行的程序）。模型与实现之间的这种紧密结合在维护和后续开发期间也会很有用，因为我们可以基于对模型的理解来解释代码。（参见第 3 章）
+> 2. 模型是团队所有成员使用的通用语言的中枢。由于模型与实现之间的关联，开发人员可以使用该语言来讨论程序。他们可以在无需翻译的情况下与领域专家进行沟通。而且，由于该语言是基于模型的，因此我们可借助自然语言对模型本身进行精化。（参见第 2 章）
+> 3. 模型是浓缩的知识。模型是团队一致认同的领域知识的组织方式和重要元素的区分方式。透过我们如何选择术语、分解概念以及将概念联系起来，模型记录了我们看待领域的方式。当开发人员和领域专家在将信息组织为模型时，这一共同的语言（模型）能够促使他们高效地协作。模型与实现之间的紧密结合使来自软件早期版本的经验可以作为反馈应用到建模过程中。（参见第 1 章）
 
 The next three chapters set out to examine the meaning and value of each of these contributions in turn, and the ways they are intertwined. Using a model in these ways can support the development of software with rich functionality that would otherwise take a massive investment of ad hoc development.
 
-> 接下来的3章分别考查上述3种基本用途的意义和价值，以及它们之间的关联方式。遵循这些原则使用模型可以很好地支持具有丰富功能的软件的开发，否则就需要耗费大规模投资进行专门开发。
+> 接下来的 3 章分别考查上述 3 种基本用途的意义和价值，以及它们之间的关联方式。遵循这些原则使用模型可以很好地支持具有丰富功能的软件的开发，否则就需要耗费大规模投资进行专门开发。
 
-## THE HEART OF SOFTWARE  软件的核心
+## THE HEART OF SOFTWARE 软件的核心
+
 The heart of software is its ability to solve domain-related problems for its user. All other features, vital though they may be, support this basic purpose. When the domain is complex, this is a difficult task, calling for the concentrated effort of talented and skilled people. Developers have to steep themselves in the domain to build up knowledge of the business. They must hone their modeling skills and master domain design.
 
 > 软件的核心是其为用户解决领域相关的问题的能力。所有其他特性，不管有多么重要，都要服务于这个基本目的。当领域很复杂时，这是一项艰巨的任务，要求高水平技术人员的共同努力。开发人员必须钻研领域以获取业务知识。他们必须磨砺其建模技巧，并精通领域设计。
@@ -58,19 +59,19 @@ Instead, the technical talent goes to work on elaborate frameworks, trying to so
 
 In a TV talk show interview, comedian John Cleese told a story of an event during the filming of Monty Python and the Holy Grail. They had been shooting a particular scene over and over, but somehow it wasn’t funny. Finally, he took a break and consulted with fellow comedian Michael Palin (the other actor in the scene), and they came up with a slight variation. They shot one more take, and it turned out funny, so they called it a day.
 
-> 在一次电视访谈节目中，喜剧演员John Cleese讲述了电影《巨蟒和圣杯》（Monty Pythonand the Holy Grail）在拍摄期间发生的一个小故事。有一幕他们反复拍了很多次，但就是感觉不够滑稽。最后，他停下来，与另一位喜剧演员Michael Palin（该幕中的另一位演员）商量了一下，他们决定稍微改变一下。随后又拍了一次，终于令他们满意了，于是收工。
+> 在一次电视访谈节目中，喜剧演员 John Cleese 讲述了电影《巨蟒和圣杯》（Monty Pythonand the Holy Grail）在拍摄期间发生的一个小故事。有一幕他们反复拍了很多次，但就是感觉不够滑稽。最后，他停下来，与另一位喜剧演员 Michael Palin（该幕中的另一位演员）商量了一下，他们决定稍微改变一下。随后又拍了一次，终于令他们满意了，于是收工。
 
 The next morning, Cleese was looking at the rough cut the film editor had put together of the previous day’s work. Coming to the scene they had struggled with, Cleese found that it wasn’t funny; one of the earlier takes had been used.
 
-> 第二天早上，Cleese观看了剪辑人员为前一天工作所做的粗剪。到了那个令他们颇费周章的场景时，Cleese发现剪辑人员竟然使用了先前拍摄的一个镜头，影片到这里又变得不滑稽了。
+> 第二天早上，Cleese 观看了剪辑人员为前一天工作所做的粗剪。到了那个令他们颇费周章的场景时，Cleese 发现剪辑人员竟然使用了先前拍摄的一个镜头，影片到这里又变得不滑稽了。
 
 He asked the film editor why he hadn’t used the last take, as directed. “Couldn’t use it. Someone walked in-shot,” the editor replied. Cleese watched the scene again, and then again. Still he could see nothing wrong. Finally, the editor stopped the film and pointed out a coat sleeve that was visible for a moment at the edge of the picture.
 
-> 他问剪辑人员为什么没有按要求使用最后拍的那个镜头，剪辑人员回答说：“那个镜头不能用，因为有人闯入了镜头。”Cleese连看了两遍，仍未发现有什么不妥。最后，剪辑人员将影片暂停，并指出在屏幕边缘有一只一闪而过的大衣袖子。
+> 他问剪辑人员为什么没有按要求使用最后拍的那个镜头，剪辑人员回答说：“那个镜头不能用，因为有人闯入了镜头。”Cleese 连看了两遍，仍未发现有什么不妥。最后，剪辑人员将影片暂停，并指出在屏幕边缘有一只一闪而过的大衣袖子。
 
 The film editor was focused on the precise execution of his own specialty. He was concerned that other film editors who saw the movie would judge his work based on its technical perfection. In the process, the heart of the scene had been lost (“The Late Late Show with Craig Kilborn,” CBS, September 2001).
 
-> 影片的剪辑人员专注于准确完成自己的工作。他担心其他看到这部电影的剪辑人员会给他挑错。在这个过程中，镜头的核心作用被忽略了（“The Late Late Show with Craig Kilborn”, CBS,2001年9月）。
+> 影片的剪辑人员专注于准确完成自己的工作。他担心其他看到这部电影的剪辑人员会给他挑错。在这个过程中，镜头的核心作用被忽略了（“The Late Late Show with Craig Kilborn”, CBS,2001 年 9 月）。
 
 Fortunately, the funny scene was restored by a director who understood comedy. In just the same way, leaders within a team who understand the centrality of the domain can put their software project back on course when development of a model that reflects deep understanding gets lost in the shuffle.
 

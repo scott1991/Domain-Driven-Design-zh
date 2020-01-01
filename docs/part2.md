@@ -16,11 +16,11 @@ The design style in this book largely follows the principle of “responsibility
 
 As a project hits bumps, large or small, developers may find themselves in situations that make those principles seem inapplicable. To make the domain-driven design process resilient, developers need to understand how the well-known fundamentals support MODEL-DRIVEN DESIGN, so they can compromise without derailing.
 
-> 当项目遇到或大或小的困难时，开发人员可能会发现这些原则都无法适用于项目当前的状况。为了使领域驱动设计过程更灵活，开发人员需要理解上面这些众所周知的基本原理是如何支持MODEL-DRIVEN DESIGN的，这样才能在设计过程中做出一些折中选择，而又不脱离正确的轨道。
+> 当项目遇到或大或小的困难时，开发人员可能会发现这些原则都无法适用于项目当前的状况。为了使领域驱动设计过程更灵活，开发人员需要理解上面这些众所周知的基本原理是如何支持 MODEL-DRIVEN DESIGN 的，这样才能在设计过程中做出一些折中选择，而又不脱离正确的轨道。
 
 The material in the following three chapters is organized as a “pattern language” (see Appendix A), which will show how subtle model distinctions and design decisions affect the domain-driven design process.
 
-> 下面3章的内容是按照“模式语言”（参见附录A）组织的，主要说明了细微的模型差别和设计决策是如何影响领域驱动设计过程的。
+> 下面 3 章的内容是按照“模式语言”（参见附录 A）组织的，主要说明了细微的模型差别和设计决策是如何影响领域驱动设计过程的。
 
 The diagram on the top of the next page is a navigation map. It shows the patterns that will be presented in this section and a few of the ways they relate to each other.
 
@@ -28,7 +28,7 @@ The diagram on the top of the next page is a navigation map. It shows the patter
 
 Sharing these standard patterns brings order to the design and makes it easier for team members to understand each other’s work. Using standard patterns also adds to the UBIQUITOUS LANGUAGE, which all team members can use to discuss model and design decisions.
 
-> 共用这些标准模式可以使设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。同时，使用标准模式也使UBIQUITOUS LANGUAGE更加丰富，所有的项目组成员都可以使用UBIQUITOUS LANGUAGE来讨论模型和设计决策。
+> 共用这些标准模式可以使设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。同时，使用标准模式也使 UBIQUITOUS LANGUAGE 更加丰富，所有的项目组成员都可以使用 UBIQUITOUS LANGUAGE 来讨论模型和设计决策。
 
 Developing a good domain model is an art. But the practical design and implementation of a model’s individual elements can be relatively systematic. Isolating the domain design from the mass of other concerns in the software system will greatly clarify the design’s connection to the model. Defining model elements according to certain distinctions sharpens their meanings. Following proven patterns for individual elements helps produce a model that is practical to implement.
 
@@ -37,7 +37,7 @@ Developing a good domain model is an art. But the practical design and implement
 Image
 A navigation map of the language of MODEL-DRIVEN DESIGN
 
-> MODEL-DRIVEN DESIGN语言的导航图
+> MODEL-DRIVEN DESIGN 语言的导航图
 
 Elaborate models can cut through complexity only if care is taken with the fundamentals, resulting in detailed elements that the team can confidently combine.
 
