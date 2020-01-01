@@ -4,114 +4,170 @@
 
 Deep modeling sounds great, but how do you actually do it? A deep model has power because it contains the central concepts and abstractions that can succinctly and flexibly express essential knowledge of the users’ activities, their problems, and their solutions. The first step is to somehow represent the essential concepts of the domain in the model. Refinement comes later, after successive iterations of knowledge crunching and refactoring. But this process really gets into gear when an important concept is recognized and made explicit in the model and design.
 
+> 深层建模听起来很不错，但是我们要如何实现它呢？深层模型之所以强大是因为它包含了领域的核心概念和抽象，能够以简单灵活的方式表达出基本的用户活动、问题以及解决方案。深层建模的第一步就是要设法在模型中表达出领域的基本概念。随后，在不断消化知识和重构的过程中，实现模型的精化。但是实际上这个过程是从我们识别出某个重要概念并且在模型和设计中把它显式地表达出来的那个时刻开始的。
+
 Many transformations of domain models and the corresponding code happen when developers recognize a concept that has been hinted at in discussion or present implicitly in the design, and they then represent it explicitly in the model with one or more objects or relationships.
+
+> 若开发人员识别出设计中隐含的某个概念或是在讨论中受到启发而发现一个概念时，就会对领域模型和相应的代码进行许多转换，在模型中加入一个或多个对象或关系，从而将此概念显式地表达出来。
 
 Occasionally, this transformation of a formerly implicit concept into an explicit one is a breakthrough that leads to a deep model. More often, though, the breakthrough comes later, after a number of important concepts are explicit in the model; after successive refactorings have tweaked their responsibilities repeatedly, changed their relationships with other objects, and even changed their names a few times. Everything finally snaps into focus. But the process starts with recognizing the implied concepts in some form, however crude.
 
-DIGGING OUT CONCEPTS
+> 有时，这种从隐式概念到显式概念的转换可能是一次突破，使我们得到一个深层模型。但更多的时候，突破不会马上到来，而需要我们在模型中显式表达出许多重要概念，并通过一系列重构不断地调整对象职责、改变它们与其他对象的关系、甚至多次修改对象名称，在这之后，突破才会姗姗而来。最后，所有事情都变得清晰了。但是要实现上述过程，必须首先识别出以某种形式存在的隐含概念，无论这些概念有多么原始。
+
+## 9.1 DIGGING OUT CONCEPTS 概念挖掘
 Developers have to sensitize themselves to the hints that reveal lurking implicit concepts, and sometimes they have to proactively search them out. Most such discoveries come from listening to the language of the team, scrutinizing awkwardness in the design and seeming contradictions in the statements of experts, mining the literature of the domain, and doing lots and lots of experimentation.
 
-Listen to Language
+> 开发人员必须能够敏锐地捕捉到隐含概念的蛛丝马迹，但有时他们必须主动寻找线索。要挖掘出大部分的隐含概念，需要开发人员去倾听团队语言、仔细检查设计中的不足之处以及与专家观点相矛盾的地方、研究领域相关文献并且进行大量的实验。
+
+### 9.1.1 Listen to Language 倾听语言
 You may remember an experience like this: The users have always talked about some item on a report. The item is compiled from attributes of various objects and maybe even a direct database query. The same data set is assembled in another part of the application in order to present or report or derive something. But you have never seen the need for an object. Probably, you have never really understood what the users meant by a particular term and had not realized it was important.
+
+> 你可能会想起这样的经历：用户总是不停地谈论报告中的某一项。该项可能来自各种对象的参数汇编，甚至还可能来自一次直接的数据库查询。同时，应用程序的另一部分也需要这个数据集来进行显示、报告或其他操作。但是，你却一直认为没有必要为此创建一个对象。也许你一直没有真正理解用户想通过某个特定术语传达的东西，也没有意识到它的重要性。
 
 Then suddenly a light comes on in your head. The name of the item on that report designates an important domain concept. You talk excitedly with your experts about your new insight. Maybe they show relief that you finally got it. Maybe they yawn because they’ve taken it for granted all along. Either way, you start to draw model diagrams on the board that fill in for some hand waving that you’ve always done before. The users correct you on the details of how the new model connects, but you can tell that there is a change in the quality of the discussion. You and the users understand each other more precisely, and demonstrations of model interactions to solve specific scenarios have become more natural. The language of the domain model has become more powerful. You refactor the code to reflect the new model and find you have a cleaner design.
 
+> 然后，你突然灵机一动。原来，报告中该项名称给出了一个重要的领域概念。你高兴地与专家谈起了这个新发现。他们可能会松一口气，因为你终于明白了。也可能会觉得很平常，因为他们一直认为这是理所当然的。不管专家们如何反应，你开始在白板上画模型图了（之前你也一直这么做）。用户会帮助你修正新模型连接方面的细节，但你明显感到讨论的质量有所提高。你和用户可以更加准确地理解对方，并且可以更加自然地用模型交互来演示特定场景。领域模型的语言也变得更加强大。然后，你可以重构代码来反映新模型，同时也会发现你的设计变得更加清晰了。
+
 Listen to the language the domain experts use. Are there terms that succinctly state something complicated? Are they correcting your word choice (perhaps diplomatically)? Do the puzzled looks on their faces go away when you use a particular phrase? These are hints of a concept that might benefit the model.
+
+> 倾听领域专家使用的语言。有没有一些术语能够简洁地表达出复杂的概念？他们有没有纠正过你的用词（也许是很委婉的提醒）？当你使用某个特定词语时，他们脸上是否已经不再流露出迷惑的表情？这些都暗示了某个概念也许可以改进模型。
 
 This is not the old “nouns are objects” notion. Hearing a new word produces a lead, which you follow up with conversation and knowledge crunching, with the goal of carving out a clean, useful concept. When the users or domain experts use vocabulary that is nowhere in the design, that is a warning sign. It is a doubly strong warning when both the developers and the domain experts are using terms that are not in the design.
 
+> 这不同于原来的“名词即对象”概念。听到新单词只是个开头，然后我们还要进行对话、消化知识，这样才能挖掘出清晰实用的概念。如果用户或领域专家使用了设计中没有的词汇，这就是个警告信号。而当开发人员和领域专家都在使用设计中没有的词汇时，那就是一个倍加严重的警告信号了。
+
 Or perhaps it is better to look at it as an opportunity. The UBIQUITOUS LANGUAGE is made up of the vocabulary that pervades speech, documents, model diagrams, and even code. If a term is absent from the design, it is an opportunity to improve the model and design by including it.
 
+
+> 或者，应该把这种警告看成一次机会。UBIQUITOUS LANGUAGE是由遍布于对话、文档、模型图甚至代码中的词汇构成的。如果出现了设计中没有的术语，就可以把它添加到通用语言中，这样也就有机会改进模型和设计了。
+
 Example: Hearing a Missing Concept in the Shipping Model
+
+
+> 示例听出运输模型中缺失的一个概念
+
 The team had already developed a working application that could book a cargo. They were starting to build an “operations support” application that would help juggle the work orders for loading and unloading cargos at the origin and destination and at transfers between ships.
+
+> 团队已经开发出了可用来预订货物的有效应用程序。现在他们开始开发“作业支持”应用程序，此程序可帮助工作人员管理工作单，这些工作单用于安排起始地和目的地的货物装卸以及在不同货轮之间转运时需要的货物装卸。
 
 The booking application used a routing engine to plan the trip for a cargo. Each leg of the journey was stored in a row of a database table, indicating the ID of the vessel voyage (a particular voyage by a particular ship) slated to carry the cargo, the location where it would be loaded, and the location where it would be unloaded.
 
-Image
-Figure 9.1
+> 预定应用程序使用一个路线引擎来安排货物行程。运输过程的每段行程都作为一行数据存储在数据库表中，其中指定了装载该货物的船名航次（某一货轮的某一航次）ID、装货地点以及卸货地点，如图9-1所示。
 
-Let’s eavesdrop on a conversation (heavily abbreviated) between the developer and a shipping expert.
+<Figures figure="9-1"></Figures>
 
-Developer: I want to make sure the “cargo bookings” table has all the data that the operations application will need.
+- Let’s eavesdrop on a conversation (heavily abbreviated) between the developer and a shipping expert.
+- Developer: I want to make sure the “cargo bookings” table has all the data that the operations application will need.
+- Expert: They’re going to need the whole itinerary for the Cargo. What information does it have now?
+- Developer: The cargo ID, the vessel voyage, the loading port, and the unloading port for each leg.
+- Expert: What about the date? Operations will need to contract handling work based on the expected times.
+- Developer: Well, that can be derived from the schedule of the vessel voyage. The table data is normalized.
+- Expert: Yes, it is normal to need the date. Operations people use these kinds of itineraries to plan for upcoming handling work.
+- Developer: Yeah . . . OK, they’ll definitely have access to the dates. The operations management application will be able to provide the whole loading and unloading - sequence, with the date of each handling operation. The “itinerary,” I guess you would say.
+- Expert: Good. The itinerary is the main thing they’ll need. Actually, you know, the booking application has a menu item that will print an itinerary or e-mail it to - the customer. Can you use that somehow?
+- Developer: That’s just a report, I think. We won’t be able to base the operations application on that.
+- [Developer looks thoughtful, then excited.]
+- Developer: So, this itinerary is really the link between booking and operations.
+- Expert: Yes, and some customer relations, too.
+- Developer: [Sketching a diagram on the whiteboard.] So would you say it is something like this?
 
-Expert: They’re going to need the whole itinerary for the Cargo. What information does it have now?
+---
 
-Developer: The cargo ID, the vessel voyage, the loading port, and the unloading port for each leg.
+> - 开发人员：我想要确认一下cargo bookings（货物预订）表中是否已包含了作业应用程序所需的全部数据。
+> - 专家：他们需要Cargo的全部航海日程（Itinerary）。现在表中有哪些信息？
+> - 开发人员：货物ID、船名航次以及每个航段的装货港口和卸货港口。
+> - 专家：那么日期呢？需要按照预计的时间来进行装卸工作。
+> - 开发人员：嗯，日期可以从船名航次安排中获得。该表的数据已经得到了规范化处理。
+> - 专家：是的，日期通常都是必需的数据。作业人员会用这类航海日程来安排后面的装卸工作。
+> - 开发人员：嗯……好的。他们肯定可以得到日期数据。作业管理应用程序可以提供全部装货和卸货信息以及每次装卸作业的日期。我猜这也就是你所说的“航海日程”。
+> - 专家：很好。航海日程是他们需要的主要数据。事实上，你知道，预订应用程序包含了一个菜单项，可以打印出航海日程或将航海日程通过电子邮件发送给顾客。你能想办法利用这个功能吗？
+> - 开发人员：我想那只是个报表。我们无法据此来开发作业应用程序。
+> - [开发人员陷入了沉思，然后开始兴奋起来。]
+> - 开发人员：那么，航海日程实际上把预订程序和作业程序连接起来了。
+> - 专家：是的。它同时还连接了一些客户关系。
+> - 开发人员：[在白板上画出了一个草图。]那么，你觉得是这样的吗？
 
-Expert: What about the date? Operations will need to contract handling work based on the expected times.
+<Figures figure="9-2"></Figures>
 
-Developer: Well, that can be derived from the schedule of the vessel voyage. The table data is normalized.
+- Expert: Yes, that looks basically right. For each leg you’d like to see the vessel voyage, the load and unload location, and time.
+- Developer: So once we create the Leg object, it can derive the times from the vessel voyage schedule. We can make the Itinerary object our main point of contact with the operations application. And we can rewrite that itinerary report to use this, so we’ll get the domain logic back into the domain layer.
+- Expert: I didn’t follow all of that, but you are right that the two main uses for the Itinerary are in the report in booking and in the operations application.
+- Developer: Hey! We can make the Routing Service interface return an itinerary object instead of putting the data in the database table. That way the routing engine doesn’t need to know about our tables.
+- Expert: Huh?
+- Developer: I mean, I’ll make the routing engine just return an Itinerary. Then it can be saved in the database by the booking application when the rest of the booking is saved.
+- Expert: You mean it isn’t that way now?!
 
-Expert: Yes, it is normal to need the date. Operations people use these kinds of itineraries to plan for upcoming handling work.
+---
 
-Developer: Yeah . . . OK, they’ll definitely have access to the dates. The operations management application will be able to provide the whole loading and unloading sequence, with the date of each handling operation. The “itinerary,” I guess you would say.
-
-Expert: Good. The itinerary is the main thing they’ll need. Actually, you know, the booking application has a menu item that will print an itinerary or e-mail it to the customer. Can you use that somehow?
-
-Developer: That’s just a report, I think. We won’t be able to base the operations application on that.
-
-[Developer looks thoughtful, then excited.]
-
-Developer: So, this itinerary is really the link between booking and operations.
-
-Expert: Yes, and some customer relations, too.
-
-Developer: [Sketching a diagram on the whiteboard.] So would you say it is something like this?
-
-Image
-Figure 9.2
-
-Expert: Yes, that looks basically right. For each leg you’d like to see the vessel voyage, the load and unload location, and time.
-
-Developer: So once we create the Leg object, it can derive the times from the vessel voyage schedule. We can make the Itinerary object our main point of contact with the operations application. And we can rewrite that itinerary report to use this, so we’ll get the domain logic back into the domain layer.
-
-Expert: I didn’t follow all of that, but you are right that the two main uses for the Itinerary are in the report in booking and in the operations application.
-
-Developer: Hey! We can make the Routing Service interface return an itinerary object instead of putting the data in the database table. That way the routing engine doesn’t need to know about our tables.
-
-Expert: Huh?
-
-Developer: I mean, I’ll make the routing engine just return an Itinerary. Then it can be saved in the database by the booking application when the rest of the booking is saved.
-
-Expert: You mean it isn’t that way now?!
+> - 专家：是的，基本上是这样。在每段行程中，我们都希望看到船名航次、装货和卸货地点以及时间。
+> - 开发人员：所以，我们一旦创建了Leg（般段）对象，就能够从航次安排中获取时间信息。我们可以将Itinerary（航海日程）对象作为与作业应用程序联系的主要连接点。同时，还可以用这种方式重新编写航海日程报表，这样领域逻辑就重新回到领域层中了。
+> - 专家：有些地方我不太明白，但是你说对了Itinerary的两个主要用途，一是用在预订应用程序报表功能中，二是用在作业应用程序中。
+> - 开发人员：嘿！我们可以让Routing Service（路线服务）接口返回航程对象，而不用将数据写入数据库表。这样一来，路线引擎就不需要知道数据库表了。
+> - 专家：嗯？
+> - 开发人员：我是说，我可以让路线引擎只返回一个Itinerary。然后，预订应用程序在保存剩下的信息时把它一起存储到数据库中。
+> - 专家：你是说现在的程序并没有这么做吗？！
 
 The developer then went off to talk with the other developers involved in the routing process. They hashed out the changes to the model and the implications for the design, calling on the shipping experts when needed. They came up with the diagram in Figure 9.3.
 
-Image
-Figure 9.3
+> 这位开发人员回去与负责路线处理的人员进行讨论。他们仔细研究了这会给模型和设计带来什么影响和变化，在必要的时候也去请教了运输专家。最后，他们得到了图9-3所示的模型。
+
+<Figures figure="9-3"></Figures>
 
 Next, the developers refactored the code to reflect the new model. They did it in a series of two or three refactorings, but in quick succession, within a week, except for simplifying the itinerary report in the booking application, which they took care of early the following week.
 
+> 接下来，开发人员对代码进行了重构，以使它能反映出新的模型。在一周内，他们很快对代码作出了一系列的修改，每次修改都进行两到三次重构。但是他们还没有对预订应用程序中的航海日程报告进行简化，而简化工作将会在接下来的一周开始进行。
+
 The developer had been listening closely enough to the shipping expert to notice how important the concept of an “itinerary” was to him. True, all the data was already being collected, and the behavior was implicit in the itinerary report, but the explicit Itinerary as part of the model opened up opportunities.
+
+> 这位开发人员一直都在仔细倾听运输专家的见解，并注意到“航海日程”概念的重要性。事实上，所有的数据都已收集，在航海日程报告中也已隐含了操作行为，但是，把显式的Itinerary对象作为模型的一部分给他们带来了新的机会。
 
 Benefits of refactoring to the explicit Itinerary object:
 
+> 通过重构得到显式的Itinerary对象的益处是：
+
 1. Defining the interface of the Routing Service more expressively
-
 2. Decoupling the Routing Service from the booking database tables
-
 3. Clarifying the relationship between the booking application and the operations support application (the sharing of the Itinerary object)
-
 4. Reducing duplication, because the Itinerary derives loading/unloading times for both the booking report and the operations support application
-
 5. Removing domain logic from the booking report and placing it in the isolated domain layer
-
 6. Expanding the UBIQUITOUS LANGUAGE, allowing a more precise discussion of the model and design between developers and domain experts and among the developers themselves
 
-Scrutinize Awkwardness
+---
+
+> 1. 更明确地定义Routing Service接口；
+> 2. 将Routing Service与预订数据库表解耦——Routing Service无需关心存储逻辑；
+> 3. 明确了预订应用程序和作业支持应用程序之间的关系（即共享Itinerary对象）；
+> 4. 减少重复，因为Itinerary可同时为预订报表和作业支持应用程序提供装货/卸货时间；
+> 5. 从预订报表中删除领域逻辑，并将其移至独立的领域层；
+> 6. 扩充了UBIQUITOUS LANGUAGE，使得开发人员和领域专家之间或者开发人员内部能够更准确地讨论模型和设计。
+
+### 9.1.2 Scrutinize Awkwardness 检查不足之处
 The concept you need is not always floating on the surface, emerging in conversation or documents. You may have to dig and invent. The place to dig is the most awkward part of your design. The place where procedures are doing complicated things that are hard to explain. The place where every new requirement seems to add complexity.
+
+> 你所需要的概念并不总是浮在表面上，也绝不仅仅是通过对话和文档就能让它显现出来。有些概念可能需要你自己去挖掘和创造。要挖掘的地方就是设计中最不足的地方，也就是操作复杂且难于解释的地方。每当有新的需求时，似乎都会让这个地方变得更加复杂。
 
 Sometimes it can be hard to recognize that there even is a missing concept. You may have objects doing all the work but find some of the responsibilities awkward. Or, if you do realize something is missing, a model solution may elude you.
 
+> 有时，你很难意识到模型中丢失了什么概念。也许你的对象能够实现所有的功能，但是有些职责的实现却很笨拙。而有时，你虽然能够意识到模型中丢失了某些东西，但是却无法找到解决方案。
+
 Now you have to actively engage the domain experts in the search. If you are lucky, they may enjoy playing with ideas and experimenting with the model. If you are not that lucky, you and your fellow developers will have to come up with the ideas, using the domain expert as a validator, watching for discomfort or recognition on his or her face.
 
+> 这个时候，你必须积极地让领域专家参与到讨论中来。如果你足够幸运，这些专家可能会愿意一起思考各种想法，并通过模型来进行验证。如果你没那么幸运，你和你的同事就不得不自己思索出不同的想法，让领域专家对这些想法进行判断，并注意观察专家的表情是认同还是反对。
+
 Example: Earning Interest the Hard Way
+
+> 示例摸索利息计算模型
+
 The next story is set in a hypothetical financial company that invests in commercial loans and other interest-bearing assets. An application that tracks those investments and the earnings from them has been evolving incrementally, feature by feature. Each night, one component was to run as a batch script, calculating all interest and fees for the day and then recording them appropriately in the company’s accounting software.
 
-Image
-Figure 9.4. An awkward model
+
+> 下面的故事以一家假想的金融公司为背景，该公司经营商业贷款和其他一些生息资产。公司开发了一个用于跟踪这些投资及收益的应用程序，通过一项一项地添加功能来使它不断地发展。每天晚上，公司都会运行一个批处理脚本，用于计算当天所生成的利息和费用，并把它们相应地记录到公司的财务软件中。
+
+<Figures figure="9-4">An awkward model</Figures>
 
 The nightly batch script iterated through each Asset, telling each to calculateInterestForDate() on that day’s date. The script took the return value (the amount earned) and passed this amount, along with the name of a specific ledger, to a SERVICE that provided the public interface of the accounting program. That software posted the amount to the named ledger. The script went through a similar process to get the day’s fees from each Asset, posting them to a different ledger.
+
+> 晚间批处理脚本会遍历每笔Asset（资产），并让其执行[插图]，按照当天的日期来计算利息。然后，该脚本会接收返回值（收益金额），并将它和指定分类账的名称一起发送给一个SERVICE（这个SERVICE提供了记账程序的公共接口）。再由记账软件将收入金额过账到指定的分类账中。这个脚本还会对每笔Asset当日的手续费作类似的处理，并记录到另一个不同的分类账中。
 
 A developer had been struggling with the increasing complexity of calculating interest. She started to suspect an opportunity for a model better suited to the task. This developer asked her favorite domain expert to help her dig into the problem area.
 
@@ -141,8 +197,7 @@ Expert: Well, sometimes we might look at it, but it isn’t the way we do busine
 
 Developer: OK, so if the payment and interest are separate, maybe we should model them that way. How does this look? [Sketching on whiteboard]
 
-Image
-Figure 9.5
+<Figures figure="9-5"></Figures>
 
 Expert: It makes sense, I guess. But you just moved it from one place to another.
 
@@ -164,15 +219,13 @@ Expert: Probably posted on the accrual date, but yes, aggregated anytime. Fees w
 
 Developer: Actually, the interest calculation would be simpler if it was done just for one day, or period. And then we could just hang on to them all. How about this?
 
-Image
-Figure 9.6
+<Figures figure="9-6"></Figures>
 
 Expert: Sure. It looks good. I’m not sure why this would be easier for you. But basically, what makes any asset valuable is what it can accrue in interest, fees, and so on.
 
 Developer: You said fees work the same way? They . . . what was it . . . post to different ledgers?
 
-Image
-Figure 9.7
+<Figures figure="9-7"></Figures>
 
 Developer: With this model, we get the interest calculation, or rather, the accrual calculation logic that was in the Interest Calculator separated from tracking. And I hadn’t noticed until now how much duplication there is in the Fee Calculator. Also, now the different kinds of fees can easily be added.
 
@@ -180,21 +233,16 @@ Expert: Yes, the calculation was correct before, but I can see everything now.
 
 Because the Calculator classes hadn’t been directly coupled with other parts of the design, this was a fairly easy refactoring. The developer was able to rewrite the unit tests to use the new language in a few hours and had the new design working late the next day. She ended up with this.
 
-Image
-Figure 9.8. A deeper model after refactoring
+<Figures figure="9-8">A deeper model after refactoring</Figures>
 
 In the refactored application, the nightly batch script tells each Asset to calculateAccrualsThroughDate(). The return value is a collection of Accruals, each of whose amounts it posts to the indicated ledger.
 
 The new model has several advantages. The change
 
 1. Enriches the UBIQUITOUS LANGUAGE with the term “accrual”
-
 2. Decouples accrual from payment
-
 3. Moves domain knowledge (such as which ledger to post to) from the script and into the domain layer
-
 4. Brings fees and interest together in a way that fits the business and eliminates duplication in the code
-
 5. Provides a straightforward path for adding new variations of fees and interest as Accrual Schedules
 
 This time, the developer had to dig for the new concepts she needed. She could see the awkwardness of the interest calculations and made a committed effort to look for a deeper answer.
@@ -226,8 +274,7 @@ Accrual Basis Accounting. This method recognizes income when it is earned, even 
 
 The developer no longer needed to reinvent accounting. After some brainstorming with another developer, she came up with a model.
 
-Image
-Figure 9.9. A somewhat deeper model based on book learning
+<Figures figure="9-9">A somewhat deeper model based on book learning</Figures>
 
 She did not have the insight that Assets are income generators, and so the Calculators are still there. The knowledge of ledgers is still in the application, rather than the domain layer where it probably belongs. But she did separate the issue of payment from the accrual of income, which was the most problematic area, and she introduced the word “accrual” into the model and into the UBIQUITOUS LANGUAGE. Further refinement could come with later iterations.
 
@@ -254,11 +301,10 @@ Constraints make up a particularly important category of model concepts. They of
 
 Sometimes constraints find a natural home in an object or method. A “Bucket” object must guarantee the invariant that it does not hold more than its capacity.
 
-Image
-Figure 9.10
+<Figures figure="9-10"></Figures>
 
 A simple invariant like this can be enforced using case logic in each operation capable of changing contents.
-
+```java
 class Bucket {
    private float capacity;
    private float contents;
@@ -271,9 +317,9 @@ class Bucket {
       }
    }
 }
-
+```
 This logic is so simple that the rule is obvious. But you can easily imagine this constraint getting lost in a more complicated class. Let’s factor it into a separate method, with a name that clearly and explicitly expresses the significance of the constraint.
-
+```java
 class Bucket {
    private float capacity;
    private float contents;
@@ -287,7 +333,7 @@ class Bucket {
       return volumePlacedIn;
    }
 }
-
+```
 Both versions of this code enforce the constraint, but the second has a more obvious relationship to the model (the basic requirement of MODEL-DRIVEN DESIGN). This very simple rule was understandable in its original form, but when the rules being enforced are more complex, they start to overwhelm the object or operation they apply to, as any implicit concept does. Factoring the constraint into its own method allows us to give it an intention-revealing name that makes the constraint explicit in our design. It is now a named thing we can discuss. This approach also gives the constraint room. A more complex rule than this might easily produce a method longer than its caller (the pourIn() method, in this case). This way, the caller stays simple and focused on its task while the constraint can grow in complexity if need be.
 
 This separate method gives the constraint some room to grow, but there are lots of cases when a constraint just can’t fit comfortably in a single method. Or even if the method stays simple, it may call on information that the object doesn’t need for its primary responsibility. The rule may just have no good home in an existing object.
@@ -295,10 +341,10 @@ This separate method gives the constraint some room to grow, but there are lots 
 Here are some warning signs that a constraint is distorting the design of its host object.
 
 1. Evaluating a constraint requires data that does not otherwise fit the object’s definition.
-
 2. Related rules appear in multiple objects, forcing duplication or inheritance between objects that are not otherwise a family.
-
 3. A lot of design and requirements conversation revolves around the constraints, but in the implementation, they are hidden away in procedural code.
+
+---
 
 When the constraints are obscuring the object’s basic responsibility, or when the constraint is prominent in the domain yet not prominent in the model, you can factor it out into an explicit object or even model it as a set of objects and relationships. (One in-depth, semiformal treatment of this subject can be found in The Object Constraint Language: Precise Modeling with UML [Warmer and Kleppe 1999].)
 
@@ -307,8 +353,7 @@ In Chapter 1, we worked with a common shipping business practice: booking 10 per
 
 This constraint on the association between Voyage and Cargo was made explicit, both in the diagrams and in the code, by adding a new class that represented the constraint.
 
-Image
-Figure 9.11. The model refactored to make policy explicit
+<Figures figure="9-11">The model refactored to make policy explicit</Figures>
 
 To review the code and reasoning in the full example, see page 17.
 
@@ -330,14 +375,16 @@ Some useful categories of concepts are much narrower. I’ll round out this chap
 I developed SPECIFICATION in collaboration with Martin Fowler (Evans and Fowler 1997). The simplicity of the concept belies the subtlety in application and implementation, so there is a lot of detail in this section. There will be even more discussion in Chapter 10, where the pattern is extended. After reading the initial explanation of the pattern that follows, you may want to skim the “Applying and Implementing SPECIFICATIONS” section, until you are actually attempting to apply the pattern.
 
 Specification
-Image
-In all kinds of applications, Boolean test methods appear that are really parts of little rules. As long as they are simple, we handle them with testing methods, such as anIterator.hasNext() or anInvoice.isOverdue(). In an Invoice class, the code in isOverdue() is an algorithm that evaluates a rule. For example,
 
+Image
+
+In all kinds of applications, Boolean test methods appear that are really parts of little rules. As long as they are simple, we handle them with testing methods, such as anIterator.hasNext() or anInvoice.isOverdue(). In an Invoice class, the code in isOverdue() is an algorithm that evaluates a rule. For example,
+```java
 public boolean isOverdue() {
    Date currentDate = new Date();
    return currentDate.after(dueDate);
 }
-
+```
 But not all rules are so simple. On the same Invoice class, another rule, anInvoice.isDelinquent() would presumably start with testing if the Invoice is overdue, but that would just be the beginning. A policy on grace periods could depend on the status of the customer’s account. Some delinquent invoices will be ready for a second notice, while others will be ready to be sent to a collection agency. The payment history of the customer, company policy on different product lines . . . the clarity of Invoice as a request for payment will soon be lost in the sheer mass of rule evaluation code. The Invoice will also develop all sorts of dependencies on domain classes and subsystems that do not support that basic meaning.
 
 At this point, in an attempt to save the Invoice class, a developer will often refractor the rule evaluation code into the application layer (in this case, a bill collection application). Now the rules have been separated from the domain layer altogether, leaving behind a dead data object that does not express the rules inherent in the business model. These rules need to stay in the domain layer, but they don’t fit into the object being evaluated (the Invoice in this case). Not only that, but evaluating methods swell with conditional code, which make the rule hard to read.
@@ -352,8 +399,7 @@ Logic programming provides the concept of separate, combinable, rule objects cal
 
 Fortunately, we don’t really need to fully implement logic programming to get a large benefit. Most of our rules fall into a few special cases. We can borrow the concept of predicates and create specialized objects that evaluate to a Boolean. Those testing methods that get out of hand will neatly expand into objects of their own. They are little truth tests that can be factored out into a separate VALUE OBJECT. This new object can evaluate another object to see if the predicate is true for that object.
 
-Image
-Figure 9.12
+<Figures figure="9-12"></Figures>
 
 To put it another way, the new object is a specification. A SPECIFICATION states a constraint on the state of another object, which may or may not be present. It has multiple uses, but one that conveys the most basic concept is that a SPECIFICATION can test any object to see if it satisfies the specified criteria.
 
@@ -365,8 +411,7 @@ Many SPECIFICATIONS are simple, special-purpose tests, as in the delinquent invo
 
 The case of the delinquent invoice can be modeled using a SPECIFICATION that states what it means to be delinquent and that can evaluate any Invoice and make the determination.
 
-Image
-Figure 9.13. A more elaborate delinquency rule factored out as a SPECIFICATION
+<Figures figure="9-13">A more elaborate delinquency rule factored out as a SPECIFICATION</Figures>
 
 The SPECIFICATION keeps the rule in the domain layer. Because the rule is a full-fledged object, the design can be a more explicit reflection of the model. A FACTORY can configure a SPECIFICATION using information from other sources, such as the customer’s account or the corporate policy database. Providing direct access to these sources from the Invoice would couple the objects in a way that does not relate to the request for payment (the basic responsibility of Invoice). In this case, the Delinquent Invoice Specification was to be created, used to evaluate some Invoices, and then discarded, so a specific evaluation date was built right in—a nice simplification. A SPECIFICATION can be given the information it will need to do its job in a simple, straightforward way.
 
@@ -391,9 +436,9 @@ These three uses—validation, selection, and building to order—are the same o
 Validation
 The simplest use of a SPECIFICATION is validation, and it is the use that demonstrates the concept most straightforwardly.
 
-Image
-Figure 9.14. A model applying a SPECIFICATION for validation
+<Figures figure="9-14">A model applying a SPECIFICATION for validation</Figures>
 
+```java
 class DelinquentInvoiceSpecification extends
       InvoiceSpecification {
    private Date currentDate;
@@ -413,9 +458,10 @@ class DelinquentInvoiceSpecification extends
    }
 
 }
-
+```
 Now, suppose we need to display a red flag whenever a salesperson brings up a customer with delinquent bills. We just have to write a method in a client class, something like this.
 
+```java
 public boolean accountIsDelinquent(Customer customer) {
    Date today = new Date();
    Specification delinquentSpec =
@@ -427,12 +473,12 @@ public boolean accountIsDelinquent(Customer customer) {
    }
    return false;
 }
-
+```
 Selection (or Querying)
 Validation tests an individual object to see if it meets some criteria, presumably so that the client can act on the conclusion. Another common need is to select a subset of a collection of objects based on some criteria. The same concept of SPECIFICATION can be applied here, but implementation issues are different.
 
 Suppose there was an application requirement to list all customers with delinquent Invoices. In theory, the Delinquent Invoice Specification that we defined before will still serve, but in practice its implementation would probably have to change. To demonstrate that the concept is the same, let’s assume first that the number of Invoices is small, maybe already in memory. In this case, the straightforward implementation developed for validation still serves. The Invoice Repository could have a generalized method to select Invoices based on a SPECIFICATION:
-
+```java
 public Set selectSatisfying(InvoiceSpecification spec) {
 
    Set results = new HashSet();
@@ -444,18 +490,18 @@ public Set selectSatisfying(InvoiceSpecification spec) {
 
    return results;
 }
-
+```
 So a client could obtain a collection of all delinquent Invoices with a single code statement:
-
+```java
 Set delinquentInvoices = invoiceRepository.selectSatisfying(
    new DelinquentInvoiceSpecification(currentDate));
-
+```
 That line of code establishes the concept behind the operation. Of course, the Invoice objects probably aren’t in memory. There may be thousands of them. In a typical business system, the data is probably in a relational database. And, as pointed out in earlier chapters, the model focus tends to get lost at these intersections with other technologies.
 
 Relational databases have powerful search capabilities. How can we take advantage of that power to solve this problem efficiently while retaining the model of a SPECIFICATION? MODEL-DRIVEN DESIGN demands that the model stay in lockstep with the implementation, but it allows freedom to choose any implementation that faithfully captures the meaning of the model. Lucky for us, SQL is a very natural way to write SPECIFICATIONS.
 
 Here is a simple example, in which the query is encapsulated in the same class as the validation rule. A single method is added to the Invoice Specification and is implemented in the Delinquent Invoice Specification subclass:
-
+```java
 public String asSQL() {
    return
       "SELECT * FROM INVOICE, CUSTOMER" +
@@ -463,16 +509,15 @@ public String asSQL() {
       "  AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD" +
       "     < " + SQLUtility.dateAsSQL(currentDate);
 }
-
+```
 SPECIFICATIONS mesh smoothly with REPOSITORIES, which are the building-block mechanisms for providing query access to domain objects and encapsulating the interface to the database (see Figure 9.15).
 
-Image
-Figure 9.15. The interaction between REPOSITORY and SPECIFICATION
+<Figures figure="9-15">The interaction between REPOSITORY and SPECIFICATION</Figures>
 
 Now this design has some problems. Most important, the details of the table structure have leaked into the DOMAIN LAYER; they should be isolated in a mapping layer that relates the domain objects to the relational tables. Implicitly duplicating that information here could hurt the modifiability and maintainability of the Invoice and Customer objects, because any change to their mappings now have to be tracked in more than one place. But this example is a simple illustration of how to keep the rule in just one place. Some object-relational mapping frameworks provide the means to express such a query in terms of the model objects and attributes, generating the actual SQL in the infrastructure layer. This would let us have our cake and eat it too.
 
 When the infrastructure doesn’t come to the rescue, we can refactor the SQL out of the expressive domain objects by adding a specialized query method to the Invoice Repository. To avoid embedding the rule into the REPOSITORY, we have to express the query in a more generic way, one that doesn’t capture the rule but can be combined or placed in context to work the rule out (in this example, by using a double dispatch).
-
+```java
 public class InvoiceRepository {
 
    public Set selectWhereGracePeriodPast(Date aDate){
@@ -495,9 +540,9 @@ public class InvoiceRepository {
       return spec.satisfyingElementsFrom(this);
    }
 }
-
+```
 The asSql() method on Invoice Specification is replaced with satisfyingElementsFrom(InvoiceRepository), which Delinquent Invoice Specification implements as:
-
+```java
 public class DelinquentInvoiceSpecification {
    // Basic DelinquentInvoiceSpecification code here
 
@@ -508,11 +553,11 @@ public class DelinquentInvoiceSpecification {
       return repository.selectWhereGracePeriodPast(currentDate);
    }
 }
-
+```
 This puts the SQL in the REPOSITORY, while the SPECIFICATION controls what query should be used. The rules aren’t as neatly collected into the SPECIFICATION, but the essential declaration is there of what constitutes delinquency (that is, past grace period).
 
 The REPOSITORY now has a very specialized query that most likely will be used only in this case. That is acceptable, but depending on the relative numbers of Invoices that are overdue compared to those that are delinquent, an intermediate solution that leaves the REPOSITORY methods more generic may still give good performance, while keeping the SPECIFICATION more self-explanatory.
-
+```java
 public class InvoiceRepository {
 
    public Set selectWhereDueDateIsBefore(Date aDate) {
@@ -552,7 +597,7 @@ public class DelinquentInvoiceSpecification {
       return delinquentInvoices;
    }
 }
-
+```
 We’ll take a performance hit with this code, because we pull out more Invoices and then have to select from them in memory. Whether this is an acceptable cost for the better factoring of responsibility depends entirely on circumstances. There are many ways to implement the interactions between SPECIFICATIONS and REPOSITORIES, to take advantage of the development platform, while keeping the basic responsibilities in place.
 
 Sometimes, to improve performance, or more likely to tighten security, queries may be implemented on the server as stored procedures. In that case, the SPECIFICATION could carry only the parameters allowed by the stored procedure. For all that, there is no difference in the model between these various implementations. The choice of implementation is free except where specifically constrained by the model. The price comes in a more cumbersome way of writing and maintaining queries.
@@ -585,8 +630,7 @@ There is a warehouse in which various chemicals are stored in stacks of large co
 
 The goal is to write software that will find an efficient and safe way to put the chemicals in the containers.
 
-Image
-Figure 9.16. A model for warehouse storage
+<Figures figure="9-16">A model for warehouse storage</Figures>
 
 We could start by writing a procedure to take a chemical and place it in a container, but instead, let’s start with the validation problem. This will force us to make the rules explicit, and it will give us a way to test the final implementation.
 
@@ -597,7 +641,7 @@ Now, if we write these as Container Specifications, we should be able to take a 
 
 Image
 A method on Container Specification, isSatisfied(), would have to be implemented to check for needed ContainerFeatures. For example, the SPEC attached to an explosive chemical would look for the “armored” feature:
-
+```java
 public class ContainerSpecification {
    private ContainerFeature requiredFeature;
    public ContainerSpecification(ContainerFeature required) {
@@ -608,14 +652,14 @@ public class ContainerSpecification {
       return aContainer.getFeatures().contains(requiredFeature);
    }
 }
-
+```
 Here is sample client code to set up an explosive chemical:
-
+```java
 tnt.setContainerSpecification(
       new ContainerSpecification(ARMORED));
 
 A method on a Container object, isSafelyPacked(), will confirm that Container has all the features specified by the Chemicals it contains:
-
+```java
 boolean isSafelyPacked(){
    Iterator it = contents.iterator();
    while (it.hasNext()) {
@@ -625,9 +669,9 @@ boolean isSafelyPacked(){
    }
    return true;
 }
-
+```
 At this point, we could write a monitoring application that would take the inventory database and report any unsafe situations.
-
+```java
 Iterator it = containers.iterator();
 while (it.hasNext()) {
    Container container = (Container) it.next();
@@ -636,7 +680,7 @@ while (it.hasNext()) {
 }
 
 This is not the software we’ve been asked to write. It would be good to let the business people know about the opportunity, but we have been charged with designing a packer. What we have is a test for a packer. This understanding of the domain and our SPECIFICATION-based model put us in a position to define a clear and simple interface for a SERVICE that will take collections of Drums and Containers and pack them in compliance with the rules.
-
+```java
 public interface WarehousePacker {
    public void pack(Collection containersToFill,
       Collection drumsToPack) throws NoAnswerFoundException;
@@ -647,14 +691,14 @@ public interface WarehousePacker {
       be thrown. */
 
 }
-
+```
 Now the task of designing an optimized constraint solver to fulfill the responsibilities of the Packer service has been decoupled from the rest of the application, and those mechanisms will not clutter the part of the design that expresses the model. (See “Declarative Style of Design,” Chapter 10, and COHESIVE MECHANISM, Chapter 15.) Yet the rules governing packing have not been pulled out of the domain objects.
 
 Example: A Working Prototype of the Warehouse Packer
 Writing the optimization logic to make the warehouse packing software work is a big job. A small team of developers and business experts have split off and have set to work on it, but they haven’t even begun to code. Meanwhile, another small team is developing the application that will allow users to pull inventory from the database, feed it to the Packer, and interpret the results. They are trying to design for the anticipated Packer. But all they can do is mock up a UI and work on some database integration code. They can’t show the users an interface with meaningful behavior to get good feedback. For the same reason, the Packer team is working in a vacuum too.
 
 With the domain objects and SERVICE interface made in the warehouse packer example, the application team realizes they could build a very simple implementation of a Packer that could help the development process move along, allowing work to go forward in parallel and closing the feedback loop, which only reaches full effect with a working end-to-end system.
-
+```java
 public class Container {
    private double capacity;
    private Set contents; //Drums
@@ -712,7 +756,7 @@ public class PrototypePacker implements WarehousePacker {
    }
 
 }
-
+```
 Granted that this code leaves a lot to be desired. It might pack sand into specialty containers and then run out of room before it packs the hazardous chemicals. It certainly doesn’t optimize revenues. But a lot of optimization problems are never solved perfectly anyway. This implementation does follow the rules that have been stated so far.
 
 Clearing Development Logjams with Working Prototypes
