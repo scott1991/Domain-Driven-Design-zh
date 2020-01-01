@@ -12,7 +12,7 @@ Sophisticated techniques for this isolation have emerged. This is well-trodden g
 
 ## 4.1 LAYERED ARCHITECTURE 模式：LAYERED ARCHITECTURE
 
-![](/figures/ch4/04inf02.jpg)
+![](figures/ch4/04inf02.jpg)
 
 For a shipping application to support the simple user act of selecting a cargo’s destination from a list of cities, there must be program code that (1) draws a widget on the screen, (2) queries the database for all the possible cities, (3) interprets the user’s input and validates it, (4) associates the selected city with the cargo, and (5) commits the change to the database. All of this code is part of the same program, but only a little of it is related to the business of shipping.
 
@@ -42,7 +42,7 @@ The value of layers is that each specializes in a particular aspect of a compute
 
 > 分层的价值在于每一层都只代表程序中的某一特定方面。这种限制使每个方面的设计都更具内聚性，更容易解释。当然，要分离出内聚设计中最重要的方面，选择恰当的分层方式是至关重要的。在这里，经验和惯例又一次为我们指明了方向。尽管 LAYERED ARCHITECTURE 的种类繁多，但是大多数成功的架构使用的都是下面这 4 个概念层的某种变体。
 
-![](/figures/ch4/t0070_01.jpg)
+![](figures/ch4/t0070_01.jpg)
 
 Some projects don’t make a sharp distinction between the user interface and application layers. Others have multiple infrastructure layers. But it is the crucial separation of the domain layer that enables MODEL-DRIVEN DESIGN.
 

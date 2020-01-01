@@ -38,7 +38,7 @@ Modeling AGGREGATES and adding FACTORIES and REPOSITORIES to the design gives us
 
 ## 6.1 AGGREGATES 模式：AGGREGATE
 
-![](/figures/ch6/06inf01.jpg)
+![](figures/ch6/06inf01.jpg)
 
 Minimalist design of associations helps simplify traversal and limit the explosion of relationships somewhat, but most business domains are so interconnected that we still end up tracing long, deep paths through object references. In a way, this tangle reflects the realities of the world, which seldom obliges us with sharp boundaries. It is a problem in a software design.
 
@@ -234,7 +234,7 @@ AGGREGATES mark off the scope within which invariants have to be maintained at e
 
 ## 6.2 FACTORIES 模式：FACTORY
 
-![](/figures/ch6/06inf02.jpg)
+![](figures/ch6/06inf02.jpg)
 
 When creation of an object, or an entire AGGREGATE, becomes complicated or reveals too much of the internal structure, FACTORIES provide encapsulation.
 
@@ -456,7 +456,7 @@ A FACTORY encapsulates the life cycle transitions of creation and reconstitution
 
 ## 6.3 REPOSITORIES 模式：REPOSITORY
 
-![](/figures/ch6/06inf03.jpg)
+![](figures/ch6/06inf03.jpg)
 
 Associations allow us to find an object based on its relationship to another. But we must have a starting point for a traversal to an ENTITY or VALUE in the middle of its life cycle.
 

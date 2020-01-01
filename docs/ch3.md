@@ -36,7 +36,7 @@ Models come in many varieties and serve many roles, even those restricted to the
 
 ## 3.1 MODEL-DRIVEN DESIGN 模式：MODEL-DRIVEN DESIGN
 
-![](/figures/ch3/03inf01.jpg)
+![](figures/ch3/03inf01.jpg)
 
 The astrolabe, used to compute star positions, is a mechanical implementation of a model of the sky.
 
@@ -312,13 +312,13 @@ The application requires import/export logic, which we’ll encapsulate into som
 
 > 这个程序还需要导入/导出逻辑，我们可以将其封装成一些简单的服务。
 
-![](/figures/ch3/t0056_01.jpg)
+![](figures/ch3/t0056_01.jpg)
 
 We’ll also need a few utilities:
 
 > 我们还需要几个工具类：
 
-![](/figures/ch3/t0056_02.jpg)
+![](figures/ch3/t0056_02.jpg)
 
 Now, starting the application is a matter of initializing the repositories with imported data:
 
