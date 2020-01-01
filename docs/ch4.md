@@ -12,7 +12,8 @@ Sophisticated techniques for this isolation have emerged. This is well-trodden g
 
 ## 4.1 LAYERED ARCHITECTURE 模式：LAYERED ARCHITECTURE
 
-Image
+![](/figures/ch4/04inf02.jpg)
+
 For a shipping application to support the simple user act of selecting a cargo’s destination from a list of cities, there must be program code that (1) draws a widget on the screen, (2) queries the database for all the possible cities, (3) interprets the user’s input and validates it, (4) associates the selected city with the cargo, and (5) commits the change to the database. All of this code is part of the same program, but only a little of it is related to the business of shipping.
 
 > 在一个运输应用程序中，要想支持从城市列表中选择运送货物目的地这样的简单用户行为，程序代码必须包括：（1）在屏幕上绘制一个屏幕组件（widget）；（2）查询数据库，调出所有可能的城市；（3）解析并验证用户输入；（4）将所选城市与货物关联；（5）向数据库提交此次数据修改。上面所有的代码都在同一个程序中，但是只有一小部分代码与运输业务相关。
@@ -41,12 +42,15 @@ The value of layers is that each specializes in a particular aspect of a compute
 
 > 分层的价值在于每一层都只代表程序中的某一特定方面。这种限制使每个方面的设计都更具内聚性，更容易解释。当然，要分离出内聚设计中最重要的方面，选择恰当的分层方式是至关重要的。在这里，经验和惯例又一次为我们指明了方向。尽管 LAYERED ARCHITECTURE 的种类繁多，但是大多数成功的架构使用的都是下面这 4 个概念层的某种变体。
 
-Image
+![](/figures/ch4/t0070_01.jpg)
+
 Some projects don’t make a sharp distinction between the user interface and application layers. Others have multiple infrastructure layers. But it is the crucial separation of the domain layer that enables MODEL-DRIVEN DESIGN.
 
 > 有些项目没有明显划分出用户界面层和应用层，而有些项目则有多个基础设施层。但是将领域层分离出来才是实现 MODEL-DRIVEN DESIGN 的关键。
 
 Therefore:
+
+> 因此：
 
 Partition a complex program into layers. Develop a design within each layer that is cohesive and that depends only on the layers below. Follow standard architectural patterns to provide loose coupling to the layers above. Concentrate all the code related to the domain model in one layer and isolate it from the user interface, application, and infrastructure code. The domain objects, free of the responsibility of displaying themselves, storing themselves, managing application tasks, and so forth, can be focused on expressing the domain model. This allows a model to evolve to be rich enough and clear enough to capture essential business knowledge and put it to work.
 
@@ -68,8 +72,7 @@ To make this example manageable, I’ve omitted major technical features, most n
 
 > 为了让这个例子更容易实现，这里省略了一些主要的技术特性，特别是安全性方面的一些特性。领域设计也尽量简化。（在现实生活中，银行业务的复杂性只会增加对 LAYEREDARCHITECTURE 的需求。）此外，这个例子中的基础设施只是为了使程序更简单和清楚一些而已——我并不建议你使用这个设计。简化后的功能所要完成的任务将会按照图 4-1 来分层。
 
-Image
-Figure 4.1. Objects carry out responsibilities consistent with their layer and are more coupled to other objects in their layer.
+<Figures figure="4-1">Objects carry out responsibilities consistent with their layer and are more coupled to other objects in their layer.</Figures>
 
 Note that the domain layer, not the application layer, is responsible for fundamental business rules—in this case, the rule is “Every credit has a matching debit.”
 

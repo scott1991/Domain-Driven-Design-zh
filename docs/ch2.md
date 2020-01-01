@@ -16,11 +16,11 @@ The use of language on a project is subtle but all-important. . . .
 
 ## 2.1 UBIQUITOUS LANGUAGE
 
-For first you write a sentence,
-And then you chop it small;
-Then mix the bits, and sort them out
-Just as they chance to fall:
-The order of the phrases makes
+For first you write a sentence,  
+And then you chop it small;  
+Then mix the bits, and sort them out  
+Just as they chance to fall:  
+The order of the phrases makes  
 No difference at all.
 
 —Lewis Carroll, “Poeta Fit, Non Nascitur”
@@ -30,7 +30,7 @@ No difference at all.
 > 再将它们打乱并重新排序。  
 > 仿佛是巧合一样，  
 > 短语的顺序对意思完全没有影响。
-
+>
 > ——Lewis Carroll, “Poeta Fit, Non Nascitur”
 
 To create a supple, knowledge-rich design calls for a versatile, shared team language, and a lively experimentation with language that seldom happens on software projects.
@@ -143,8 +143,7 @@ Scenario 1: Minimal Abstraction of the Domain
 
 > 场景 1：最小化的领域抽象
 
-Image
-Figure 2.1
+<Figures figure="2-1"></Figures>
 
 User: So when we change the customs clearance point, we need to redo the whole routing plan.
 
@@ -190,8 +189,7 @@ Scenario 2: Domain Model Enriched to Support Discussion
 
 > 场景 2：用领域模型进行讨论
 
-Image
-Figure 2.2
+<Figures figure="2-2"></Figures>
 
 User: So when we change the customs clearance point, we need to redo the whole routing plan.
 
@@ -349,8 +347,7 @@ Of course, developers do use technical terminology that a domain expert wouldn�
 
 > 当然，开发人员的确会使用领域专家无法理解的技术术语。开发人员有其所需的大量术语来讨论系统技术。几乎可以肯定的是，用户也会用开发人员无法理解的、超出应用程序范畴的专用术语。这些都是对语言的扩展。但在这些语言扩展中，同一领域的相同词汇不应该反映不同的模型。
 
-Image
-Figure 2.3. UBIQUITOUS LANGUAGE is cultivated in the intersection of jargons.
+<Figures figure="2-3">UBIQUITOUS LANGUAGE is cultivated in the intersection of jargons.</Figures>
 
 With a UBIQUITOUS LANGUAGE, conversations among developers, discussions among domain experts, and expressions in the code itself are all based on the same language, derived from a shared domain model.
 
@@ -508,8 +505,7 @@ Consider an application that tracks cargos for a shipping company. The model inc
 
 > 考虑一个用来追踪航运公司货物的应用程序。模型包含一个详细的视图，它显示了如何将港口装卸和货轮航次组合为一次货运的操作计划（“路线”）。如图 2-4 所示。但对外行而言，类图可能起不到多大的说明作用。
 
-Image
-Figure 2.4. A class diagram for a shipping route
+<Figures figure="2-4">A class diagram for a shipping route</Figures>
 
 In such a case, an explanatory model can help team members understand what the class diagram actually means. Here is another way of looking at the same concepts:
 
@@ -519,8 +515,7 @@ Each line in Figure 2.5 represents either a port operation (loading or unloading
 
 > 图中的每根线段都表示货物的一种状态——或者正在港口装卸（装货或卸货），或者停放在仓库里，或者正在运输途中。这个图并没有与类图中的细节一一对应，但强调了领域的要点。
 
-Image
-Figure 2.5. An explanatory model for a shipping route
+<Figures figure="2-5">An explanatory model for a shipping route</Figures>
 
 This sort of diagram, along with natural language explanations of the model it represents, can help developers and domain experts alike understand the more rigorous software model diagrams. Together they are easier to understand than either view alone.
 

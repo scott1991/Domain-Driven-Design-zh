@@ -22,65 +22,45 @@ I started drawing diagrams for them as we discussed the things they wanted the s
 
 <Figures figure="1-2"></Figures>
 
-PCB Expert 1: The components wouldn’t have to be chips.
+- PCB Expert 1: The components wouldn’t have to be chips.
+- Developer (Me): So I should just call them “components”?
+- Expert 1: We call them “component instances.” There could be many of the same component.
+- Expert 2: The “net” box looks just like a component instance.
+- Expert 1: He’s not using our notation. Everything is a box for them, I guess.
+- Developer: Sorry to say, yes. I guess I’d better explain this notation a little more.
 
-> PCB 专家 1：元件不一定就是芯片（chip）。
+---
 
-Developer (Me): So I should just call them “components”?
-
-> 开发人员（我）：那它们是不是只应该叫做“元件”？
-
-Expert 1: We call them “component instances.” There could be many of the same component.
-
-> 专家 1：我们将它们称作“元件实例”（component instance）。相同的元件可能有很多。
-
-Expert 2: The “net” box looks just like a component instance.
-
-> 专家 2：他把“net”画成和元件实例一样的框了。
-
-Expert 1: He’s not using our notation. Everything is a box for them, I guess.
-
-> 专家 1：他没有使用我们的符号。我猜想，他要把每一项都画成方框。
-
-Developer: Sorry to say, yes. I guess I’d better explain this notation a little more.
-
-> 开发人员：很抱歉，是这样的。我想我最好对这个符号稍加解释。
+> - PCB 专家 1：元件不一定就是芯片（chip）。
+> - 开发人员（我）：那它们是不是只应该叫做“元件”？
+> - 专家 1：我们将它们称作“元件实例”（component instance）。相同的元件可能有很多。
+> - 专家 2：他把“net”画成和元件实例一样的框了。
+> - 专家 1：他没有使用我们的符号。我猜想，他要把每一项都画成方框。
+> - 开发人员：很抱歉，是这样的。我想我最好对这个符号稍加解释。
 
 They constantly corrected me, and as they did I started to learn. We ironed out collisions and ambiguities in their terminology and differences between their technical opinions, and they learned. They began to explain things more precisely and consistently, and we started to develop a model together.
 
 > 他们不断地纠正我的错误，在这个过程中我开始学习他们的知识。我们共同消除了术语上的不一致和歧义，也消除了他们在技术观点上的分歧，在这个过程中，他们也得到了学习。他们的解释更准确和一致了，然后我们开始共同开发一个模型。
 
-Expert 1: It isn’t enough to say a signal arrives at a ref-des, we have to know the pin.
+- Expert 1: It isn’t enough to say a signal arrives at a ref-des, we have to know the pin.
+- Developer: Ref-des?
+- Expert 2: Same thing as a component instance. Ref-des is what it’s called in a particular tool we use.
+- Expert 1: Anyhow, a net connects a particular pin of one instance to a particular pin of another.
+- Developer: Are you saying that a pin belongs to only one component instance and connects to only one net?
+- Expert 1: Yes, that’s right.
+- Expert 2: Also, every net has a topology, an arrangement that determines the way the elements of the net connect.
+- Developer: OK, how about this?
 
-> 专家 1：只说一个信号到达一个 ref-des 是不够明确的，我们必须知道信号到达了哪个引脚。
+---
 
-Developer: Ref-des?
-
-> 开发人员：什么是 ref-des？
-
-Expert 2: Same thing as a component instance. Ref-des is what it’s called in a particular tool we use.
-
-> 专家 2：它就是一个元件实例。我们用的一个专门工具中用 ref-des 这个名称。
-
-Expert 1: Anyhow, a net connects a particular pin of one instance to a particular pin of another.
-
-> 专家 1：总之，net 将一个实例的某个引脚与另一个实例的某个引脚相连。
-
-Developer: Are you saying that a pin belongs to only one component instance and connects to only one net?
-
-> 开发人员：一个引脚是不是只属于一个元件实例，而且只与一个 net 相连？
-
-Expert 1: Yes, that’s right.
-
-> 专家 1：对，是这样。
-
-Expert 2: Also, every net has a topology, an arrangement that determines the way the elements of the net connect.
-
-> 专家 2：还有，每个 net 都有一个拓扑结构，也就是电路的布局，它决定了 net 内部各元件的连接方式。
-
-Developer: OK, how about this?
-
-> 开发人员：嗯，这样画如何（如图 1-3 所示）？
+> - 专家 1：只说一个信号到达一个 ref-des 是不够明确的，我们必须知道信号到达了哪个引脚。
+> - 开发人员：什么是 ref-des？
+> - 专家 2：它就是一个元件实例。我们用的一个专门工具中用 ref-des 这个名称。
+> - 专家 1：总之，net 将一个实例的某个引脚与另一个实例的某个引脚相连。
+> - 开发人员：一个引脚是不是只属于一个元件实例，而且只与一个 net 相连？
+> - 专家 1：对，是这样。
+> - 专家 2：还有，每个 net 都有一个拓扑结构，也就是电路的布局，它决定了 net 内部各元件的连接方式。
+> - 开发人员：嗯，这样画如何（如图 1-3 所示）？
 
 <Figures figure="1-3"></Figures>
 
@@ -88,25 +68,19 @@ To focus our exploration, we limited ourselves, for a while, to studying one par
 
 > 为了让讨论更集中，接下来的一段时间我们探讨了一个特定的功能：探针仿真（probesimulation）。探针仿真跟踪信号的传播，以便检测在设计中可能出现特定类型问题的位臵。
 
-Developer: I understand how the signal gets carried by the Net to all the Pins attached, but how does it go any further than that? Does the Topology have something to do with it?
+- Developer: I understand how the signal gets carried by the Net to all the Pins attached, but how does it go any further than that? Does the Topology have something to do with it?
+- Expert 2: No. The component pushes the signal through.
+- Developer: We certainly can’t model the internal behavior of a chip. That’s way too complicated.
+- Expert 2: We don’t have to. We can use a simplification. Just a list of pushes through the component from certain Pins to certain others.
+- Developer: Something like this?
 
-> 开发人员：现在我已经明白了 Net 是如何将信号传播给它所连接的所有 Pin 的，但如何将信号传送得更远呢？这与拓扑结构（topology）有关系吗？
+---
 
-Expert 2: No. The component pushes the signal through.
-
-> 专家 2：没有，是元件推送信号前进。
-
-Developer: We certainly can’t model the internal behavior of a chip. That’s way too complicated.
-
-> 开发人员：我们肯定无法对芯片的内部行为建模，因为这太复杂了。
-
-Expert 2: We don’t have to. We can use a simplification. Just a list of pushes through the component from certain Pins to certain others.
-
-> 专家 2：我们不必这样做。可以使用一种简化形式。只需列出通过元件可从某些 Pin 将信号推送到其他引脚即可。
-
-Developer: Something like this?
-
-> 开发人员：类似于这样吗？
+> - 开发人员：现在我已经明白了 Net 是如何将信号传播给它所连接的所有 Pin 的，但如何将信号传送得更远呢？这与拓扑结构（topology）有关系吗？
+> - 专家 2：没有，是元件推送信号前进。
+> - 开发人员：我们肯定无法对芯片的内部行为建模，因为这太复杂了。
+> - 专家 2：我们不必这样做。可以使用一种简化形式。只需列出通过元件可从某些 Pin 将信号推送到其他引脚即可。
+> - 开发人员：类似于这样吗？
 
 [With considerable trial-and-error, together we sketched out a scenario.]
 
@@ -114,57 +88,45 @@ Developer: Something like this?
 
 <Figures figure="1-4"></Figures>
 
-Developer: But what exactly do you need to know from this computation?
+- Developer: But what exactly do you need to know from this computation?
+- Expert 2: We’d be looking for long signal delays—say, any signal path that was more than two or three hops. It’s a rule of thumb. If the path is too long, the signal may not arrive during the clock cycle.
+- Developer: More than three hops.... So we need to calculate the path lengths. And what counts as a hop?
+- Expert 2: Each time the signal goes over a Net, that’s one hop.
+- Developer: So we could pass the number of hops along, and a Net could increment it, like this.
 
-> 开发人员：但你想从这种计算中知道什么呢？
+---
 
-Expert 2: We’d be looking for long signal delays—say, any signal path that was more than two or three hops. It’s a rule of thumb. If the path is too long, the signal may not arrive during the clock cycle.
-
-> 专家 2：我们要查找较长的信号延迟，也就是说，查找超过 2 或 3 跳的信号路径。这是一条经验法则。如果路径太长，信号可能无法在时钟周期内到达。
-
-Developer: More than three hops.... So we need to calculate the path lengths. And what counts as a hop?
-
-> 开发人员：超过 3 跳……这么说我们需要计算路径长度。那么怎样算作一跳呢？
-
-Expert 2: Each time the signal goes over a Net, that’s one hop.
-
-> 专家 2：信号每通过一个 Net，就称为 1 跳。
-
-Developer: So we could pass the number of hops along, and a Net could increment it, like this.
-
-> 开发人员：那么我们可以沿着电路来计算跳数，每遇到一个 net，跳数就加 1，如图 1-5 所示。
+> - 开发人员：但你想从这种计算中知道什么呢？
+> - 专家 2：我们要查找较长的信号延迟，也就是说，查找超过 2 或 3 跳的信号路径。这是一条经验法则。如果路径太长，信号可能无法在时钟周期内到达。
+> - 开发人员：超过 3 跳……这么说我们需要计算路径长度。那么怎样算作一跳呢？
+> - 专家 2：信号每通过一个 Net，就称为 1 跳。
+> - 开发人员：那么我们可以沿着电路来计算跳数，每遇到一个 net，跳数就加 1，如图 1-5 所示。
 
 <Figures figure="1-5"></Figures>
 
-Developer: The only part that isn’t clear to me is where the “pushes” come from. Do we store that data for every Component Instance?
+- Developer: The only part that isn’t clear to me is where the “pushes” come from. Do we store that data for every Component Instance?
+- Expert 2: The pushes would be the same for all the instances of a component.
+- Developer: So the type of component determines the pushes. They’ll be the same for every instance?
 
-> 开发人员：现在我唯一不明白的地方是“推动”是从哪里来的。是否每个元件实例都需要存储该数据？
+---
 
-Expert 2: The pushes would be the same for all the instances of a component.
-
-> 专家 2：一个元件的所有实例的推动行为都是相同的。
-
-Developer: So the type of component determines the pushes. They’ll be the same for every instance?
-
-> 开发人员：那么元件的类型决定了推动行为，而每个实例的推动行为都是相同的（如图 1-6 所示）？
+> - 开发人员：现在我唯一不明白的地方是“推动”是从哪里来的。是否每个元件实例都需要存储该数据？
+> - 专家 2：一个元件的所有实例的推动行为都是相同的。
+> - 开发人员：那么元件的类型决定了推动行为，而每个实例的推动行为都是相同的（如图 1-6 所示）？
 
 <Figures figure="1-6"></Figures>
 
-Expert 2: I’m not sure exactly what some of this means, but I would imagine storing push-throughs for each component would look something like that.
+- Expert 2: I’m not sure exactly what some of this means, but I would imagine storing push-throughs for each component would look something like that.
+- Developer: Sorry, I got a little too detailed there. I was just thinking it through. . . . So, now, where does the Topology come into it?
+- Expert 1: That’s not used for the probe simulation.
+- Developer: Then I’m going to drop it out for now, OK? We can bring it back when we get to those features.
 
-> 专家 2：这个图的意思我没完全明白，但我猜想每个元件存储的推动行为就差不多是这样的吧。
+---
 
-Developer: Sorry, I got a little too detailed there. I was just thinking it through. . . . So, now, where does the Topology come into it?
-
-> 开发人员：抱歉，这个地方我可能问得有点过细了。我只是想考虑得全面一些……现在，拓扑结构对它有什么影响吗？
-
-Expert 1: That’s not used for the probe simulation.
-
-> 专家 1：拓扑结构不影响探针仿真。
-
-Developer: Then I’m going to drop it out for now, OK? We can bring it back when we get to those features.
-
-> 开发人员：那么可以暂不考虑它，是吗？等用到这些特性时再回来讨论它。
+> - 专家 2：这个图的意思我没完全明白，但我猜想每个元件存储的推动行为就差不多是这样的吧。
+> - 开发人员：抱歉，这个地方我可能问得有点过细了。我只是想考虑得全面一些……现在，拓扑结构对它有什么影响吗？
+> - 专家 1：拓扑结构不影响探针仿真。
+> - 开发人员：那么可以暂不考虑它，是吗？等用到这些特性时再回来讨论它。
 
 And so it went (with much more stumbling than is shown here). Brainstorming and refining; questioning and explaining. The model developed along with my understanding of the domain and their understanding of how the model would play into the solution. A class diagram representing that early model looks something like this.
 
@@ -365,8 +327,7 @@ We can change the design to better capture this knowledge. The overbooking rule 
 
 > 我们可以改变一下设计来更好地捕获这个知识。超订规则是一个策略，如图 1-10 所示。策略（policy）其实是 STRATEGY 模式[Gamma et al. 1995]的别名。我们知道，使用 STRATEGY 的动机一般是为了替换不同的规则，虽然在这里并不需要这么做。但我们要获取的概念的确符合策略的含义，这在领域驱动设计中是同等重要的动机（参见第 12 章）。
 
-Image
-Figure 1.10
+<Figures figure="1-10"></Figures>
 
 The code is now:
 

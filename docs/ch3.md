@@ -36,6 +36,8 @@ Models come in many varieties and serve many roles, even those restricted to the
 
 ## 3.1 MODEL-DRIVEN DESIGN 模式：MODEL-DRIVEN DESIGN
 
+![](/figures/ch3/03inf01.jpg)
+
 The astrolabe, used to compute star positions, is a mechanical implementation of a model of the sky.
 
 > 过去用来计算星体位置的星盘是天空模型的机械实现
@@ -134,8 +136,7 @@ To make a MODEL-DRIVEN DESIGN pay off, the correspondence must be literal, exact
 
 > 为了使 MODEL-DRIVEN DESIGN 发挥作用，一定要在可控范围内严格保证模型与设计之间的一致性。要实现这种严格的一致性，必须要运用由软件工具支持的建模范式，它可以在程序中直接创建模型中的对应概念。
 
-Image
-Figure 3.1
+<Figures figure="3-1"></Figures>
 
 Object-oriented programming is powerful because it is based on a modeling paradigm, and it provides implementations of the model constructs. As far as the programmer is concerned, objects really exist in memory, they have associations with other objects, they are organized into classes, and they provide behavior available by messaging. Although many developers benefit from just applying the technical capabilities of objects to organize program code, the real breakthrough of object design comes when the code expresses the concepts of a model. Java and many other tools allow the creation of objects and relationships directly analogous to conceptual object models.
 
@@ -169,8 +170,7 @@ One problem is that each of these thousands of nets has its own set of layout ru
 
 > 其中一个问题是这些数以千计的 net 都拥有各自的布线规则，而 PCB 工程师会根据 net 自身的性质将其分组，同组的 net 共用相同的规则。比如，有些 net 构成了总线。如图 3-2 所示。
 
-Image
-Figure 3.2. An explanatory diagram of buses and nets
+<Figures figure="3-2">An explanatory diagram of buses and nets</Figures>
 
 By lumping nets into a bus, perhaps 8 or 16 or 256 at a time, the engineer cuts the job down to a more manageable size, improving productivity and reducing errors. The trouble is, the layout tool has no such concept as a bus. Rules have to be assigned to tens of thousands of nets, one net at a time.
 
@@ -269,8 +269,7 @@ The preceding discussion has already described the concepts the domain experts u
 
 > 前面我们已经描述了领域专家思考问题时所使用的概念。现在需要将这些概念组织成模型，作为软件开发的基础。
 
-Image
-Figure 3.3. A class diagram oriented toward efficient assignment of layout rules
+<Figures figure="3-3">A class diagram oriented toward efficient assignment of layout rules</Figures>
 
 With these objects implemented in an object-oriented language, the core functionality becomes almost trivial.
 
@@ -313,12 +312,14 @@ The application requires import/export logic, which we’ll encapsulate into som
 
 > 这个程序还需要导入/导出逻辑，我们可以将其封装成一些简单的服务。
 
-Image
+![](/figures/ch3/t0056_01.jpg)
+
 We’ll also need a few utilities:
 
 > 我们还需要几个工具类：
 
-Image
+![](/figures/ch3/t0056_02.jpg)
+
 Now, starting the application is a matter of initializing the repositories with imported data:
 
 > 现在，启动应用程序，用导入数据来初始化 Net 和 Bus 仓库。
