@@ -134,13 +134,15 @@ But if we need to fetch the data from a relational database, another implementat
 
 Table: BROKERAGE_ACCOUNT
 
-Image
+![](/figures/ch5/t0086_01.jpg)
+
 Table: CUSTOMER
 
-Image
+![](/figures/ch5/t0086_02.jpg)
+
 Table: INVESTMENT
 
-Image
+![](/figures/ch5/t0086_03.jpg)
 
 ```java
 public class BrokerageAccount {
@@ -230,7 +232,8 @@ Carefully distilling and constraining the model’s associations will take you a
 
 ## 5.2 ENTITIES (A.K.A. REFERENCE OBJECTS) 模式：ENTITY（又称为 REFERENCE OBJECT）
 
-Image
+![](/figures/ch5/05inf01.jpg)
+
 Many objects are not fundamentally defined by their attributes, but rather by a thread of continuity and identity.
 
 > 很多对象不是通过它们的属性定义的，而是通过连续性和标识定义的。
@@ -381,7 +384,8 @@ Given all these technical problems, it is easy to lose sight of the underlying c
 
 ## 5.3 VALUE OBJECTS 模式：VALUE OBJECT
 
-Image
+![](/figures/ch5/05inf02.jpg)
+
 Many objects have no conceptual identity. These objects describe some characteristic of a thing.
 
 > 很多对象没有概念上的标识，它们描述了一个事务的某种特征。
@@ -572,7 +576,8 @@ ENTITIES and VALUE OBJECTS are the main elements of conventional object models, 
 
 ## 5.4 SERVICES 模式：SERVICE
 
-Image
+![](/figures/ch5/05inf03.jpg)
+
 Sometimes, it just isn’t a thing.
 
 > 有时，对象不是一个事物。
@@ -665,7 +670,7 @@ Partitioning Services into Layers
 
 > 将 SERVICE 划分到各个层中
 
-Image
+![](/figures/ch5/t0107_01.jpg)
 
 ### 5.4.2 Granularity 粒度
 
