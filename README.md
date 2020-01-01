@@ -34,7 +34,7 @@
 - [第 15 章 精炼](docs/ch15.md)
 - [第 16 章 大型结构](docs/ch16.md)
 - [第 17 章 领域驱动设计的综合运用](docs/ch17.md)
-- [后记](docs/conclusion.md)
+- [结束语](docs/conclusion.md)
 
 ## 本地开发 & 阅读
 
