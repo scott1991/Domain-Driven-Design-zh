@@ -20,7 +20,8 @@ The loan software whose story was told in Chapter 9 thrived and evolved along mu
 
 > 第 9 章中介绍的贷款软件在我提到的突破之后，经历了 3 年波澜不惊的发展。在此之后，该项目脱离出来，成为一家独立的公司。在重组的过程中，从一开始就领导这个项目的经理被解聘了，一些核心开发人员也随他一起离开。新的团队有一套稍微不同的设计思想，他们不是完全遵循对象建模。但保留了具有复杂行为的独特的领域层，而且在他们的开发团队中依旧非常重视领域知识。在新公司独立运转 7 年后，该软件仍在不断增加新的功能。它在业内是该领域领先的应用程序，正在为越来越多的客户机构服务，也是公司最大的收入来源。
 
-Image
+![](figures/ap01inf01.jpg)
+
 A Newly Planted Olive Grove
 
 Until the domain-driven approach is more widespread, the interesting software on many projects will be built in a short, highly productive interval. Eventually the project will transform into something more conventional that may not be able to fully exploit, much less enhance, the power of the deep models that were distilled earlier. I could wish for more, but truly those are successes that deliver sustained value to users over many years.
@@ -31,7 +32,8 @@ On one project I paired with another developer to write a utility the customer n
 
 > 我曾经与另一位开发人员结对做过一个项目，我们为客户编写一个实用工具，客户用这个工具来开发他们的核心产品。所需的功能及功能组合相当复杂。我很喜欢这个项目的工作，我们也开发出了一个具有 ABSTRACT CORE 的柔性设计。这个软件交付以后，每个人涉及的工作也就结束了。由于项目交接之后就与我们无关了，交接过程显得有些突兀，因此我估计那些用来支持元素组合的特性可能很难被客户理解，而且有可能被替换为更典型的条件选择逻辑。但这种情况并没有马上发生。当我们交付软件的时候，程序包含一个完整的测试套件和一个精炼文档。新的团队成员用这个文档来指导他们的工作。他们对这个软件做了一番研究之后，很高兴地发现我们的设计提供了各种可能性。当我在一年之后听到他们的评论时，我知道我们的 UBIQUITOUS LANGUAGE 已经传递到了新团队，而且这种语言仍然充满活力并继续发展。
 
-Image
+![](figures/ap01inf02.jpg)
+
 Seven Years Later
 
 Then, another year later, I heard a different story. The team had encountered new requirements that the developers didn’t see any way to accomplish within the inherited design. They had been forced to change the design almost beyond recognition. As I probed for more details, I could see that aspects of our model would have made solving those problems awkward. It is precisely during such moments when a breakthrough to a deeper model is often possible, especially when, as in this case, the developers had accumulated deep knowledge and experience in the domain. In fact, they had had a rush of new insights and ended up transforming the model and design based on those insights.

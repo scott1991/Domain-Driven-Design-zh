@@ -32,7 +32,7 @@ Refactoring is the redesign of software in ways that do not change its functiona
 
 But nearly all the literature on how to refactor focuses on mechanical changes to the code that make it easier to read or to enhance at a very detailed level. The approach of “refactoring to patterns”1 can give a higher-level target to the refactoring process when a developer recognizes an opportunity to apply an established design pattern. Still, it is a primarily technical view of the quality of a design.
 
-> 然而，几乎所有关于重构的文献都专注于如何机械地修改代码，以使其更具可读性或在非常细节的层次上有所改进。如果开发人员能够看准时机，利用成熟的设计模式进行开发，那么“通过重构得到模式”[插图]（refactoring to patterns）这种方式就可以让重构过程更上一层楼。不过，这依然是从技术视角来评估设计的质量。
+> 然而，几乎所有关于重构的文献都专注于如何机械地修改代码，以使其更具可读性或在非常细节的层次上有所改进。如果开发人员能够看准时机，利用成熟的设计模式进行开发，那么“通过重构得到模式”（refactoring to patterns）这种方式就可以让重构过程更上一层楼。不过，这依然是从技术视角来评估设计的质量。
 
 The refactorings that have the greatest impact on the viability of the system are those motivated by new insights into the domain or those that clarify the model’s expression through the code. This type of refactoring does not in any way replace the refactorings to design patterns or the micro-refactorings, which should proceed continuously. It superimposes another level: refactoring to a deeper model. Executing a refactoring based on domain insight often involves a series of micro-refactorings, but the motivation is not just the state of the code. Rather, the micro-refactorings provide convenient units of change toward a more insightful model. The goal is that not only can a developer understand what the code does; he or she can also understand why it does what it does and can relate that to the ongoing communication with the domain experts.
 

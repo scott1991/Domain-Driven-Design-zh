@@ -510,7 +510,7 @@ I developed SPECIFICATION in collaboration with Martin Fowler (Evans and Fowler 
 
 ### 9.2.3 Specification 模式：SPECIFICATION
 
-Image
+![](figures/ch9/09inf01.jpg)
 
 In all kinds of applications, Boolean test methods appear that are really parts of little rules. As long as they are simple, we handle them with testing methods, such as anIterator.hasNext() or anInvoice.isOverdue(). In an Invoice class, the code in isOverdue() is an algorithm that evaluates a rule. For example,
 
@@ -900,13 +900,13 @@ Each chemical will have a container SPECIFICATION:
 
 > 每种化学品都有一个容器 SPECIFICATION。
 
-Image
+![](figures/ch9/t0236_01.jpg)
 
 Now, if we write these as Container Specifications, we should be able to take a configuration of packed containers and test to see if it meets these constraints.
 
 > 现在，如果将这些规格编写成 Container Specification，就可以提出一种把化学品混装在容器中的配臵方法，并测试它是否满足这些约束条件。
 
-Image
+![](figures/ch9/t0236_02.jpg)
 
 A method on Container Specification, isSatisfied(), would have to be implemented to check for needed ContainerFeatures. For example, the SPEC attached to an explosive chemical would look for the “armored” feature:
 

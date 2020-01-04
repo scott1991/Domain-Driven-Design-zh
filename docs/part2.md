@@ -34,7 +34,8 @@ Developing a good domain model is an art. But the practical design and implement
 
 > 开发一个好的领域模型是一门艺术。而模型中各个元素的实际设计和实现则相对系统化。将领域设计与软件系统中的其他关注点分离会使设计与模型之间的关系非常清晰。根据不同的特征来定义模型元素则会使元素的意义更加鲜明。对每个元素使用已验证的模式有助于创建出更易于实现的模型。
 
-Image
+![](figures/partii.jpg)
+
 A navigation map of the language of MODEL-DRIVEN DESIGN
 
 > MODEL-DRIVEN DESIGN 语言的导航图

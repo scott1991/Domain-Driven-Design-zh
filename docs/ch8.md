@@ -28,7 +28,7 @@ After a long New York winter of refactoring, we had arrived at a model that capt
 
 When Intel wants to build a billion-dollar factory, they need a loan that is too big for any single lending company to take on, so the lenders form a syndicate that pools its resources to support a facility (see sidebar). An investment bank usually acts as syndicate leader, coordinating transactions and other services. Our project was to build software to track and support this whole process.
 
-> 假如 Intel 想要建造一座价值 10 亿美元的工厂，就需要申请贷款，但贷款的额度太大，以至于任何一家借贷公司（lending company）都无法独立承担，于是这些公司就组成银团[插图]，集中它们的资源，以此来支持这种巨额信贷。投资银行通常在银团里担当领导者的角色，负责协调各种交易和其他服务。我们的项目就是要开发这样一个用于跟踪和支持以上整个过程的软件。
+> 假如 Intel 想要建造一座价值 10 亿美元的工厂，就需要申请贷款，但贷款的额度太大，以至于任何一家借贷公司（lending company）都无法独立承担，于是这些公司就组成银团，集中它们的资源，以此来支持这种巨额信贷。投资银行通常在银团里担当领导者的角色，负责协调各种交易和其他服务。我们的项目就是要开发这样一个用于跟踪和支持以上整个过程的软件。
 
 ### 8.1.1 A Decent Model, and Yet . . . 华而不实的模型
 

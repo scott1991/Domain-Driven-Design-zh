@@ -282,7 +282,7 @@ Some objects are not defined primarily by their attributes. They represent a thr
 
 An object defined primarily by its identity is called an ENTITY.1 ENTITIES have special modeling and design considerations. They have life cycles that can radically change their form and content, but a thread of continuity must be maintained. Their identities must be defined so that they can be effectively tracked. Their class definitions, responsibilities, attributes, and associations should revolve around who they are, rather than the particular attributes they carry. Even for ENTITIES that don’t transform so radically or have such complicated life cycles, placing them in the semantic category leads to more lucid models and more robust implementations.
 
-> 主要由标识定义的对象被称作 ENTITY[插图]。ENTITY（实体）有特殊的建模和设计思路。它们具有生命周期，这期间它们的形式和内容可能发生根本改变，但必须保持一种内在的连续性。为了有效地跟踪这些对象，必须定义它们的标识。它们的类定义、职责、属性和关联必须由其标识来决定，而不依赖于其所具有的属性。即使对于那些不发生根本变化或者生命周期不太复杂的 ENTITY，也应该在语义上把它们作为 ENTITY 来对待，这样可以得到更清晰的模型和更健壮的实现。
+> 主要由标识定义的对象被称作 ENTITY。ENTITY（实体）有特殊的建模和设计思路。它们具有生命周期，这期间它们的形式和内容可能发生根本改变，但必须保持一种内在的连续性。为了有效地跟踪这些对象，必须定义它们的标识。它们的类定义、职责、属性和关联必须由其标识来决定，而不依赖于其所具有的属性。即使对于那些不发生根本变化或者生命周期不太复杂的 ENTITY，也应该在语义上把它们作为 ENTITY 来对待，这样可以得到更清晰的模型和更健壮的实现。
 
 Of course, most “ENTITIES” in a software system are not people or entities in the usual sense of the word. An ENTITY is anything that has continuity through a life cycle and distinctions independent of attributes that are important to the application’s user. It could be a person, a city, a car, a lottery ticket, or a bank transaction.
 
@@ -376,7 +376,7 @@ In less formal situations (say, video rental), telephone numbers are used as ide
 
 For these reasons, specially assigned identifiers are often used (such as frequent flier numbers), and other attributes, such as phone numbers and Social Security numbers, are used to match and verify. In any case, when the application requires an external ID, the users of the system become responsible for supplying IDs that are unique, and the system must give them adequate tools to handle exceptions that arise.
 
-> 由于这些原因，我们一般使用特别指定的标识符（如常飞乘客[插图]编号），并使用其他属性（如电话号码和社会保险号码[插图]）进行匹配和验证。在任何情况下，当应用程序需要一个外部 ID 时，都由系统的用户负责提供唯一的 ID，而系统必须为用户提供适当的工具来处理异常情况。
+> 由于这些原因，我们一般使用特别指定的标识符（如常飞乘客编号），并使用其他属性（如电话号码和社会保险号码）进行匹配和验证。在任何情况下，当应用程序需要一个外部 ID 时，都由系统的用户负责提供唯一的 ID，而系统必须为用户提供适当的工具来处理异常情况。
 
 Given all these technical problems, it is easy to lose sight of the underlying conceptual problem: What does it mean for two objects to be the same thing? It is easy enough to stamp each object with an ID, or to write an operation that compares two instances, but if these IDs or operations don’t correspond to some meaningful distinction in the domain, they just confuse matters more. This is why identity-assigning operations often involve human input. Checkbook reconciliation software, for instance, may offer likely matches, but the user is expected to make the final determination.
 
@@ -462,7 +462,7 @@ When you care only about the attributes of an element of the model, classify it 
 
 The attributes that make up a VALUE OBJECT should form a conceptual whole.2 For example, street, city, and postal code shouldn’t be separate attributes of a Person object. They are part of a single, whole address, which makes a simpler Person, and a more coherent VALUE OBJECT.
 
-> VALUE OBJECT 所包含的属性应该形成一个概念整体[插图]。例如，street（街道）、city（城市）和 postal code（邮政编码）不应是 Person（人）对象的单独的属性。它们是整个地址的一部分，这样可以使得 Person 对象更简单，并使地址成为一个更一致的 VALUE OBJECT，如图 5-6 所示。
+> VALUE OBJECT 所包含的属性应该形成一个概念整体。例如，street（街道）、city（城市）和 postal code（邮政编码）不应是 Person（人）对象的单独的属性。它们是整个地址的一部分，这样可以使得 Person 对象更简单，并使地址成为一个更一致的 VALUE OBJECT，如图 5-6 所示。
 
 <Figures figure="5-6">A VALUE OBJECT can give information about an ENTITY. It should be conceptually whole.</Figures>
 
@@ -664,7 +664,7 @@ On the other hand, a feature that can transfer funds from one account to another
 
 We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks. What’s more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result. But whatever intermediaries we might have, and even though they don’t belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
 
-> 我们可能喜欢创建一个 Funds Transfer（资金转账）对象来表示两个账户，外加一些与转账有关的规则和历史记录。但在银行间的网络中进行转账时，仍然需要使用 SERVICE。此外，在大多数开发系统中，在一个领域对象和外部资源之间直接建立一个接口是很别扭的。我们可以利用一个 FACADE（外观）[插图]将这样的外部 SERVICE 包装起来，这个外观可能以模型作为输入，并返回一个“Funds Transfer”对象（作为它的结果）。但无论中间涉及什么 SERVICE，甚至那些超出我们掌控范围的 SERVICE，这些 SERVICE 都是在履行资金转账的领域职责。
+> 我们可能喜欢创建一个 Funds Transfer（资金转账）对象来表示两个账户，外加一些与转账有关的规则和历史记录。但在银行间的网络中进行转账时，仍然需要使用 SERVICE。此外，在大多数开发系统中，在一个领域对象和外部资源之间直接建立一个接口是很别扭的。我们可以利用一个 FACADE（外观）将这样的外部 SERVICE 包装起来，这个外观可能以模型作为输入，并返回一个“Funds Transfer”对象（作为它的结果）。但无论中间涉及什么 SERVICE，甚至那些超出我们掌控范围的 SERVICE，这些 SERVICE 都是在履行资金转账的领域职责。
 
 Partitioning Services into Layers
 
@@ -704,7 +704,7 @@ The means of providing access to a SERVICE is not as important as the design dec
 
 MODULES are an old, established design element. There are technical considerations, but cognitive overload is the primary motivation for modularity. MODULES give people two views of the model: They can look at detail within a MODULE without being overwhelmed by the whole, or they can look at relationships between MODULES in views that exclude interior detail.
 
-> MODULE 是一个传统的、较成熟的设计元素。虽然使用模块有一些技术上的原因，但主要原因却是“认知超载”[插图]。MODULE 为人们提供了两种观察模型的方式，一是可以在 MODULE 中查看细节，而不会被整个模型淹没，二是观察 MODULE 之间的关系，而不考虑其内部细节。
+> MODULE 是一个传统的、较成熟的设计元素。虽然使用模块有一些技术上的原因，但主要原因却是“认知超载”。MODULE 为人们提供了两种观察模型的方式，一是可以在 MODULE 中查看细节，而不会被整个模型淹没，二是观察 MODULE 之间的关系，而不考虑其内部细节。
 
 The MODULES in the domain layer should emerge as a meaningful part of the model, telling the story of the domain on a larger scale.
 

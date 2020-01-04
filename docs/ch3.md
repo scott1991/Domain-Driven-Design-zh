@@ -388,7 +388,7 @@ Keep in mind that such a design does not emerge in a single step. It would take 
 
 > 记住，这样的设计不是一蹴而就的。我们需要反复研究领域知识，不断重构模型，才能将领域中重要的概念提炼成简单而清晰的模型。
 
-## 3. LETTING THE BONES SHOW: WHY MODELS MATTER TO USERS 揭示主旨：为什么模型对用户至关重要
+## 3.3 LETTING THE BONES SHOW: WHY MODELS MATTER TO USERS 揭示主旨：为什么模型对用户至关重要
 
 In theory, perhaps, you could present a user with any view of a system, regardless of what lies beneath. But in practice, a mismatch causes confusion at best—bugs at worst. Consider a very simple example of how users are misled by superimposed models of bookmarks for Web sites in current releases of Microsoft Internet Explorer.1
 

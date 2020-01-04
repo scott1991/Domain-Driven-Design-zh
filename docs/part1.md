@@ -2,7 +2,8 @@
 
 > I: Putting the Domain Model to Work
 
-Image
+![](figures/fminf03.jpg)
+
 This eighteenth-century Chinese map represents the whole world. In the center and taking up most of the space is China, surrounded by perfunctory representations of other countries. This was a model of the world appropriate to that society, which had intentionally turned inward. The worldview that the map represents must not have been helpful in dealing with foreigners. Certainly it would not serve modern China at all. Maps are models, and every model represents some aspect of reality or an idea that is of interest. A model is a simplification. It is an interpretation of reality that abstracts the aspects relevant to solving the problem at hand and ignores extraneous detail.
 
 > 上面这张图是 18 世纪中国描绘的世界地图。图中央最大的部分是中国，其周围散布着其他国家，但这些国家只是草草地表示了一下。这是适用于当时中国社会的世界模型，它意在关注中国自身。然而，这幅地图所呈现的世界观对于处理外交事务并无助益。当然，它对现代中国也毫无用处。地图就是模型，而模型被用来描绘人们所关注的现实或想法的某个方面。模型是一种简化。它是对现实的解释——把与解决问题密切相关的方面抽象出来，而忽略无关的细节。

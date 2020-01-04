@@ -74,7 +74,7 @@ Although this problem surfaces as technical difficulties in database transaction
 
 Schemes have been developed for defining ownership relationships in the model. The following simple but rigorous system, distilled from those concepts, includes a set of rules for implementing transactions that modify the objects and their owners.1
 
-> 人们已经开发出很多模式（scheme）来定义模型中的所属关系。下面这个简单但严格的系统就提炼自这些概念，其包括一组用于实现事务（这些事务用来修改对象及其所有者）的规则[插图]。
+> 人们已经开发出很多模式（scheme）来定义模型中的所属关系。下面这个简单但严格的系统就提炼自这些概念，其包括一组用于实现事务（这些事务用来修改对象及其所有者）的规则。
 
 First we need an abstraction for encapsulating references within the model. An AGGREGATE is a cluster of associated objects that we treat as a unit for the purpose of data changes. Each AGGREGATE has a root and a boundary. The boundary defines what is inside the AGGREGATE. The root is a single, specific ENTITY contained in the AGGREGATE. The root is the only member of the AGGREGATE that outside objects are allowed to hold references to, although objects within the boundary may hold references to each other. ENTITIES other than the root have local identity, but that identity needs to be distinguishable only within the AGGREGATE, because no outside object can ever see it out of the context of the root ENTITY.
 

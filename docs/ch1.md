@@ -18,7 +18,7 @@ The first few meetings were discouraging, but there was a glimmer of hope in the
 
 I started drawing diagrams for them as we discussed the things they wanted the software to do. I used an informal variant of object interaction diagrams to walk through scenarios.
 
-> 就这样，我们一边讨论所需的软件功能，一边开始画图。我使用一种非正式的、稍加变化的对象交互图来走查[插图]各种场景，如图 1-2 所示。
+> 就这样，我们一边讨论所需的软件功能，一边开始画图。我使用一种非正式的、稍加变化的对象交互图来走查各种场景，如图 1-2 所示。
 
 <Figures figure="1-2"></Figures>
 
