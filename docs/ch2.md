@@ -89,7 +89,7 @@ At least, this is where we need to go. But initially the model may simply not be
 
 But although the sequence seems circular, the knowledge crunching process that can produce a more useful kind of model depends on the team’s commitment to model-based language. Persistent use of the UBIQUITOUS LANGUAGE will force the model’s weaknesses into the open. The team will experiment and find alternatives to awkward terms or combinations. As gaps are found in the language, new words will enter the discussion. These changes to the language will be recognized as changes in the domain model and will lead the team to update class diagrams and rename classes and methods in the code, or even change behavior, when the meaning of a term changes.
 
-> 至少，我们应该将它作为目标。但最初，模型可能不太好，因此无法很好地履行这些职责。它可能不会像领域的专业术语那样具有丰富的语义。但我们又不能直接使用那些术语，因为它们有歧义和矛盾。模型可能缺乏开发人员在代码中所创建的更为微妙和灵活的特性，这要么是因为开发人员认为模型不必具备这些特性，要么是因为编码风格是过程式的，只能隐含地表达领域概念。
+> 尽管模型和基于模型的语言之间的次序像是循环论证，但是，能够产生更有用模型的知识消化过程依赖于团队投身于基于模型的语言。持续使用 UBIQUITOUS LANGUAGE 可以暴露模型中存在的缺点，这样团队就可以尝试并替换不恰当的术语或组合。当在语言中发现缺失时，新的词语将被引入到讨论中。这些语言上的更改也会在领域模型中引起相应的更改，并促使团队更新类图并重命名代码中的类和方法，当术语的意义改变时，甚至会导致行为也发生改变。
 
 Committed to using this language in the context of implementation, the developers will point out imprecision or contradictions, engaging the domain experts in discovering workable alternatives.
 

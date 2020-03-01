@@ -50,9 +50,6 @@ yarn global add vuepress
 git clone https://github.com/gdut-yy/Domain-Driven-Design-zh.git
 cd Domain-Driven-Design-zh/
 yarn docs:dev
-
-# 本地阅读
-http://localhost:8080/doc-ddd/
 ```
 
 ## License

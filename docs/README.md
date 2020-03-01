@@ -5,8 +5,6 @@
   <img src="./cover_zh.jpg" width="210px" height="280px" />
 </div>
 
-## 序
-
 ## 目录
 
 - [第一部分 运用领域模型](part1.md)
