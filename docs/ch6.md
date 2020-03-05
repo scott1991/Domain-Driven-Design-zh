@@ -440,7 +440,7 @@ A FACTORY used for reconstitution is very similar to one used for creation, with
 
 Figures 6.16 and 6.17 (on the next page) show two kinds of reconstitution. Object-mapping technologies may provide some or all of these services in the case of database reconstitution, which is convenient. Whenever there is exposed complexity in reconstituting an object from another medium, the FACTORY is a good option.
 
-图 6-16 和图 6-17 显示了两种重建。当从数据库中重建对象时，对象映射技术就可以提供部分或全部所需服务，这是非常便利的。当从其他介质重建对象时，如果出现复杂情况，FACTORY 是个很好的选择。
+> 图 6-16 和图 6-17 显示了两种重建。当从数据库中重建对象时，对象映射技术就可以提供部分或全部所需服务，这是非常便利的。当从其他介质重建对象时，如果出现复杂情况，FACTORY 是个很好的选择。
 
 <Figures figure="6-16">Reconstituting an ENTITY retrieved from a relational database</Figures>
 
