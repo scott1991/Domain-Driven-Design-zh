@@ -378,7 +378,7 @@ NetRuleExport.write(aFileName, NetRepository.allNets());
 
 Of course, if there were only one operation (as in the example), the script-based approach might be just as practical. But in reality, there were 20 or more. The MODEL-DRIVEN DESIGN scales easily and can include constraints on combining rules and other enhancements.
 
-> 当然，如果只有一种操作（就像这个例子一样），那么基于脚本的处理方式可能也同样实用。但实际上，通常会需要 20 个甚至更多的操作。MODEL-DRIVEN DESIGN 易于扩展，能够为规则的组合设臵限制条件，还能提供其他的一些增强功能。
+> 当然，如果只有一种操作（就像这个例子一样），那么基于脚本的处理方式可能也同样实用。但实际上，通常会需要 20 个甚至更多的操作。MODEL-DRIVEN DESIGN 易于扩展，能够为规则的组合设置限制条件，还能提供其他的一些增强功能。
 
 The second design also accommodates testing. Its components have well-defined interfaces that can be unit-tested. The only way to test the script is to do an end-to-end file-in/file-out comparison.
 
@@ -404,7 +404,7 @@ MODEL-DRIVEN DESIGN calls for working with only one model (within any single con
 
 Of course, an unadorned view of the domain model would definitely not be convenient for the user in most cases. But trying to create in the UI an illusion of a model other than the domain model will cause confusion unless the illusion is perfect. If Web Favorites are actually just a collection of shortcut files, then expose this fact to the user and eliminate the confusing alternative model. Not only will the feature be less confusing, but the user can then leverage what he knows about the file system to deal with Web Favorites. He can reorganize them with the File Explorer, for example, rather than use awkward tools built into the Web browser. Informed users would be more able to exploit the flexibility of storing Web shortcuts anywhere in the file system. Just by removing the misleading extra model, the power of the application would increase and become clearer. Why make the user learn a new model when the programmers felt the old model was good enough?
 
-> 当然，大多数情况下，没有经过处理的领域模型视图肯定不便于用户使用。但是在用户界面中出现与领域模型不同的“影像”将会使用户产生迷惑，除非这个“影像”完美无缺。如果网站收藏夹实际上只是快捷方式文件的集合，那么应该将这一事实告诉用户，还应该删除之前那个起误导作用的模型。这样不但能使收藏夹的功能更加清晰，用户还可以利用自己所知道的文件系统的知识来对网站收藏夹进行操作。比如，用户可以用资源管理器来重新组织已收藏的文件，而不是用浏览器内臵的拙劣工具。而电脑高手还能够灵活地在文件系统的任何位臵存储网页快捷方式。仅仅通过删除起误导作用的多余模型就可以让应用程序的功能更加强大且清晰。如果程序员认为原有模型足够好，那么为什么还要让用户学习新模型呢？
+> 当然，大多数情况下，没有经过处理的领域模型视图肯定不便于用户使用。但是在用户界面中出现与领域模型不同的“影像”将会使用户产生迷惑，除非这个“影像”完美无缺。如果网站收藏夹实际上只是快捷方式文件的集合，那么应该将这一事实告诉用户，还应该删除之前那个起误导作用的模型。这样不但能使收藏夹的功能更加清晰，用户还可以利用自己所知道的文件系统的知识来对网站收藏夹进行操作。比如，用户可以用资源管理器来重新组织已收藏的文件，而不是用浏览器内置的拙劣工具。而电脑高手还能够灵活地在文件系统的任何位置存储网页快捷方式。仅仅通过删除起误导作用的多余模型就可以让应用程序的功能更加强大且清晰。如果程序员认为原有模型足够好，那么为什么还要让用户学习新模型呢？
 
 Alternatively, store the Favorites in a different way, say in a data file, so that they can be subject to their own rules. Those rules would presumably be the naming rules that apply to Web pages. That would again provide a single model. This one tells the user that everything he knows about naming Web sites applies to Favorites.
 

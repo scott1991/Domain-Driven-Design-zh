@@ -20,7 +20,7 @@ We’re developing new software for a cargo shipping company. The initial requir
 
 > 1. 跟踪客户货物的主要处理；
 > 2. 事先预约货物；
-> 3. 当货物到达其处理过程中的某个位臵时，自动向客户寄送发票。
+> 3. 当货物到达其处理过程中的某个位置时，自动向客户寄送发票。
 
 In a real project, it would take some time and iteration to get to the clarity of this model. Part III of this book will go into the discovery process in depth. But here we’ll start with a model that has the needed concepts in a reasonable form, and we’ll focus on fine-tuning the details to support design.
 
@@ -78,7 +78,7 @@ Carrier Movement represents one particular trip by a particular Carrier (such as
 
 Delivery History reflects what has actually happened to a Cargo, as opposed to the Delivery Specification, which describes goals. A Delivery History object can compute the current Location of the Cargo by analyzing the last load or unload and the destination of the corresponding Carrier Movement. A successful delivery would end with a Delivery History that satisfied the goals of the Delivery Specification.
 
-> Delivery History（运送历史）反映了 Cargo 实际上发生了什么事情，它与 DeliverySpecification 正好相对，后者描述了目标。Delivery History 对象可以通过分析最后一次装货和卸货以及对应的 Carrier Movement 的目的地来计算货物的当前位臵。成功的运送将会得到一个满足 Delivery Specification 目标的 Delivery History。
+> Delivery History（运送历史）反映了 Cargo 实际上发生了什么事情，它与 DeliverySpecification 正好相对，后者描述了目标。Delivery History 对象可以通过分析最后一次装货和卸货以及对应的 Carrier Movement 的目的地来计算货物的当前位置。成功的运送将会得到一个满足 Delivery Specification 目标的 Delivery History。
 
 All the concepts needed to work through the requirements just described are present in this model, assuming appropriate mechanisms to persist the objects, find the relevant objects, and so on. Such implementation issues are not dealt with in the model, but they must be in the design.
 
@@ -152,7 +152,7 @@ Location
 
 Two places with the same name are not the same. Latitude and longitude could provide a unique key, but probably not a very practical one, since those measurements are not of interest to most purposes of this system, and they would be fairly complicated. More likely, the Location will be part of a geographical model of some kind that will relate places according to shipping lanes and other domain-specific concerns. So an arbitrary, internal, automatically generated identifier will suffice.
 
-> 名称相同的两个地点并不是同一个位臵。经纬度可以作为唯一键，但这并不是一个非常可行的方案，因为系统的大部分功能并不关心经纬度是多少，而且经纬度的使用相当复杂。Location 更可能是某种地理模型的一部分，这个模型根据运输航线和其他特定于领域的关注点将地点关联起来。因此，使用自动生成的内部任意标识符就足够了。
+> 名称相同的两个地点并不是同一个位置。经纬度可以作为唯一键，但这并不是一个非常可行的方案，因为系统的大部分功能并不关心经纬度是多少，而且经纬度的使用相当复杂。Location 更可能是某种地理模型的一部分，这个模型根据运输航线和其他特定于领域的关注点将地点关联起来。因此，使用自动生成的内部任意标识符就足够了。
 
 Delivery History
 
@@ -350,7 +350,7 @@ public HandlingEvent(Cargo c, String eventType, Date timeStamp) {
 
 Nonidentifying attributes of an ENTITY can usually be added later. In this case, all attributes of the Handling Event are going to be set in the initial transaction and never altered (except possibly for correcting a data-entry error), so it could be convenient, and make client code more expressive, to add a simple FACTORY METHOD to Handling Event for each event type, taking all the necessary arguments. For example, a “loading event” does involve a Carrier Movement:
 
-> 就 ENTITY 而言，那些非标识作用的属性通常可以过后再添加。在本例中，Handling Event 的所有属性都是在初始事务中设臵的，而且过后不再改变（纠正数据录入错误除外），因此针对每种事件类型，为 Handling Event 添加一个简单的 FACTORY METHOD（并带有所有必要的参数）是很方便的做法，这还使得客户代码具有更强的表达力。例如，loading event（装货事件）确实涉及一个 Carrier Movement。
+> 就 ENTITY 而言，那些非标识作用的属性通常可以过后再添加。在本例中，Handling Event 的所有属性都是在初始事务中设置的，而且过后不再改变（纠正数据录入错误除外），因此针对每种事件类型，为 Handling Event 添加一个简单的 FACTORY METHOD（并带有所有必要的参数）是很方便的做法，这还使得客户代码具有更强的表达力。例如，loading event（装货事件）确实涉及一个 Carrier Movement。
 
 ```java
 public static HandlingEvent newLoading(
@@ -522,7 +522,7 @@ The only serious constraint imposed by this integration will be that the Sales M
 
 Although the Allocation Checker’s interface is the only part that concerns the rest of the domain design, its internal implementation can present opportunities to solve performance problems, if they arise. For example, if the Sales Management System is running on another server, perhaps at another location, the communications overhead could be significant, and there are two message exchanges for each allocation check. There is no alternative to the second message, which invokes the Sales Management System to answer the basic question of whether a certain cargo should be accepted. But the first message, which derives the Enterprise Segment for a cargo, is based on relatively static data and behavior compared to the allocation decisions themselves. One design option would be to cache this information so that it could be relocated on the server with the Allocation Checker, reducing messaging overhead by half. There is a price for this flexibility. The design is more complicated and the duplicated data must now be kept up to date somehow. But when performance is critical in a distributed system, flexible deployment can be an important design goal.
 
-> 虽然与领域设计的其他方面有利害关系的只是 Allocation Checker 的接口，但当出现性能问题时，Allocation Checker 的内部实现可能为解决这些问题提供机会。例如，如果 SalesManagement System 运行在另一台服务器上（或许在另一个位臵上），那么通信开销可能会很大，而且每个配额检查都需要进行两次消息交换。第二条消息需要调用 Sales ManagementSystem 来回答是否应该接受货物，因此并没有其他的替代方法可用来处理这条消息。但第一条消息是得出货物的 Enterprise Segment，这条消息所基于的数据和行为与配额决策本身相比是静态的。这样，一种设计选择就是缓存这些信息，以便 Allocation Checker 在需要的时候能够在自己的服务器上找到它们，从而将消息传递的开销降低一半。但这种灵活性也是有代价的。设计会更复杂，而且被缓存的数据必须保持最新。但如果性能在分布式系统中是至关重要的因素的话，这种灵活部署可能成为一个重要的设计目标。
+> 虽然与领域设计的其他方面有利害关系的只是 Allocation Checker 的接口，但当出现性能问题时，Allocation Checker 的内部实现可能为解决这些问题提供机会。例如，如果 SalesManagement System 运行在另一台服务器上（或许在另一个位置上），那么通信开销可能会很大，而且每个配额检查都需要进行两次消息交换。第二条消息需要调用 Sales ManagementSystem 来回答是否应该接受货物，因此并没有其他的替代方法可用来处理这条消息。但第一条消息是得出货物的 Enterprise Segment，这条消息所基于的数据和行为与配额决策本身相比是静态的。这样，一种设计选择就是缓存这些信息，以便 Allocation Checker 在需要的时候能够在自己的服务器上找到它们，从而将消息传递的开销降低一半。但这种灵活性也是有代价的。设计会更复杂，而且被缓存的数据必须保持最新。但如果性能在分布式系统中是至关重要的因素的话，这种灵活部署可能成为一个重要的设计目标。
 
 ## 7.12 A FINAL LOOK 小结
 
@@ -532,4 +532,4 @@ That’s it. This integration could have turned our simple, conceptually consist
 
 A final design question: Why not give Cargo the responsibility of deriving the Enterprise Segment? At first glance it seems elegant, if all the data the derivation is based on is in the Cargo, to make it a derived attribute of Cargo. Unfortunately, it is not that simple. Enterprise Segments are defined arbitrarily to divide along lines useful for business strategy. The same ENTITIES could be segmented differently for different purposes. We are deriving the segment for a particular Cargo for booking allocation purposes, but it could have a completely different Enterprise Segment for tax accounting purposes. Even the allocation Enterprise Segment could change if the Sales Management System is reconfigured because of a new sales strategy. So the Cargo would have to know about the Allocation Checker, which is well outside its conceptual responsibility, and it would be laden with methods for deriving specific types of Enterprise Segment. Therefore, the responsibility for deriving this value lies properly with the object that knows the rules for segmentation, rather than the object that has the data to which those rules apply. Those rules could be split out into a separate “Strategy” object, which could be passed to a Cargo to allow it to derive an Enterprise Segment. That solution seems to go beyond the requirements we have here, but it would be an option for a later design and shouldn’t be a very disruptive change.
 
-> 还有最后一个设计问题：为什么不把获取 Enterprise Segment 的职责交给 Cargo 呢？如果 Enterprise Segment 的所有数据都是从 Cargo 中获取的，那么乍看上去把它变成 Cargo 的一个派生属性是一种不错的选择。遗憾的是，事情并不是这么简单。为了用有利于业务策略的维度进行划分，我们需要任意定义 Enterprise Segment。出于不同的目的，可能需要对相同的 ENTITY 进行不同的划分。出于预订配额的目的，我们需要根据特定的 Cargo 进行划分；但如果是出于税务会计的目的时，可能会采取一种完全不同的 Enterprise Segment 划分方式。甚至当执行新的销售策略而对 Sales Management System 进行重新配臵时，配额的 Enterprise Segment 划分也可能会发生变化。如此，Cargo 就必须了解 Allocation Checker，而这完全不在其概念职责范围之内。而且得出特定类型 Enterprise Segment 所需使用的方法会加重 Cargo 的负担。因此，正确的做法是让那些知道划分规则的对象来承担获取这个值的职责，而不是把这个职责施加给包含具体数据（那些规则就作用于这些数据上）的对象。另一方面，这些规则可以被分离到一个独立的 Strategy 对象中，然后将这个对象传递给 Cargo，以便它能够得出一个 EnterpriseSegment。这种解决方案似乎超出了这里的需求，但它可能是之后设计的一个选择，而且应该不会对设计造成很大的破坏。
+> 还有最后一个设计问题：为什么不把获取 Enterprise Segment 的职责交给 Cargo 呢？如果 Enterprise Segment 的所有数据都是从 Cargo 中获取的，那么乍看上去把它变成 Cargo 的一个派生属性是一种不错的选择。遗憾的是，事情并不是这么简单。为了用有利于业务策略的维度进行划分，我们需要任意定义 Enterprise Segment。出于不同的目的，可能需要对相同的 ENTITY 进行不同的划分。出于预订配额的目的，我们需要根据特定的 Cargo 进行划分；但如果是出于税务会计的目的时，可能会采取一种完全不同的 Enterprise Segment 划分方式。甚至当执行新的销售策略而对 Sales Management System 进行重新配置时，配额的 Enterprise Segment 划分也可能会发生变化。如此，Cargo 就必须了解 Allocation Checker，而这完全不在其概念职责范围之内。而且得出特定类型 Enterprise Segment 所需使用的方法会加重 Cargo 的负担。因此，正确的做法是让那些知道划分规则的对象来承担获取这个值的职责，而不是把这个职责施加给包含具体数据（那些规则就作用于这些数据上）的对象。另一方面，这些规则可以被分离到一个独立的 Strategy 对象中，然后将这个对象传递给 Cargo，以便它能够得出一个 EnterpriseSegment。这种解决方案似乎超出了这里的需求，但它可能是之后设计的一个选择，而且应该不会对设计造成很大的破坏。

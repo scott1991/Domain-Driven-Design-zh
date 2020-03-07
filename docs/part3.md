@@ -62,7 +62,7 @@ Eventually, after months working with shipping experts through many iterations, 
 
 The ships were still there, but abstracted in the form of a “vessel voyage,” a particular trip scheduled for a ship, train, or other carrier. The ship itself was secondary, and could be substituted at the last minute for maintenance or a slipping schedule, while the vessel voyage went on as planned. The shipping container all but disappeared from the model. It did emerge in a cargo-handling application in a different, very complex form, but in the context of the original application, the container was an operational detail. The physical movement of the cargo took a back seat to the transfers of legal responsibility for that cargo. Less obvious objects, such as the “bill of lading,” came to the fore.
 
-> 我们依然保留了 ship，但是将其抽象为“船只航次”（vessel voyage），即货轮、火车或其他运输工具的某一调度好的航程。货轮本身不再重要，如遇维修或计划变动可临时改用其他方式，只要保证原定航次按计划执行即可。运输集装箱则完全从模型中移除了。它现在以一种完全不同的复杂形式出现在货物装卸应用程序中，而在原来的应用程序中，集装箱变成了操作细节。货物实际的位臵变化已不重要，重要的是其法律责任的转移。原来一些诸如“提货单”之类不被关注的对象也出现在模型中。
+> 我们依然保留了 ship，但是将其抽象为“船只航次”（vessel voyage），即货轮、火车或其他运输工具的某一调度好的航程。货轮本身不再重要，如遇维修或计划变动可临时改用其他方式，只要保证原定航次按计划执行即可。运输集装箱则完全从模型中移除了。它现在以一种完全不同的复杂形式出现在货物装卸应用程序中，而在原来的应用程序中，集装箱变成了操作细节。货物实际的位置变化已不重要，重要的是其法律责任的转移。原来一些诸如“提货单”之类不被关注的对象也出现在模型中。
 
 Whenever new object modelers showed up on the project, what was their first suggestion? The missing classes: ship and container. They were smart people. They just hadn’t gone through the processes of discovery.
 
@@ -70,7 +70,7 @@ Whenever new object modelers showed up on the project, what was their first sugg
 
 A deep model provides a lucid expression of the primary concerns of the domain experts and their most relevant knowledge while it sloughs off the superficial aspects of the domain. This definition doesn’t mention abstraction. A deep model usually has abstract elements, but it may well have concrete elements where those cut to the heart of the problem.
 
-> 深层模型能够穿过领域表象，清楚地表达出领域专家们的主要关注点以及最相关的知识。以上定义并没有涉及抽象。事实上，深层模型通常含有抽象元素，但在切中问题核心的关键位臵也同样会出现具体元素。
+> 深层模型能够穿过领域表象，清楚地表达出领域专家们的主要关注点以及最相关的知识。以上定义并没有涉及抽象。事实上，深层模型通常含有抽象元素，但在切中问题核心的关键位置也同样会出现具体元素。
 
 Versatility, simplicity, and explanatory power come from a model that is truly in tune with the domain. One feature such models almost always have is a simple, though possibly abstract, language that the business experts like to use.
 
