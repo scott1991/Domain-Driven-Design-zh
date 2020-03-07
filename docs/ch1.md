@@ -66,7 +66,7 @@ They constantly corrected me, and as they did I started to learn. We ironed out 
 
 To focus our exploration, we limited ourselves, for a while, to studying one particular feature. A “probe simulation” would trace the propagation of a signal to detect likely sites of certain kinds of problems in the design.
 
-> 为了让讨论更集中，接下来的一段时间我们探讨了一个特定的功能：探针仿真（probesimulation）。探针仿真跟踪信号的传播，以便检测在设计中可能出现特定类型问题的位臵。
+> 为了让讨论更集中，接下来的一段时间我们探讨了一个特定的功能：探针仿真（probesimulation）。探针仿真跟踪信号的传播，以便检测在设计中可能出现特定类型问题的位置。
 
 - Developer: I understand how the signal gets carried by the Net to all the Pins attached, but how does it go any further than that? Does the Topology have something to do with it?
 - Expert 2: No. The component pushes the signal through.

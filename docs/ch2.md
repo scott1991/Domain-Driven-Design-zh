@@ -435,7 +435,7 @@ Other documents need to illuminate meaning, to give insight into large-scale str
 
 When I document a model in writing, I diagram small, carefully selected subsets of the model and surround them with text. I define the classes and their responsibilities in words and frame them in a context of meaning as only a natural language can. But the diagram shows some of the choices that have been made in formalizing and paring down the concepts into an object model. These diagrams can be somewhat casual—even hand-drawn. In addition to saving labor, hand-drawn diagrams have the advantage of feeling casual and temporary. These are good things to communicate because they are generally true of our model ideas.
 
-> 我在为模型编写书面文档时，会仔细选择一个小的模型子集来画图，然后让文字放臵在这些图周围。我用文字定义类及其职责，并且像自然语言那样把它们限定在一个语义上下文中。而图显示了在将概念形式化和简化为对象模型的过程中所做的一些选择。这些图可以随意一些，甚至是手绘的。手绘图除了节省工作量，也让人们一看就知道它们是不正式、临时的。这些优点都非常有利于交流，因为它们适用于我们的模型思想。
+> 我在为模型编写书面文档时，会仔细选择一个小的模型子集来画图，然后让文字放置在这些图周围。我用文字定义类及其职责，并且像自然语言那样把它们限定在一个语义上下文中。而图显示了在将概念形式化和简化为对象模型的过程中所做的一些选择。这些图可以随意一些，甚至是手绘的。手绘图除了节省工作量，也让人们一看就知道它们是不正式、临时的。这些优点都非常有利于交流，因为它们适用于我们的模型思想。
 
 The greatest value of a design document is to explain the concepts of the model, help in navigating the detail of the code, and perhaps give some insight into the model’s intended style of use. Depending on the philosophy of the team, the whole design document could be as simple as a set of sketches posted on the walls, or it could be substantial.
 

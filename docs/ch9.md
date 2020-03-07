@@ -577,7 +577,7 @@ The case of the delinquent invoice can be modeled using a SPECIFICATION that sta
 
 The SPECIFICATION keeps the rule in the domain layer. Because the rule is a full-fledged object, the design can be a more explicit reflection of the model. A FACTORY can configure a SPECIFICATION using information from other sources, such as the customer’s account or the corporate policy database. Providing direct access to these sources from the Invoice would couple the objects in a way that does not relate to the request for payment (the basic responsibility of Invoice). In this case, the Delinquent Invoice Specification was to be created, used to evaluate some Invoices, and then discarded, so a specific evaluation date was built right in—a nice simplification. A SPECIFICATION can be given the information it will need to do its job in a simple, straightforward way.
 
-> SPECIFICATION 将规则保留在领域层。由于规则是一个完备的对象，所以这种设计能够更加清晰地反映模型。利用工厂，可以用来自其他资源（如客户账户或者企业政策数据库）的信息对规格进行配臵。之所以使用 FACTORY，是为了避免 Invoice 直接访问这些资源，因为这样会使得 Invoice 与这些资源发生不正确的关联（Invoice 的基本职责是请求付款，而这些资源与这一职责无关）。在这个例子中，我们将创建 Delinquent Invoice Specification（拖欠发票规格）来对一些发票进行评估，这个 SPECIFICATION 用过之后就被丢掉，因此可以将评估日期直接放在 SPECIFICATION 中，这真是一次不错的简化。我们可以用简单直接的方式为 SPECIFICATION 提供完成其职责所需的信息。
+> SPECIFICATION 将规则保留在领域层。由于规则是一个完备的对象，所以这种设计能够更加清晰地反映模型。利用工厂，可以用来自其他资源（如客户账户或者企业政策数据库）的信息对规格进行配置。之所以使用 FACTORY，是为了避免 Invoice 直接访问这些资源，因为这样会使得 Invoice 与这些资源发生不正确的关联（Invoice 的基本职责是请求付款，而这些资源与这一职责无关）。在这个例子中，我们将创建 Delinquent Invoice Specification（拖欠发票规格）来对一些发票进行评估，这个 SPECIFICATION 用过之后就被丢掉，因此可以将评估日期直接放在 SPECIFICATION 中，这真是一次不错的简化。我们可以用简单直接的方式为 SPECIFICATION 提供完成其职责所需的信息。
 
 ---
 
@@ -732,7 +732,7 @@ Now this design has some problems. Most important, the details of the table stru
 
 When the infrastructure doesn’t come to the rescue, we can refactor the SQL out of the expressive domain objects by adding a specialized query method to the Invoice Repository. To avoid embedding the rule into the REPOSITORY, we have to express the query in a more generic way, one that doesn’t capture the rule but can be combined or placed in context to work the rule out (in this example, by using a double dispatch).
 
-> 如果无法把 SQL 语句创建到基础设施中，还可以重写一个专用的查询方法并把它添加到 InvoiceRepository 中，这样就把 SQL 语句从领域对象中分离出来了。为了避免在 REPOSITORY 中嵌入规则，必须采用更为通用的方式来表达查询，这种方式不捕捉规则但是可以通过组合或放臵在上下文中来表达规则（在这个例子中，使用的是双分派模式）。
+> 如果无法把 SQL 语句创建到基础设施中，还可以重写一个专用的查询方法并把它添加到 InvoiceRepository 中，这样就把 SQL 语句从领域对象中分离出来了。为了避免在 REPOSITORY 中嵌入规则，必须采用更为通用的方式来表达查询，这种方式不捕捉规则但是可以通过组合或放置在上下文中来表达规则（在这个例子中，使用的是双分派模式）。
 
 ```java
 public class InvoiceRepository {
@@ -778,7 +778,7 @@ public class DelinquentInvoiceSpecification {
 
 This puts the SQL in the REPOSITORY, while the SPECIFICATION controls what query should be used. The rules aren’t as neatly collected into the SPECIFICATION, but the essential declaration is there of what constitutes delinquency (that is, past grace period).
 
-> 这段代码将 SQL 臵于 REPOSITORY 中，而应该使用哪个查询则由 SPECIFICATION 来控制。SPECIFICATION 中并没有定义完整的规则，但规则的核心已位于其中——指明了什么条件构成了拖欠（即超过宽限期）。
+> 这段代码将 SQL 置于 REPOSITORY 中，而应该使用哪个查询则由 SPECIFICATION 来控制。SPECIFICATION 中并没有定义完整的规则，但规则的核心已位于其中——指明了什么条件构成了拖欠（即超过宽限期）。
 
 The REPOSITORY now has a very specialized query that most likely will be used only in this case. That is acceptable, but depending on the relative numbers of Invoices that are overdue compared to those that are delinquent, an intermediate solution that leaves the REPOSITORY methods more generic may still give good performance, while keeping the SPECIFICATION more self-explanatory.
 
@@ -848,11 +848,11 @@ When the Pentagon wants a new fighter jet, officials write a specification. This
 
 Many computer programs generate things, and those things have to be specified. When you place a picture into a word-processing document, the text flows around it. You have specified the location of the picture, and perhaps the style of text flow. The exact placement of the words on the page is then worked out by the word processor in such a way that it meets your specification.
 
-> 很多计算机程序都能够生成一些工件，这些工件是需要被指定的。当你在字处理软件文档中插入图片时，文字会环绕在图片周围。你已指定了图片的位臵，可能也指定了文字环绕的样式。这样，字处理软件就可以按照你指定的规格来将页面上的文字摆放到正确的位臵。
+> 很多计算机程序都能够生成一些工件，这些工件是需要被指定的。当你在字处理软件文档中插入图片时，文字会环绕在图片周围。你已指定了图片的位置，可能也指定了文字环绕的样式。这样，字处理软件就可以按照你指定的规格来将页面上的文字摆放到正确的位置。
 
 Although it may not be apparent at first, this is the same concept of a SPECIFICATION that was applied to validation and selection. We are specifying criteria for objects that are not yet present. The implementation will be quite different, however. This SPECIFICATION is not a filter for preexisting objects, as with querying. It is not a test for an existing object, as with validation. This time, a whole new object or set of objects will be made or reconfigured to satisfy the SPECIFICATION.
 
-> 尽管乍看起来并不明显，但是这种 SPECIFICATION 概念与应用于验证和选择的规格并无二致。都是在为尚未创建的对象指定标准。但是，SPECIFICATION 的实现则会大不相同。这种 SPECIFICATION 与查询不同，它不用来过滤已存在对象；也与验证不同，并不用来测试已有对象。在这里，我们要创建或重新配臵满足 SPECIFICATION 的全新对象或对象集合。
+> 尽管乍看起来并不明显，但是这种 SPECIFICATION 概念与应用于验证和选择的规格并无二致。都是在为尚未创建的对象指定标准。但是，SPECIFICATION 的实现则会大不相同。这种 SPECIFICATION 与查询不同，它不用来过滤已存在对象；也与验证不同，并不用来测试已有对象。在这里，我们要创建或重新配置满足 SPECIFICATION 的全新对象或对象集合。
 
 Without using SPECIFICATION, a generator can be written that has procedures or a set of instructions that create the needed objects. This code implicitly defines the behavior of the generator.
 
@@ -876,7 +876,7 @@ Instead, an interface of the generator that is defined in terms of a descriptive
 
 Building to order can mean creation of an object from scratch, but it can also be a configuration of preexisting objects to satisfy the SPEC.
 
-> 根据要求来创建可以是从头创建全新对象，也可以是配臵已有对象来满足 SPECIFICATION。
+> 根据要求来创建可以是从头创建全新对象，也可以是配置已有对象来满足 SPECIFICATION。
 
 Example: Chemical Warehouse Packer
 
@@ -888,13 +888,13 @@ There is a warehouse in which various chemicals are stored in stacks of large co
 
 The goal is to write software that will find an efficient and safe way to put the chemicals in the containers.
 
-> 我们的目标是编写出一个软件，用于寻找一种安全而高效地在容器中放臵化学品的方式，如图 9-16 所示。
+> 我们的目标是编写出一个软件，用于寻找一种安全而高效地在容器中放置化学品的方式，如图 9-16 所示。
 
 <Figures figure="9-16">A model for warehouse storage</Figures>
 
 We could start by writing a procedure to take a chemical and place it in a container, but instead, let’s start with the validation problem. This will force us to make the rules explicit, and it will give us a way to test the final implementation.
 
-> 我们可以首先从编写一个过程——取出一个化学品并将其放臵在一个容器中——开始，但是让我们从验证问题开始着手吧。这种方式让我们必须显式描述规则，同时也提供了一种测试最终实现的方式。
+> 我们可以首先从编写一个过程——取出一个化学品并将其放置在一个容器中——开始，但是让我们从验证问题开始着手吧。这种方式让我们必须显式描述规则，同时也提供了一种测试最终实现的方式。
 
 Each chemical will have a container SPECIFICATION:
 
@@ -904,7 +904,7 @@ Each chemical will have a container SPECIFICATION:
 
 Now, if we write these as Container Specifications, we should be able to take a configuration of packed containers and test to see if it meets these constraints.
 
-> 现在，如果将这些规格编写成 Container Specification，就可以提出一种把化学品混装在容器中的配臵方法，并测试它是否满足这些约束条件。
+> 现在，如果将这些规格编写成 Container Specification，就可以提出一种把化学品混装在容器中的配置方法，并测试它是否满足这些约束条件。
 
 ![](figures/ch9/t0236_02.jpg)
 
@@ -927,7 +927,7 @@ public class ContainerSpecification {
 
 Here is sample client code to set up an explosive chemical:
 
-> 下面是设臵易爆化学品的客户端示例代码：
+> 下面是设置易爆化学品的客户端示例代码：
 
 ```java
 tnt.setContainerSpecification(
