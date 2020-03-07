@@ -52,6 +52,15 @@ cd Domain-Driven-Design-zh/
 yarn docs:dev
 ```
 
+## Contributors
+
+<table>
+  <tr>
+    <td align="center"><a href="https://gdut-yy.github.io/"><img src="https://avatars2.githubusercontent.com/u/33390928?s=460&v=4" width="100px;" /><br /><sub><b>gdut-yy</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/macdao"><img src="https://avatars3.githubusercontent.com/u/1311124?s=460&v=4" width="100px;" /><br /><sub><b>macdao</b></sub></a><br /></td>
+  </tr>
+</table>
+
 ## License
 
 [MIT](https://github.com/gdut-yy/Domain-Driven-Design-zh/blob/master/LICENSE)
