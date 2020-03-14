@@ -406,7 +406,7 @@ This leaves the Delivery History with no persistent state. At this point, there 
 
 The circular reference is no longer tricky to create and maintain. The Cargo Factory will be simplified to no longer attach an empty Delivery History to new instances. Database space can be reduced slightly, and the actual number of persistent objects might be reduced considerably, which is a limited resource in some object databases. If the common usage pattern is that the user seldom queries for the status of a Cargo until it arrives, then a lot of unneeded work will be avoided altogether.
 
-循环引用的创建和维护也不再是问题。Cargo Factory 将被简化，不再需要为新的 Cargo 实例创建一个空的 Delivery History。数据库空间会略微减少，而且持久化对象的实际数量可能减少很多（在某些对象数据库中，能容纳的持久化对象的数量是有限的）。如果常见的使用模式是：用户在货物到达之前很少查询它的状态，那么这种设计可以避免很多不必要的工作。
+> 循环引用的创建和维护也不再是问题。Cargo Factory 将被简化，不再需要为新的 Cargo 实例创建一个空的 Delivery History。数据库空间会略微减少，而且持久化对象的实际数量可能减少很多（在某些对象数据库中，能容纳的持久化对象的数量是有限的）。如果常见的使用模式是：用户在货物到达之前很少查询它的状态，那么这种设计可以避免很多不必要的工作。
 
 On the other hand, if we are using an object database, traversing an association or an explicit collection is probably much faster than a REPOSITORY query. If the access pattern includes frequent listing of the full history, rather than the occasional targeted query of last position, the performance trade-off might favor the explicit collection. And remember that the added feature (“What is on this Carrier Movement?”) hasn’t been requested yet, and may never be, so we don’t want to pay much for that option.
 

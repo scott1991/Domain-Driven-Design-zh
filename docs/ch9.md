@@ -597,7 +597,7 @@ You may want to skim the key concepts when first reading. Later, when you run in
 
 Much of the value of SPECIFICATION is that it unifies application functionality that may seem quite different. We might need to specify the state of an object for one or more of these three purposes.
 
-SPECIFICATION 最有价值的地方在于它可以将看起来完全不同的应用功能统一起来。出于以下 3 个目的中的一个或多个，我们可能需要指定对象的状态。
+> SPECIFICATION 最有价值的地方在于它可以将看起来完全不同的应用功能统一起来。出于以下 3 个目的中的一个或多个，我们可能需要指定对象的状态。
 
 1. To validate an object to see if it fulfills some need or is ready for some purpose
 2. To select an object from a collection (as in the case of querying for overdue invoices)

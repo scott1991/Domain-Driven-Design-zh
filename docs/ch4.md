@@ -36,7 +36,7 @@ Creating programs that can handle very complex tasks calls for separation of con
 
 There are all sorts of ways a software system might be divided, but through experience and convention, the industry has converged on LAYERED ARCHITECTURES, and specifically a few fairly standard layers. The metaphor of layering is so widely used that it feels intuitive to most developers. Many good discussions of layering are available in the literature, sometimes in the format of a pattern (as in Buschmann et al. 1996, pp. 31–51). The essential principle is that any element of a layer depends only on other elements in the same layer or on elements of the layers “beneath” it. Communication upward must pass through some indirect mechanism, which I’ll discuss a little later.
 
-> 软件系统有各种各样的划分方式，但是根据软件行业的经验和惯例，普遍采用 LAYEREDARCHITECTURE（分层架构），特别是有几个层基本上已成了标准层。分层这种隐喻被广泛采用，大多数开发人员都对其有着直观的认识。许多文献对 LAYERED ARCHITECTURE 也进行了充分的讨论，有些是以模式的形式给出的[Buschmann et al. 1996, pp.31-51]。LAYEREDARCHITECTURE 的基本原则是层中的任何元素都仅依赖于本层的其他元素或其下层的元素。向上的通信必须通过间接的方式进行，这些将在后面讨论。
+> 软件系统有各种各样的划分方式，但是根据软件行业的经验和惯例，普遍采用 LAYERED ARCHITECTURE（分层架构），特别是有几个层基本上已成了标准层。分层这种隐喻被广泛采用，大多数开发人员都对其有着直观的认识。许多文献对 LAYERED ARCHITECTURE 也进行了充分的讨论，有些是以模式的形式给出的[Buschmann et al. 1996, pp.31-51]。LAYERED ARCHITECTURE 的基本原则是层中的任何元素都仅依赖于本层的其他元素或其下层的元素。向上的通信必须通过间接的方式进行，这些将在后面讨论。
 
 The value of layers is that each specializes in a particular aspect of a computer program. This specialization allows more cohesive designs of each aspect, and it makes these designs much easier to interpret. Of course, it is vital to choose layers that isolate the most important cohesive design aspects. Again, experience and convention have led to some convergence. Although there are many variations, most successful architectures use some version of these four conceptual layers:
 
@@ -70,7 +70,7 @@ An application provides various capabilities for maintaining bank accounts. One 
 
 To make this example manageable, I’ve omitted major technical features, most notably security. The domain design is also oversimplified. (Realistic complexity would only increase the need for layered architecture.) Furthermore, the particular infrastructure implied here is meant to be simple and obvious to make the example clear—it is not a suggested design. The responsibilities of the remaining functionality would be layered as shown in Figure 4.1.
 
-> 为了让这个例子更容易实现，这里省略了一些主要的技术特性，特别是安全性方面的一些特性。领域设计也尽量简化。（在现实生活中，银行业务的复杂性只会增加对 LAYEREDARCHITECTURE 的需求。）此外，这个例子中的基础设施只是为了使程序更简单和清楚一些而已——我并不建议你使用这个设计。简化后的功能所要完成的任务将会按照图 4-1 来分层。
+> 为了让这个例子更容易实现，这里省略了一些主要的技术特性，特别是安全性方面的一些特性。领域设计也尽量简化。（在现实生活中，银行业务的复杂性只会增加对 LAYERED ARCHITECTURE 的需求。）此外，这个例子中的基础设施只是为了使程序更简单和清楚一些而已——我并不建议你使用这个设计。简化后的功能所要完成的任务将会按照图 4-1 来分层。
 
 <Figures figure="4-1">Objects carry out responsibilities consistent with their layer and are more coupled to other objects in their layer.</Figures>
 
