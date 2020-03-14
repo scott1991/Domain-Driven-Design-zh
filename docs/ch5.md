@@ -584,13 +584,13 @@ Sometimes, it just isn’t a thing.
 
 In some cases, the clearest and most pragmatic design includes operations that do not conceptually belong to any object. Rather than force the issue, we can follow the natural contours of the problem space and include SERVICES explicitly in the model.
 
-在某些情况下，最清楚、最实用的设计会包含一些特殊的操作，这些操作从概念上讲不属于任何对象。与其把它们强制地归于哪一类，不如顺其自然地在模型中引入一种新的元素，这就是 SERVICE（服务）。
+> 在某些情况下，最清楚、最实用的设计会包含一些特殊的操作，这些操作从概念上讲不属于任何对象。与其把它们强制地归于哪一类，不如顺其自然地在模型中引入一种新的元素，这就是 SERVICE（服务）。
 
 ---
 
 There are important domain operations that can’t find a natural home in an ENTITY or VALUE OBJECT. Some of these are intrinsically activities or actions, not things, but since our modeling paradigm is objects, we try to fit them into objects anyway.
 
-有些重要的领域操作无法放到 ENTITY 或 VALUE OBJECT 中。这当中有些操作从本质上讲是一些活动或动作，而不是事物，但由于我们的建模范式是对象，因此要想办法将它们划归到对象这个范畴里。
+> 有些重要的领域操作无法放到 ENTITY 或 VALUE OBJECT 中。这当中有些操作从本质上讲是一些活动或动作，而不是事物，但由于我们的建模范式是对象，因此要想办法将它们划归到对象这个范畴里。
 
 Now, the more common mistake is to give up too easily on fitting the behavior into an appropriate object, gradually slipping toward procedural programming. But when we force an operation into an object that doesn’t fit the object’s definition, the object loses its conceptual clarity and becomes hard to understand or refactor. Complex operations can easily swamp a simple object, obscuring its role. And because these operations often draw together many domain objects, coordinating them and putting them into action, the added responsibility will create dependencies on all those objects, tangling concepts that could be understood independently.
 
@@ -930,15 +930,15 @@ A story from an object-oriented project of only a decade ago illustrates the ris
 
 Fortunately, we were able to bring onto the team one of a handful of people in the world with the skills to extricate us from the problem. He named his price and we paid it. There were three sources of the problem. First, the off-the-shelf infrastructure provided with the database simply didn’t scale up to our needs. Second, storage of fine-grained objects turned out to be much more costly than we had realized. Third, parts of the object model had such a tangle of interdependencies that contention became a problem with a relatively small number of concurrent transactions.
 
-幸运的是，我们找到了一位精通对象数据库技术的专家来帮助我们摆脱困境。我们谈妥服务价格后，他指出了 3 个问题根源。首先，与数据库一起提供的基础设施没有扩展到我们所需的规模。其次，细粒度对象的存储比我们预计的代价要大得多。最后，对象模型的有些部分其内部依赖过于复杂，以至于很少的并发事务就会产生竞争问题。
+> 幸运的是，我们找到了一位精通对象数据库技术的专家来帮助我们摆脱困境。我们谈妥服务价格后，他指出了 3 个问题根源。首先，与数据库一起提供的基础设施没有扩展到我们所需的规模。其次，细粒度对象的存储比我们预计的代价要大得多。最后，对象模型的有些部分其内部依赖过于复杂，以至于很少的并发事务就会产生竞争问题。
 
 With the help of this hired expert, we enhanced the infrastructure. The team, now aware of the impact of fine-grained objects, began to find models that worked better with this technology. All of us deepened our thinking about the importance of limiting the web of relationships in a model, and we began applying this new understanding to making better models with more decoupling between closely interrelated aggregates.
 
-在这位专家的帮助下，我们对基础设施进行了强化。现在，项目团队意识到细粒度对象的影响，并开始寻找更适合对象数据库的模型。所有人员都深刻认识到对模型中的关系进行限制的重要性，我们利用这种新的理解开始设计更好的模型——将原来那些紧密联系在一起的对象解耦。
+> 在这位专家的帮助下，我们对基础设施进行了强化。现在，项目团队意识到细粒度对象的影响，并开始寻找更适合对象数据库的模型。所有人员都深刻认识到对模型中的关系进行限制的重要性，我们利用这种新的理解开始设计更好的模型——将原来那些紧密联系在一起的对象解耦。
 
 Several months were lost in this recovery, in addition to the earlier months spent going down a failed path. And this had not been the team’s first setback resulting from the immaturity of the chosen technologies and our own lack of experience with the associated learning curve. Sadly, this project eventually retrenched and became quite conservative. To this day they use the exotic technologies, but for cautiously scoped applications that probably don’t really benefit from them.
 
-除了前几个月浪费在错误路线上以外，项目的修复又损失了好几个月的时间。而且这并不是团队由于选择了不成熟的技术和没有相关经验而遭遇的第一个挫折。遗憾的是，这个项目最终被削减了，而且变得十分保守。直到今天，他们虽然仍会使用一些外来技术，但在应用范围上变得谨小慎微，这导致他们可能无法真正从这些技术中获益。
+> 除了前几个月浪费在错误路线上以外，项目的修复又损失了好几个月的时间。而且这并不是团队由于选择了不成熟的技术和没有相关经验而遭遇的第一个挫折。遗憾的是，这个项目最终被削减了，而且变得十分保守。直到今天，他们虽然仍会使用一些外来技术，但在应用范围上变得谨小慎微，这导致他们可能无法真正从这些技术中获益。
 
 A decade later, object-oriented technology is relatively mature. Most common infrastructure needs can be met with off-the-shelf solutions that have been used in the field. Mission-critical tools come from major vendors, often multiple vendors, or from stable open-source projects. Many of these infrastructure pieces themselves are used widely enough that there is a base of people who already understand them, as well as books explaining them, and so forth. The limitations of these established technologies are fairly well understood, so that knowledgeable teams are less likely to overreach.
 
