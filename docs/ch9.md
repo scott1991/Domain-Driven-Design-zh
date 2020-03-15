@@ -220,7 +220,7 @@ A developer had been struggling with the increasing complexity of calculating in
 
 > - 专家：我想这是合乎情理的。但你只是把它从一个地方移到了另一个地方。
 > - 开发人员：不过现在 Interest Calculator 只负责追踪利息收入了，付款的数目则是由 Payment 单独管理。这个模型并没有简化什么，但它是不是能够更好地反映出业务惯例呢？
-> - 专家：啊。我懂了。我们能够同时保留利息的历史记录吗？就像之前模型中的 PaymentHistory（付款历史）一样。
+> - 专家：啊。我懂了。我们能够同时保留利息的历史记录吗？就像之前模型中的 Payment History（付款历史）一样。
 > - 开发人员：可以。这已经被作为一项新功能提出来了。但是，它本来应该在初始设计中就加进来。
 > - 专家：哦。是这样，我看到你以这种方式分离利息和 Payment History，还以为你们要把利息分解并组织成类似于 Payment History 的结构。你对应计制会计（accrual basis accounting）有所了解吗？
 > - 开发人员：请解释一下。
@@ -732,7 +732,7 @@ Now this design has some problems. Most important, the details of the table stru
 
 When the infrastructure doesn’t come to the rescue, we can refactor the SQL out of the expressive domain objects by adding a specialized query method to the Invoice Repository. To avoid embedding the rule into the REPOSITORY, we have to express the query in a more generic way, one that doesn’t capture the rule but can be combined or placed in context to work the rule out (in this example, by using a double dispatch).
 
-> 如果无法把 SQL 语句创建到基础设施中，还可以重写一个专用的查询方法并把它添加到 InvoiceRepository 中，这样就把 SQL 语句从领域对象中分离出来了。为了避免在 REPOSITORY 中嵌入规则，必须采用更为通用的方式来表达查询，这种方式不捕捉规则但是可以通过组合或放置在上下文中来表达规则（在这个例子中，使用的是双分派模式）。
+> 如果无法把 SQL 语句创建到基础设施中，还可以重写一个专用的查询方法并把它添加到 Invoice Repository 中，这样就把 SQL 语句从领域对象中分离出来了。为了避免在 REPOSITORY 中嵌入规则，必须采用更为通用的方式来表达查询，这种方式不捕捉规则但是可以通过组合或放置在上下文中来表达规则（在这个例子中，使用的是双分派模式）。
 
 ```java
 public class InvoiceRepository {

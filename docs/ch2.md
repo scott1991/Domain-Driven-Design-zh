@@ -221,7 +221,7 @@ User: Yes, but it’s extra work for us to make all the supporting plans for a n
 
 Developer: Oh. Then we’ll have to add some functionality to the Route Specification. Then, whenever you change anything in the Spec, we’ll see if the Itinerary still satisfies the Specification. If it doesn’t, we’ll have the Routing Service regenerate the Itinerary.
 
-> 开发人员：哦。那么需要在 Route Specification 添加一些功能。这样，当更改 RouteSpecification 中的属性时，查看 Itinerary 是否仍满足 Specification。如果不满足，则需要由 Routing Service 重新生成 Itinerary。
+> 开发人员：哦。那么需要在 Route Specification 添加一些功能。这样，当更改 Route Specification 中的属性时，查看 Itinerary 是否仍满足 Specification。如果不满足，则需要由 Routing Service 重新生成 Itinerary。
 
 User: You won’t have to worry about this on origin or destination, since the Itinerary would always change then.
 
