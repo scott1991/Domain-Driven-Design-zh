@@ -422,7 +422,7 @@ However, if we think of this category of object as just the absence of identity,
 
 An object that represents a descriptive aspect of the domain with no conceptual identity is called a VALUE OBJECT. VALUE OBJECTS are instantiated to represent elements of the design that we care about only for what they are, not who or which they are.
 
-> 用于描述领域的某个方面而本身没有概念标识的对象称为 VALUE OBJECT（值对象）。VALUEOBJECT 被实例化之后用来表示一些设计元素，对于这些设计元素，我们只关心它们是什么，而不关心它们是谁。
+> 用于描述领域的某个方面而本身没有概念标识的对象称为 VALUE OBJECT（值对象）。VALUE OBJECT 被实例化之后用来表示一些设计元素，对于这些设计元素，我们只关心它们是什么，而不关心它们是谁。
 
 Is “Address” a VALUE OBJECT? Who’s Asking?
 
@@ -488,7 +488,7 @@ The same issues arise when an object passes one of its attributes to another obj
 
 Creating extra options for performance tuning can be important because VALUE OBJECTS tend to be numerous. The example of the house design software hints at this. If each electrical outlet is a separate VALUE OBJECT, there might be a hundred of them in a single version of a single house plan. But if all outlets are considered interchangeable, we could share just one instance of an outlet and point to it a hundred times (an example of FLYWEIGHT [Gamma et al. 1995]). In large systems, this kind of effect can be multiplied by thousands, and such an optimization can make the difference between a usable system and one that slows to a crawl, choked on millions of redundant objects. This is just one example of an optimization trick that is not available for ENTITIES.
 
-> VALUE OBJECT 为性能优化提供了更多选择，这一点可能很重要，因为 VALUE OBJECT 往往为数众多。房屋设计软件的示例就说明了这一点。如果每个电源插座都是一个单独的 VALUEOBJECT，那么在一所房屋的一个设计版本中可能就会有上百个这种 VALUE OBJECT。但如果把电源插座看成是可互换的，就只需共享一个电源插座实例，并让所有电源插座都指向这个实例（FLYWEIGHT, [Gamma et al. 1995]中的一个示例）。在大型系统中，这种效果可能会被放大数千倍，而且这样的优化可能决定一个系统是可用的，还是由于数百万个多余对象而变得异常缓慢。这只是无法应用于 ENTITY 的优化技巧中的一个。
+> VALUE OBJECT 为性能优化提供了更多选择，这一点可能很重要，因为 VALUE OBJECT 往往为数众多。房屋设计软件的示例就说明了这一点。如果每个电源插座都是一个单独的 VALUE OBJECT，那么在一所房屋的一个设计版本中可能就会有上百个这种 VALUE OBJECT。但如果把电源插座看成是可互换的，就只需共享一个电源插座实例，并让所有电源插座都指向这个实例（FLYWEIGHT, [Gamma et al. 1995]中的一个示例）。在大型系统中，这种效果可能会被放大数千倍，而且这样的优化可能决定一个系统是可用的，还是由于数百万个多余对象而变得异常缓慢。这只是无法应用于 ENTITY 的优化技巧中的一个。
 
 The economy of copying versus sharing depends on the implementation environment. Although copies may clog the system with huge numbers of objects, sharing can slow down a distributed system. When a copy is passed between two machines, a single message is sent and the copy lives independently on the receiving machine. But if a single instance is being shared, only a reference is passed, requiring a message back to the object for each interaction.
 
@@ -522,7 +522,7 @@ Special Cases: When to Allow Mutability
 
 Immutability is a great simplifier in an implementation, making sharing and reference passing safe. It is also consistent with the meaning of a value. If the value of an attribute changes, you use a different VALUE OBJECT, rather than modifying the existing one. Even so, there are cases when performance considerations will favor allowing a VALUE OBJECT to be mutable. These factors would weigh in favor of a mutable implementation:
 
-> 保持 VALUE OBJECT 不变可以极大地简化实现，并确保共享和引用传递的安全性。而且这样做也符合值的意义。如果属性的值发生改变，我们应该使用一个不同的 VALUEOBJECT，而不是修改现有的 VALUE OBJECT。尽管如此，在有些情况下出于性能考虑，仍需要让 VALUE OBJECT 是可变的。这包括以下因素：
+> 保持 VALUE OBJECT 不变可以极大地简化实现，并确保共享和引用传递的安全性。而且这样做也符合值的意义。如果属性的值发生改变，我们应该使用一个不同的 VALUE OBJECT，而不是修改现有的 VALUE OBJECT。尽管如此，在有些情况下出于性能考虑，仍需要让 VALUE OBJECT 是可变的。这包括以下因素：
 
 - If the VALUE changes frequently
 - If object creation or deletion is expensive
@@ -538,7 +538,7 @@ Immutability is a great simplifier in an implementation, making sharing and refe
 
 Just to reiterate: If a VALUE’s implementation is to be mutable, then it must not be shared. Whether you will be sharing or not, design VALUE OBJECTS as immutable when you can.
 
-> 再次强调：如果一个 VALUE 的实现是可变的，那么就不能共享它。无论是否共享 VALUEOBJECT，在可能的情况下都要将它们设计为不可变的。
+> 再次强调：如果一个 VALUE 的实现是可变的，那么就不能共享它。无论是否共享 VALUE OBJECT，在可能的情况下都要将它们设计为不可变的。
 
 Defining VALUE OBJECTS and designating them as immutable is a case of following a general rule: Avoiding unnecessary constraints in a model leaves developers free to do purely technical performance tuning. Explicitly defining the essential constraints lets developers tweak the design while keeping safe from changing meaningful behavior. Such design tweaks are often very specific to the technology in use on a particular project.
 
@@ -602,7 +602,7 @@ Sometimes services masquerade as model objects, appearing as objects with no mea
 
 Some concepts from the domain aren’t natural to model as objects. Forcing the required domain functionality to be the responsibility of an ENTITY or VALUE either distorts the definition of a model-based object or adds meaningless artificial objects.
 
-> 一些领域概念不适合被建模为对象。如果勉强把这些重要的领域功能归为 ENTITY 或 VALUEOBJECT 的职责，那么不是歪曲了基于模型的对象的定义，就是人为地增加了一些无意义的对象。
+> 一些领域概念不适合被建模为对象。如果勉强把这些重要的领域功能归为 ENTITY 或 VALUE OBJECT 的职责，那么不是歪曲了基于模型的对象的定义，就是人为地增加了一些无意义的对象。
 
 A SERVICE is an operation offered as an interface that stands alone in the model, without encapsulating state, as ENTITIES and VALUE OBJECTS do. SERVICES are a common pattern in technical frameworks, but they can also apply in the domain layer.
 

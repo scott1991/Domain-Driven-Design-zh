@@ -214,7 +214,7 @@ Don’t become paralyzed trying to bring about a breakthrough. The possibility u
 
 To set the stage for a breakthrough, concentrate on knowledge crunching and cultivating a robust UBIQUITOUS LANGUAGE. Probe for important domain concepts and make them explicit in the model (as discussed in Chapter 9). Refine the design to be suppler (see Chapter 10). Distill the model (see Chapter 15). Push on these more predictable levers, which increase clarity—usually a precursor of breakthroughs.
 
-> 要为突破做好准备，应专注于知识消化过程，同时也要逐渐建立健壮的 UBIQUITOUSLANGUAGE。寻找那些重要的领域概念，并在模型中清晰地表达出来（参见第 9 章）。精化模型，使其更具柔性（参见第 10 章）。提炼模型（参见第 15 章）。利用这些更容易掌握的手段使模型变得更清晰，这通常会带来突破。
+> 要为突破做好准备，应专注于知识消化过程，同时也要逐渐建立健壮的 UBIQUITOUS LANGUAGE。寻找那些重要的领域概念，并在模型中清晰地表达出来（参见第 9 章）。精化模型，使其更具柔性（参见第 10 章）。提炼模型（参见第 15 章）。利用这些更容易掌握的手段使模型变得更清晰，这通常会带来突破。
 
 Don’t hold back from modest improvements, which gradually deepen the model, even if confined within the same general conceptual framework. Don’t be paralyzed by looking too far forward. Just be watchful for the opportunity.
 
