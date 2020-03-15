@@ -9,9 +9,7 @@
   <img src="./docs/cover_zh.jpg" width="210px" height="280px" />
 </div>
 
-## 前言
-
-## Index
+## 目录
 
 - [第一部分 运用领域模型](docs/part1.md)
 - [第 1 章 消化知识](docs/ch1.md)
