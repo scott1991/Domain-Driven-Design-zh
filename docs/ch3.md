@@ -144,7 +144,7 @@ Object-oriented programming is powerful because it is based on a modeling paradi
 
 Although it has never reached the mass usage that object-oriented languages have, the Prolog language is a natural fit for MODEL-DRIVEN DESIGN. In this case, the paradigm is logic, and the model is a set of logical rules and facts they operate on.
 
-> Prolog 语言并不像面向对象语言那样被广泛使用，但是它却非常适合 MODEL-DRIVENDESIGN。在 MODEL-DRIVEN DESIGN 中，建模范式是逻辑的，而模型则是一组逻辑规则以及这些规则所操作的事实。
+> Prolog 语言并不像面向对象语言那样被广泛使用，但是它却非常适合 MODEL-DRIVEN DESIGN。在 MODEL-DRIVEN DESIGN 中，建模范式是逻辑的，而模型则是一组逻辑规则以及这些规则所操作的事实。
 
 MODEL-DRIVEN DESIGN has limited applicability using languages such as C, because there is no modeling paradigm that corresponds to a purely procedural language. Those languages are procedural in the sense that the programmer tells the computer a series of steps to follow. Although the programmer may be thinking about the concepts of the domain, the program itself is a series of technical manipulations of data. The result may be useful, but the program doesn’t capture much of the meaning. Procedural languages often support complex data types that begin to correspond to more natural conceptions of the domain, but these complex types are only organized data, and they don’t capture the active aspects of the domain. The result is that software written in procedural languages has complicated functions linked together based on anticipated paths of execution, rather than by conceptual connections in the domain model.
 

@@ -172,7 +172,7 @@ Role and Other Attributes
 
 Role says something about the association it qualifies, but it has no history or continuity. It is a VALUE OBJECT, and it could be shared among different Cargo/Customer associations.
 
-> Role 表示了有关它所限定的关联的一些信息，但它没有历史或连续性。因此它是一个 VALUEOBJECT，可以在不同的 Cargo/Customer 关联中共享它。
+> Role 表示了有关它所限定的关联的一些信息，但它没有历史或连续性。因此它是一个 VALUE OBJECT，可以在不同的 Cargo/Customer 关联中共享它。
 
 Other attributes such as time stamps or names are VALUE OBJECTS.
 
@@ -474,7 +474,7 @@ The Sales Management System was not written with the same model in mind that we 
 
 This is an interface to the Sales Management System, so we might first think of calling it something like “Sales Management Interface.” But we would be missing an opportunity to use language to recast the problem along lines more useful to us. Instead, let’s define a SERVICE for each of the allocation functions we need to get from the other system. We’ll implement the SERVICES with a class whose name reflects its responsibility in our system: “Allocation Checker.”
 
-> 这是连接销售管理系统的一个接口，因此首先就会想到将它叫做 Sales ManagementInterface（销售管理接口）。但这样一来就失去了用对我们更有价值的语言来重新描述问题的机会。相反，让我们为每个需要从其他系统获得的配额功能定义一个 SERVICE。我们用一个名为 Allocation Checker（配额检查器）的类来实现这些 SERVICE，这个类名反映了它在系统中的职责。
+> 这是连接销售管理系统的一个接口，因此首先就会想到将它叫做 Sales Management Interface（销售管理接口）。但这样一来就失去了用对我们更有价值的语言来重新描述问题的机会。相反，让我们为每个需要从其他系统获得的配额功能定义一个 SERVICE。我们用一个名为 Allocation Checker（配额检查器）的类来实现这些 SERVICE，这个类名反映了它在系统中的职责。
 
 If some other integration is needed (for example, using the Sales Management System’s customer database instead of our own Customer REPOSITORY), another translator can be created with SERVICES fulfilling that responsibility. It might still be useful to have a lower level class like Sales Management System Interface to handle the machinery of talking to the other program, but it wouldn’t be responsible for translation. Also, it would be hidden behind the Allocation Checker, so it wouldn’t show up in the domain design.
 
@@ -488,7 +488,7 @@ Now that we have outlined the interaction of the two systems, what kind of inter
 
 Sometimes (as will be discussed in Chapter 11) an analysis pattern can give us an idea for a modeling solution. The book Analysis Patterns (Fowler 1996) describes a pattern that addresses this kind of problem: the ENTERPRISE SEGMENT. An ENTERPRISE SEGMENT is a set of dimensions that define a way of breaking down a business. These dimensions could include all those mentioned already for the shipping business, as well as time dimensions, such as month to date. Using this concept in our model of allocation makes the model more expressive and simplifies the interfaces. A class called “Enterprise Segment” will appear in our domain model and design as an additional VALUE OBJECT, which will have to be derived for each Cargo.
 
-> 有时，分析模式可以为建模方案提供思路（第 11 章将会讨论到）。《分析模式》[Fowler 1996]一书介绍了一种用于解决这类问题的模式：ENTERPRISE SEGMENT（企业部门单元）。ENTERPRISE SEGMENT 是一组维度，它们定义了一种对业务进行划分的方式。这些维度可能包括我们在运输业务中已经提到的所有划分方法，也包括时间维度，如月初至今（month todate）。在我们的配额模型中使用这个概念，可以增强模型的表达力，并简化接口。这样，我们的领域模型和设计中就增加了一个名为 Enterprise Segment 的类，它是一个 VALUEOBJECT，每个 Cargo 都必须获得一个 Enterprise Segment 类。
+> 有时，分析模式可以为建模方案提供思路（第 11 章将会讨论到）。《分析模式》[Fowler 1996]一书介绍了一种用于解决这类问题的模式：ENTERPRISE SEGMENT（企业部门单元）。ENTERPRISE SEGMENT 是一组维度，它们定义了一种对业务进行划分的方式。这些维度可能包括我们在运输业务中已经提到的所有划分方法，也包括时间维度，如月初至今（month todate）。在我们的配额模型中使用这个概念，可以增强模型的表达力，并简化接口。这样，我们的领域模型和设计中就增加了一个名为 Enterprise Segment 的类，它是一个 VALUE OBJECT，每个 Cargo 都必须获得一个 Enterprise Segment 类。
 
 <Figures figure="7-10">The Allocation Checker acts as an ANTICORRUPTION LAYER presenting a selective interface to the Sales Management System in terms of our domain model.</Figures>
 

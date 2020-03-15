@@ -447,7 +447,7 @@ A document must be involved in project activities. The easiest way to judge this
 
 Listen to the UBIQUITOUS LANGUAGE and how it is changing. If the terms explained in a design document don’t start showing up in conversations and code, the document is not fulfilling its purpose. Maybe the document is too big or complicated. Maybe it is not focused on a sufficiently important topic. People are either not reading it or not finding it compelling. If it is having no impact on the UBIQUITOUS LANGUAGE, something is wrong.
 
-> 注意听 UBIQUITOUS LANGUAGE，观察它是如何变化的。如果设计文档中使用的术语不再出现在讨论和代码中，那么文档就没有起到它的作用。或许是文档太大或太复杂了，或许是它没有关注足够重要的主题。人们要么不阅读文档，要么觉得它索然无味。如果文档对 UBIQUITOUSLANGUAGE 没有影响，那么一定是出问题了。
+> 注意听 UBIQUITOUS LANGUAGE，观察它是如何变化的。如果设计文档中使用的术语不再出现在讨论和代码中，那么文档就没有起到它的作用。或许是文档太大或太复杂了，或许是它没有关注足够重要的主题。人们要么不阅读文档，要么觉得它索然无味。如果文档对 UBIQUITOUS LANGUAGE 没有影响，那么一定是出问题了。
 
 Conversely, you may hear the UBIQUITOUS LANGUAGE changing naturally while a document is being left behind. Evidently the document does not seem relevant to people or does not seem important enough to update. It could safely be archived as history, but left active it could create confusion and hurt the project. And if a document isn’t playing an important role, keeping it up to date through sheer will and discipline wastes effort.
 
@@ -455,7 +455,7 @@ Conversely, you may hear the UBIQUITOUS LANGUAGE changing naturally while a docu
 
 The UBIQUITOUS LANGUAGE allows other documents, such as requirements specifications, to be more concise and less ambiguous. As the domain model comes to reflect the most relevant knowledge of the business, application requirements become scenarios within that model, and the UBIQUITOUS LANGUAGE can be used to describe such a scenario in terms that directly connect to the MODEL-DRIVEN DESIGN (see Chapter 3). As a result, specifications can be written more simply, because they do not have to convey the business knowledge that lies behind the model.
 
-> UBIQUITOUS LANGUAGE 可以使其他文档（如需求规格说明）更简洁和明确。当领域模型反映了与业务最相关的知识时，应用程序的需求成为该模型内部的场景，而 UBIQUITOUSLANGUAGE 可直接用 MODEL-DRIVEN DESIGN（模型驱动设计）的方式描述此类场景（参见第 3 章）。结果就是规格说明的编写更简单，因为它们不必传达模型背后隐含的业务知识。
+> UBIQUITOUS LANGUAGE 可以使其他文档（如需求规格说明）更简洁和明确。当领域模型反映了与业务最相关的知识时，应用程序的需求成为该模型内部的场景，而 UBIQUITOUS LANGUAGE 可直接用 MODEL-DRIVEN DESIGN（模型驱动设计）的方式描述此类场景（参见第 3 章）。结果就是规格说明的编写更简单，因为它们不必传达模型背后隐含的业务知识。
 
 By keeping documents minimal and focusing them on complementing code and conversation, documents can stay connected to the project. Let the UBIQUITOUS LANGUAGE and its evolution be your guide to choosing documents that live and get woven into the project’s activity.
 

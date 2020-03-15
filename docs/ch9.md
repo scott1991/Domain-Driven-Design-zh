@@ -1086,4 +1086,4 @@ It took specialists in optimization algorithms months to get it right. They bene
 
 Here we have an example of a “simplest thing that could possibly work” that actually becomes possible because of a more sophisticated model. We can have a functioning prototype of a very complex component in a couple dozen lines of easily understood code. A less MODEL-DRIVEN approach would be harder to understand, would be harder to upgrade (because the Packer would be more coupled to the rest of the design), and in this case, would likely take longer to prototype.
 
-> 这里的例子演示了如何通过更巧妙的模型使“最简单却可能非常最有效的事物”成为可能。我们可以用几十行简单易懂的代码编写出复杂组件的功能原型。如果不用 MODEL-DRIVENDESIGN，系统会更难理解和升级（因为 Packer 与设计的其他部分更紧密地耦合在一起），在这种情况下，开发原型可能会更加耗时。
+> 这里的例子演示了如何通过更巧妙的模型使“最简单却可能非常最有效的事物”成为可能。我们可以用几十行简单易懂的代码编写出复杂组件的功能原型。如果不用 MODEL-DRIVEN DESIGN，系统会更难理解和升级（因为 Packer 与设计的其他部分更紧密地耦合在一起），在这种情况下，开发原型可能会更加耗时。
