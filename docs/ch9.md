@@ -454,7 +454,7 @@ Here are some warning signs that a constraint is distorting the design of its ho
 
 When the constraints are obscuring the object’s basic responsibility, or when the constraint is prominent in the domain yet not prominent in the model, you can factor it out into an explicit object or even model it as a set of objects and relationships. (One in-depth, semiformal treatment of this subject can be found in The Object Constraint Language: Precise Modeling with UML [Warmer and Kleppe 1999].)
 
-> 如果约束的存在掩盖了对象的基本职责，或者如果约束在领域中非常突出但在模型中却不明显，那么就可以将其提取到一个显式的对象中，甚至可以把它建模为一个对象和关系的集合。（TheObject Constraint Language:Precise Modeling with UML[Warmer and Kleppe 1999]一书中提供了关于这个问题的半正式的深入解决方案。）
+> 如果约束的存在掩盖了对象的基本职责，或者如果约束在领域中非常突出但在模型中却不明显，那么就可以将其提取到一个显式的对象中，甚至可以把它建模为一个对象和关系的集合。（The Object Constraint Language:Precise Modeling with UML[Warmer and Kleppe 1999]一书中提供了关于这个问题的半正式的深入解决方案。）
 
 Example: Review: Overbooking Policy
 
@@ -884,7 +884,7 @@ Example: Chemical Warehouse Packer
 
 There is a warehouse in which various chemicals are stored in stacks of large containers, similar to boxcars. Some chemicals are inert and can be stored just about anywhere. Some are volatile and have to be stored in specially ventilated containers. Some are explosive and have to be stored in specially armored containers. There are also rules about the combinations allowed in a container.
 
-> 以随意摆放。有些则是易挥发的，必须放于特制的通风容器中。还有一些是易爆品，必须保存于特制的防爆容器中。还有一些规则是关于如何在容器中混装化学品的。
+> 假设有一个仓库，里面用类似于火车车厢的大型容器存放各种化学品。有些化学品是惰性的，可以随意摆放。有些则是易挥发的，必须放于特制的通风容器中。还有一些是易爆品，必须保存于特制的防爆容器中。还有一些规则是关于如何在容器中混装化学品的。
 
 The goal is to write software that will find an efficient and safe way to put the chemicals in the containers.
 
