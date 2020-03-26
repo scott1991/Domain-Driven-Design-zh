@@ -90,7 +90,7 @@ To focus our exploration, we limited ourselves, for a while, to studying one par
 
 - Developer: But what exactly do you need to know from this computation?
 - Expert 2: We’d be looking for long signal delays—say, any signal path that was more than two or three hops. It’s a rule of thumb. If the path is too long, the signal may not arrive during the clock cycle.
-- Developer: More than three hops.... So we need to calculate the path lengths. And what counts as a hop?
+- Developer: More than three hops... So we need to calculate the path lengths. And what counts as a hop?
 - Expert 2: Each time the signal goes over a Net, that’s one hop.
 - Developer: So we could pass the number of hops along, and a Net could increment it, like this.
 
