@@ -56,6 +56,7 @@ yarn docs:dev
   <tr>
     <td align="center"><a href="https://gdut-yy.github.io/"><img src="https://avatars2.githubusercontent.com/u/33390928?s=460&v=4" width="100px;" /><br /><sub><b>gdut-yy</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/macdao"><img src="https://avatars3.githubusercontent.com/u/1311124?s=460&v=4" width="100px;" /><br /><sub><b>macdao</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/hustcc"><img src="https://avatars3.githubusercontent.com/u/7856674?s=460&u=2a891a2bf8cc56692c38acb15e5048c80534c8e5&v=4" width="100px;" /><br /><sub><b>hustcc</b></sub></a><br /></td>
   </tr>
 </table>
 
