@@ -1,11 +1,9 @@
-# 领域驱动设计 中文
+# 目录
 
 <div style="margin: 0 auto;">
   <img src="./cover_en.jpg" width="210px" height="280px" />
   <img src="./cover_zh.jpg" width="210px" height="280px" />
 </div>
-
-## 目录
 
 - [第一部分 运用领域模型](part1.md)
 - [第 1 章 消化知识](ch1.md)

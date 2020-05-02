@@ -1,6 +1,6 @@
 # Domain-Driven-Design-zh
 
-《领域驱动设计:软件核心复杂性应对之道》中文翻译
+《领域驱动设计：软件核心复杂性应对之道》中文翻译
 
 在线阅读：[http://gdut_yy.gitee.io/doc-ddd/](http://gdut_yy.gitee.io/doc-ddd/)
 
@@ -60,6 +60,10 @@ yarn docs:dev
   </tr>
 </table>
 
+## 更多书籍
+
+[https://github.com/xx-zh/xx-zh-roadmap](https://github.com/xx-zh/xx-zh-roadmap)
+
 ## License
 
-[MIT](https://github.com/gdut-yy/Domain-Driven-Design-zh/blob/master/LICENSE)
+[MIT](./LICENSE)
