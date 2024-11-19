@@ -44,6 +44,14 @@ The value of layers is that each specializes in a particular aspect of a compute
 
 ![](figures/ch4/t0070_01.jpg)
 
+>User Interface (使用者介面層)：負責向使用者展現資訊，並解釋使用者指令。 例如： 網頁、桌面應用程式、移動 App 等。 外部參與者有時會是另一個電腦系統，而不是人類使用者。
+
+>Application Layer (應用層)：定義軟體要完成的任務，並協調領域層中的物件來解決問題。 應用層本身不包含業務邏輯，而是作為領域層的客戶端，通過調用領域層來完成用例。 例如： 處理使用者註冊、提交訂單、發送通知等。 這一層協調領域物件的活動，但不應該包含業務規則或知識。它負責事務管理和安全授權等工作，但這些工作應該被委託給基礎設施層。
+
+>Domain Layer (領域層)：負責表達業務概念、業務狀態資訊以及業務規則。 這是軟體的核心層，包含了領域模型、業務邏輯和業務規則。 例如： 訂單、商品、客戶、庫存等領域對象，以及訂單處理、庫存管理、價格計算等業務邏輯。
+
+>Infrastructure Layer (基礎設施層)：為上面各層提供通用的技術能力。 例如： 資料庫訪問、消息隊列、郵件發送、第三方 API 調用等。 所有與特定平台、框架和技術相關的細節都應該放在這一層。
+
 Some projects don’t make a sharp distinction between the user interface and application layers. Others have multiple infrastructure layers. But it is the crucial separation of the domain layer that enables MODEL-DRIVEN DESIGN.
 
 > 有些项目没有明显划分出用户界面层和应用层，而有些项目则有多个基础设施层。但是将领域层分离出来才是实现 MODEL-DRIVEN DESIGN 的关键。
