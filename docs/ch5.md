@@ -83,12 +83,14 @@ The United States has had many presidents, as have many other countries. This is
 > 像很多国家一样，美国有过很多位总统。这是一种双向的、一对多的关系。然而，在提到“乔治·华盛顿”这个名字时，我们很少会问“他是哪个国家的总统？”。从实用的角度讲，我们可以将这种关系简化为从国家到总统的单向关联。如图 5-1 所示。这种精化实际上反映了对领域的深入理解，而且也是一个更实用的设计。它表明一个方向的关联比另一个方向的关联更有意义且更重要。也使得 Person 类不受非基本概念 President 的束缚。
 
 <Figures figure="5-1">Some traversal directions reflect a natural bias in the domain.</Figures>
+![](figures/ch5/05fig01.jpg)
 
 Very often, deeper understanding leads to a “qualified” relationship. Looking deeper into presidents, we realize that (except in a civil war, perhaps) a country has only one president at a time. This qualifier reduces the multiplicity to one-to-one, and explicitly embeds an important rule into the model. Who was president of the United States in 1790? George Washington.
 
 > 通常，通过更深入的理解可以得到一个“限定的”关系。进一步研究总统的例子就可以知道，一个国家在一段时期内只能有一位总统（内战期间或许有例外）。这个限定条件把多重关系简化为一对一关系，并且在模型中植入了一条明确的规则。如图 5-2 所示。1790 年谁是美国总统？乔治·华盛顿。
 
 <Figures figure="5-2">Constrained associations communicate more knowledge and are more practical designs.</Figures>
+![](figures/ch5/05fig02.jpg)
 
 Constraining the traversal direction of a many-to-many association effectively reduces its implementation to one-to-many—a much easier design.
 
@@ -107,6 +109,8 @@ Example: Associations in a Brokerage Account
 > 示例 Brokerage Account（经纪账户）中的关联
 
 <Figures figure="5-3"></Figures>
+![](figures/ch5/05fig03.jpg)
+
 
 One Java implementation of Brokerage Account in this model would be
 
@@ -175,6 +179,7 @@ Let’s refine the model by qualifying the association between Brokerage Account
 > 下面，我们通过限定 Brokerage Account（经纪账户）与 Investment（投资）之间的关联来简化其多重性，从而对模型进行精化。具体的限定是：每支股票只能对应于一笔投资，如图 5-4 所示。
 
 <Figures figure="5-4"></Figures>
+![](figures/ch5/05fig04.jpg)
 
 This wouldn’t be true of all business situations (for example, if the lots need to be tracked), but whatever the particular rules, as constraints on associations are discovered they should be included in the model and implementation. They make the model more precise and the implementation easier to maintain.
 
@@ -331,6 +336,8 @@ The customerID is the one and only identifier of the Customer ENTITY in Figure 5
 > 在图 5-5 中，customerID 是 Customer ENTITY 的一个（也是唯一的）标识符，但 phonenumber（电话号码）和 address（地址）都经常用来查找或匹配一个 Customer（客户）。name（姓名）没有定义一个人的标识，但它通常是确定人的方式之一。在这个示例中，phone 和 address 属性被移到 Customer 中，但在实际的项目上，这种选择取决于领域中的 Customer 一般是如何匹配或区分的。例如，如果一个 Customer 有很多用于不同目的的 phone number，那么 phone number 就与标识无关，因此应该放在 Sales Contact（销售联系人）中。
 
 <Figures figure="5-5">Attributes associated with identity stay with the ENTITY.</Figures>
+![](figures/ch5/05fig05.jpg)
+
 
 ### 5.2.2 Designing the Identity Operation 设计标识操作
 
@@ -465,6 +472,7 @@ The attributes that make up a VALUE OBJECT should form a conceptual whole.2 For 
 > VALUE OBJECT 所包含的属性应该形成一个概念整体。例如，street（街道）、city（城市）和 postal code（邮政编码）不应是 Person（人）对象的单独的属性。它们是整个地址的一部分，这样可以使得 Person 对象更简单，并使地址成为一个更一致的 VALUE OBJECT，如图 5-6 所示。
 
 <Figures figure="5-6">A VALUE OBJECT can give information about an ENTITY. It should be conceptually whole.</Figures>
+![](figures/ch5/05fig06.jpg)
 
 ---
 
