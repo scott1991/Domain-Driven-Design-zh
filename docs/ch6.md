@@ -7,6 +7,7 @@ Every object has a life cycle. An object is born, it likely goes through various
 > 每个对象都有生命周期，如图 6-1 所示。对象自创建后，可能会经历各种不同的状态，直至最终消亡——要么存档，要么删除。当然，很多对象是简单的临时对象，仅通过调用构造函数来创建，用来做一些计算，而后由垃圾收集器回收。这类对象没必要搞得那么复杂。但有些对象具有更长的生命周期，其中一部分时间不是在活动内存中度过的。它们与其他对象具有复杂的相互依赖性。它们会经历一些状态变化，在变化时要遵守一些固定规则。管理这些对象时面临诸多挑战，稍有不慎就会偏离 MODEL-DRIVEN DESIGN 的轨道。
 
 <Figures figure="6-1">The life cycle of a domain object</Figures>
+![](figures/ch6/06fig01.jpg)
 
 The challenges fall into two categories.
 
@@ -85,12 +86,14 @@ A model of a car might be used in software for an auto repair shop. The car is a
 > 汽车修配厂的软件可能会使用汽车模型。如图 6-2 所示。汽车是一个具有全局标识的 ENTITY：我们需要将这部汽车与世界上所有其他汽车区分开（即使是一些非常相似的汽车）。我们可以使用车辆识别号来进行区分，车辆识别号是为每辆新汽车分配的唯一标识符。我们可能想通过 4 个轮子的位置跟踪轮胎的转动历史。我们可能想知道每个轮胎的里程数和磨损度。要想知道哪个轮胎在哪儿，必须将轮胎标识为 ENTITY。当脱离这辆车的上下文后，我们很可能就不再关心这些轮胎的标识了。如果更换了轮胎并将旧轮胎送到回收厂，那么软件将不再需要跟踪它们，它们会成为一堆废旧轮胎中的一部分。没有人会关心它们的转动历史。更重要的是，即使轮胎被安在汽车上，也不会有人通过系统查询特定的轮胎，然后看看这个轮胎在哪辆汽车上。人们只会在数据库中查找汽车，然后临时查看一下这部汽车的轮胎情况。因此，汽车是 AGGREGATE 的根 ENTITY，而轮胎处于这个 AGGREGATE 的边界之内。另一方面，发动机组上面都刻有序列号，而且有时是独立于汽车被跟踪的。在一些应用程序中，发动机可以是自己的 AGGREGATE 的根。
 
 <Figures figure="6-2">Local versus global identity and object references</Figures>
+![](figures/ch6/06fig02.jpg)
 
 Invariants, which are consistency rules that must be maintained whenever data changes, will involve relationships between members of the AGGREGATE. Any rule that spans AGGREGATES will not be expected to be up-to-date at all times. Through event processing, batch processing, or other update mechanisms, other dependencies can be resolved within some specified time. But the invariants applied within an AGGREGATE will be enforced with the completion of each transaction.
 
 > 固定规则（invariant）是指在数据变化时必须保持的一致性规则，其涉及 AGGREGATE 成员之间的内部关系。而任何跨越 AGGREGATE 的规则将不要求每时每刻都保持最新状态。通过事件处理、批处理或其他更新机制，这些依赖会在一定的时间内得以解决。但在每个事务完成时，AGGREGATE 内部所应用的固定规则必须得到满足，如图 6-3 所示。
 
 <Figures figure="6-3">AGGREGATE invariants</Figures>
+![](figures/ch6/06fig03.jpg)
 
 Now, to translate that conceptual AGGREGATE into the implementation, we need a set of rules to apply to all transactions.
 
@@ -131,6 +134,7 @@ Consider the complications possible in a simplified purchase order system.
 > 考虑一个简化的采购订单系统（见图 6-4）可能具有的复杂性。
 
 <Figures figure="6-4">A model for a purchase order system</Figures>
+![](figures/ch6/06fig04.jpg)
 
 This diagram presents a pretty conventional view of a purchase order (PO), broken down into line items, with an invariant rule that the sum of the line items can’t exceed the limit for the PO as a whole. The existing implementation has three interrelated problems.
 
@@ -151,18 +155,21 @@ Multiple users will be entering and updating various POs concurrently, and we ha
 > 多个用户将并发地输入和更新各个 PO，因此必须防止他们互相干扰。让我们从一个非常简单的策略开始，当一个用户开始编辑任何一个对象时，锁定该对象，直到用户提交事务。这样，当 George 编辑采购项 001 时，Amanda 就无法访问该项。Amanda 可以编辑其他 PO 上的任何采购项（包括 George 正在编辑的 PO 上的其他采购项），如图 6-5 所示。
 
 <Figures figure="6-5">The initial condition of the PO stored in the database</Figures>
+![](figures/ch6/06fig05.jpg)
 
 Objects will be read from the database and instantiated in each user’s memory space. There they can be viewed and edited. Database locks will be requested only when an edit begins. So both George and Amanda can work concurrently, as long as they stay away from each other’s items. All is well . . . until both George and Amanda start working on separate line items in the same PO.
 
 > 每个用户都将从数据库读取对象，并在自己的内存空间中实例化对象，而后在那里查看和编辑对象。只有当开始编辑时，才会请求进行数据库锁定。因此，George 和 Amanda 可以同时工作，只要他们不同时编辑相同的采购项即可。一切正常，直到 George 和 Amanda 开始编辑同一个 PO 上的不同采购项，如图 6-6 所示。
 
 <Figures figure="6-6">Simultaneous edits in distinct transactions</Figures>
+![](figures/ch6/06fig06.jpg)
 
 Everything looks fine to both users and to their software because they ignore changes to other parts of the database that happen during the transaction, and neither locked line item is involved in the other user’s change.
 
 > 从这两个用户和他们各自软件的角度来看，他们的操作都没有问题，因为他们忽略了事务期间数据库其他部分所发生的变化，而且每个用户都没有修改被对方锁定的采购项。
 
 <Figures figure="6-7">The resulting PO violates the approval limit (broken invariant).</Figures>
+![](figures/ch6/06fig07.jpg)
 
 After both users have saved their changes, a PO is stored in the database that violates the invariant of the domain model. An important business rule has been broken. And nobody even knows.
 
@@ -173,6 +180,7 @@ Clearly, locking a single line item isn’t an adequate safeguard. If instead we
 > 显然，锁定单个行并不是一种充分的保护机制。如果一次锁定一个 PO，可以防止这样的问题发生，如图 6-8 所示。
 
 <Figures figure="6-8">Locking the entire PO allows the invariant to be enforced.</Figures>
+![](figures/ch6/06fig08.jpg)
 
 The program will not allow this transaction to be saved until Amanda has resolved the problem, perhaps by raising the limit or by eliminating a guitar. This mechanism prevents the problem, and it may be a fine solution if work is mostly spread widely across many POs. But if multiple people typically work simultaneously on different line items of a large PO, then this locking will get cumbersome.
 
@@ -187,12 +195,14 @@ Let’s try locking the part in addition to the entire PO. Here’s what happens
 > 那么，我们试着除了锁定整个 PO 之外，也锁定 Part。图 6-9 展示了当 George、Amanda 和 Sam 在不同 PO 上工作时将会发生的情况。
 
 <Figures figure="6-9">Over-cautious locking is interfering with people’s work.</Figures>
+![](figures/ch6/06fig09.jpg)
 
 The inconvenience is mounting, because there is a lot of contention for the instruments (the “parts”). And then:
 
 > 工作变得越来越麻烦，因为在 Part 上出现了很多争用的情况。这样就会发生图 6-10 中的结果：
 
 <Figures figure="6-10">Deadlock</Figures>
+![](figures/ch6/06fig10.jpg)
 
 Those three will be waiting a while.
 
@@ -217,6 +227,7 @@ Point 3 is particularly obvious when we consider archived POs that have already 
 > 当考虑已经交货并存档的 PO 时，第三点尤为明显。它们显示的当然是填写时的价格，而不是当前价格。
 
 <Figures figure="6-11">Price is copied into Line Item. AGGREGATE invariant can now be enforced.</Figures>
+![](figures/ch6/06fig11.jpg)
 
 An implementation consistent with this model would guarantee the invariant relating PO and its items, while changes to the price of a part would not have to immediately affect the items that reference it. Broader consistency rules could be addressed in other ways. For example, the system could present a queue of items with outdated prices to the users each day, so they could update or exempt each one. But this is not an invariant that must be enforced at all times. By making the dependency of line items on parts looser, we avoid contention and reflect the realities of the business better. At the same time, tightening the relationship of the PO and its line items guarantees that an important business rule will be followed.
 
@@ -271,6 +282,7 @@ Every object-oriented language provides a mechanism for creating objects (constr
 > 每种面向对象的语言都提供了一种创建对象的机制（例如，Java 和 C++中的构造函数，Smalltalk 中创建实例的类方法），但我们仍然需要一种更加抽象且不与其他对象发生耦合的构造机制。这就是 FACTORY，它是一种负责创建其他对象的程序元素。如图 6-12 所示。
 
 <Figures figure="6-12">Basic interactions with a FACTORY</Figures>
+![](figures/ch6/06fig12.jpg)
 
 Just as the interface of an object should encapsulate its implementation, thus allowing a client to use the object’s behavior without knowing how it works, a FACTORY encapsulates the knowledge needed to create a complex object or AGGREGATE. It provides an interface that reflects the goals of the client and an abstract view of the created object.
 
@@ -313,6 +325,7 @@ For example, if you needed to add elements inside a preexisting AGGREGATE, you m
 > 例如，如果需要向一个已存在的 AGGREGATE 添加元素，可以在 AGGREGATE 的根上创建一个 FACTORY METHOD。这样就可以把 AGGREGATE 的内部实现细节隐藏起来，使任何外部客户看不到这些细节，同时使根负责确保 AGGREGATE 在添加元素时的完整性，如图 6-13 所示。
 
 <Figures figure="6-13">A FACTORY METHOD encapsulates expansion of an AGGREGATE.</Figures>
+![](figures/ch6/06fig13.jpg)
 
 Another example would be to place a FACTORY METHOD on an object that is closely involved in spawning another object, although it doesn’t own the product once it is created. When the data and possibly the rules of one object are very dominant in the creation of an object, this saves pulling information out of the spawner to be used elsewhere to create the object. It also communicates the special relationship between the spawner and the product.
 
@@ -323,12 +336,14 @@ In Figure 6.14, the Trade Order is not part of the same AGGREGATE as the Brokera
 > 在图 6-14 中，Trade Order 不属于 Brokerage Account 所在的 AGGREGATE，因为它从一开始就与交易执行应用程序进行交互，所以把它放在 Brokerage Account 中只会碍事。尽管如此，让 Brokerage Account 负责控制 Trade Order 的创建却是很自然的事情。Brokerage Account 含有会被嵌入到 Trade Order 中的信息（从自己的标识开始），而且它还包含与交易相关的规则——这些规则控制了哪些交易是允许的。隐藏 Trade Order 的实现细节还会带来一些其他好处。例如，我们可以将它重构为一个层次结构，分别为 Buy Order 和 Sell Order 创建一些子类。FACTORY 可以避免客户与具体类之间产生耦合。
 
 <Figures figure="6-14">A FACTORY METHOD spawns an ENTITY that is not part of the same AGGREGATE.</Figures>
+![](figures/ch6/06fig14.jpg)
 
 A FACTORY is very tightly coupled to its product, so a FACTORY should be attached only to an object that has a close natural relationship with the product. When there is something we want to hide—either the concrete implementation or the sheer complexity of construction—yet there doesn’t seem to be a natural host, we must create a dedicated FACTORY object or SERVICE. A standalone FACTORY usually produces an entire AGGREGATE, handing out a reference to the root, and ensuring that the product AGGREGATE’S invariants are enforced. If an object interior to an AGGREGATE needs a FACTORY, and the AGGREGATE root is not a reasonable home for it, then go ahead and make a standalone FACTORY. But respect the rules limiting access within an AGGREGATE, and make sure there are only transient references to the product from outside the AGGREGATE.
 
 > FACTORY 与被构建对象之间是紧密耦合的，因此 FACTORY 应该只被关联到与被构建对象有着密切联系的对象上。当有些细节需要隐藏（无论要隐藏的是具体实现还是构造的复杂性）而又找不到合适的地方来隐藏它们时，必须创建一个专用的 FACTORY 对象或 SERVICE。整个 AGGREGATE 通常由一个独立的 FACTORY 来创建，FACTORY 负责把对根的引用传递出去，并确保创建出的 AGGREGATE 满足固定规则。如果 AGGREGATE 内部的某个对象需要一个 FACTORY，而这个 FACTORY 又不适合在 AGGREGATE 根上创建，那么应该构建一个独立的 FACTORY。但仍应遵守规则——把访问限制在 AGGREGATE 内部，并确保从 AGGREGATE 外部只能对被构建对象进行临时引用，如图 6-15 所示。
 
 <Figures figure="6-15">A standalone FACTORY builds AGGREGATE.</Figures>
+![](figures/ch6/06fig15.jpg)
 
 ### 6.2.2 When a Constructor Is All You Need 有些情况下只需使用构造函数
 
@@ -443,8 +458,10 @@ Figures 6.16 and 6.17 (on the next page) show two kinds of reconstitution. Objec
 > 图 6-16 和图 6-17 显示了两种重建。当从数据库中重建对象时，对象映射技术就可以提供部分或全部所需服务，这是非常便利的。当从其他介质重建对象时，如果出现复杂情况，FACTORY 是个很好的选择。
 
 <Figures figure="6-16">Reconstituting an ENTITY retrieved from a relational database</Figures>
+![](figures/ch6/06fig16.jpg)
 
 <Figures figure="6-17">Reconstituting an ENTITY transmitted as XML</Figures>
+![](figures/ch6/06fig17.jpg)
 
 To sum up, the access points for creation of instances must be identified, and their scope must be defined explicitly. They may simply be constructors, but often there is a need for a more abstract or elaborate instance creation mechanism. This need introduces new constructs into the design: FACTORIES. FACTORIES usually do not express any part of the model, yet they are a part of the domain design that helps keep the model-expressing objects sharp.
 
@@ -533,6 +550,7 @@ Clients request objects from the REPOSITORY using query methods that select obje
 > 客户使用查询方法向 REPOSITORY 请求对象，这些查询方法根据客户所指定的条件（通常是特定属性的值）来挑选对象。REPOSITORY 检索被请求的对象，并封装数据库查询和元数据映射机制。REPOSITORY 可以根据客户所要求的各种条件来挑选对象。它们也可以返回汇总信息，如有多少个实例满足查询条件。REPOSITORY 甚至能返回汇总计算，如所有匹配对象的某个数值属性的总和，如图 6-18 所示。
 
 <Figures figure="6-18">A REPOSITORY doing a search for a client</Figures>
+![](figures/ch6/06fig18.jpg)
 
 A REPOSITORY lifts a huge burden from the client, which can now talk to a simple, intention-revealing interface, and ask for what it needs in terms of the model. To support all this requires a lot of complex technical infrastructure, but the interface is simple and conceptually connected to the domain model.
 
@@ -579,6 +597,7 @@ Although most queries return an object or a collection of objects, it also fits 
 > 尽管大多数查询都返回一个对象或对象集合，但返回某些类型的汇总计算也符合 REPOSITORY 的概念，如对象数目，或模型需要对某个数值属性进行求和统计。
 
 <Figures figure="6-19">Hard-coded queries in a simple REPOSITORY</Figures>
+![](figures/ch6/06fig19.jpg)
 
 Hard-coded queries can be built on top of any infrastructure and without a lot of investment, because they do just what some client would have had to do anyway.
 
@@ -593,6 +612,7 @@ One particularly apt approach to generalizing REPOSITORIES through a framework i
 > 基于 SPECIFICATION（规格）的查询是将 REPOSITORY 通用化的好办法。客户可以使用规格来描述（也就是指定）它需要什么，而不必关心如何获得结果。在这个过程中，可以创建一个对象来实际执行筛选操作。第 9 章将深入讨论这种模式。
 
 <Figures figure="6-20">A flexible, declarative SPECIFICATION of search criteria in a sophisticated REPOSITORY</Figures>
+![](figures/ch6/06fig20.jpg)
 
 The SPECIFICATION-based query is elegant and flexible. Depending on the infrastructure available, it may be a modest framework or it may be prohibitively difficult. Rob Mee and Edward Hieatt discuss more of the technical issues involved in designing such REPOSITORIES in Fowler 2003.
 
@@ -627,6 +647,7 @@ Implementation will vary greatly, depending on the technology being used for per
 > 根据所使用的持久化技术和基础设施不同，REPOSITORY 的实现也将有很大的变化。理想的实现是向客户隐藏所有内部工作细节（尽管不向客户的开发人员隐藏这些细节），这样不管数据是存储在对象数据库中，还是存储在关系数据库中，或是简单地保持在内存中，客户代码都相同。REPOSITORY 将会委托相应的基础设施服务来完成工作。将存储、检索和查询机制封装起来是 REPOSITORY 实现的最基本的特性，如图 6-21 所示。
 
 <Figures figure="6-21">The REPOSITORY encapsulates the underlying data store.</Figures>
+![](figures/ch6/06fig21.jpg)
 
 The REPOSITORY concept is adaptable to many situations. The possibilities of implementation are so diverse that I can only list some concerns to keep in mind.
 
@@ -679,12 +700,14 @@ These two views can be reconciled by making the REPOSITORY delegate object creat
 > REPOSITORY 也可以委托 FACTORY 来创建一个对象，这种方法（虽然实际很少这样做，但在理论上是可行的）可用于从头开始创建对象，此时就没有必要区分这两种看问题的角度了，如图 6-22 所示。
 
 <Figures figure="6-22">A REPOSITORY uses a FACTORY to reconstitute a preexisting object.</Figures>
+![](figures/ch6/06fig22.jpg)
 
 This clear separation also helps by unloading all responsibility for persistence from the FACTORIES. A FACTORY’S job is to instantiate a potentially complex object from data. If the product is a new object, the client will know this and can add it to the REPOSITORY, which will encapsulate the storage of the object in the database.
 
 > 这种职责上的明确区分还有助于 FACTORY 摆脱所有持久化职责。FACTORY 的工作是用数据来实例化一个可能很复杂的对象。如果产品是一个新对象，那么客户将知道在创建完成之后应该把它添加到 REPOSITORY 中，由 REPOSITORY 来封装对象在数据库中的存储，如图 6-23 所示。
 
 <Figures figure="6-23">A client uses a REPOSITORY to store a new object.</Figures>
+![](figures/ch6/06fig23.jpg)
 
 One other case that drives people to combine FACTORY and REPOSITORY is the desire for “find or create” functionality, in which a client can describe an object it wants and, if no such object is found, will be given a newly created one. This function should be avoided. It is a minor convenience at best. A lot of cases in which it seems useful go away when ENTITIES and VALUE OBJECTS are distinguished. A client that wants a VALUE OBJECT can go straight to a FACTORY and ask for a new one. Usually, the distinction between a new object and an existing object is important in the domain, and a framework that transparently combines them will actually muddle the situation.
 
