@@ -27,6 +27,7 @@ In a real project, it would take some time and iteration to get to the clarity o
 > 在实际的项目中，需要花费一些时间，并经过多次迭代才能得到清晰的模型。本书的第三部分将深入讨论这个发现过程。这里，我们先从一个已包含所需概念并且形式合理的模型开始，我们将通过调整模型的细节来支持设计。
 
 <Figures figure="7-1">A class diagram representing a model of the shipping domain</Figures>
+![](figures/ch7/07fig01.jpg)
 
 This model organizes domain knowledge and provides a language for the team. We can make statements like this:
 
@@ -197,6 +198,7 @@ The rationale behind the remaining decisions is explained in Figure 7.2, on the 
 > 图 7-2 解释了其他设计决策背后的原因。
 
 <Figures figure="7-2">Traversal direction has been constrained on some associations.</Figures>
+![](figures/ch7/07fig02.jpg)
 
 There is one circular reference in our model: Cargo knows its Delivery History, which holds a series of Handling Events, which in turn point back to the Cargo. Circular references logically exist in many domains and are sometimes necessary in design as well, but they are tricky to maintain. Implementation choices can help by avoiding holding the same information in two places that must be kept synchronized. In this case, we can make a simple but fragile implementation (in Java) in an initial prototype, by giving Delivery History a List object containing Handling Events. But at some point we’ll probably want to drop the collection in favor of a database lookup with Cargo as the key. This discussion will be taken up again when choosing REPOSITORIES. If the query to see the history is relatively infrequent, this should give good performance, simplify maintenance, and reduce the overhead of adding Handling Events. If this query is very frequent, then it is better to go ahead and maintain the direct pointer. These design trade-offs balance simplicity of implementation against performance. The model is the same; it contains the cycle and the bidirectional association.
 
@@ -217,6 +219,7 @@ The Handling Event is another matter. Previously we have considered two possible
 > Handling Event 就是另外一回事了。前面已经考虑了两种与其有关的数据库查询，一种是当不想使用集合时，用查找某个 Delivery History 的 Handling Event 作为一种可行的替代方法，这种查询是位于 Cargo AGGREGATE 内部的本地查询；另一种查询是查找装货和准备某次 Carrier Movement 时所进行的所有操作。在第二种情况中，处理 Cargo 的活动看起来是有意义的（即使是与 Cargo 本身分开来考虑时也是如此），因此 Handling Event 应该是它自己的 AGGREGATE 的根。
 
 <Figures figure="7-3">AGGREGATE boundaries imposed on the model. (Note: An ENTITY outside a drawn boundary is implied to be the root of its own AGGREGATE.)</Figures>
+![](figures/ch7/07fig03.jpg)
 
 ## 7.6 SELECTING REPOSITORIES 选择 REPOSITORY
 
@@ -233,6 +236,7 @@ The Activity Logging Application needs to allow the user to look up the Carrier 
 > 用户需要通过 Activity Logging Application 来查找装货的 Carrier Movement，因此需要一个 Carrier Movement Repository。用户还必须告诉系统哪个 Cargo 已经完成了装货，因此还需要一个 Cargo Repository，如图 7-4 所示。
 
 <Figures figure="7-4">REPOSITORIES give access to selected AGGREGATE roots.</Figures>
+![](figures/ch7/07fig04.jpg)
 
 For now there is no Handling Event Repository, because we decided to implement the association with Delivery History as a collection in the first iteration, and we have no application requirement to find out what has been loaded onto a Carrier Movement. Either of these reasons could change; if they did, then we would add a REPOSITORY.
 
@@ -371,6 +375,7 @@ Unfortunately, the story isn’t quite that simple. The cycle of references, fro
 > 遗憾的是，事情并不是这么简单。Cargo→Delivery History→History Event→Cargo 这个引用循环使实例创建变得很复杂。Delivery History 保存了与其 Cargo 有关的 Handling Event 集合，而且新对象必须作为事务的一部分来添加到这个集合中（见图 7-5）。如果没有创建这个反向指针，那么对象间将发生不一致。
 
 <Figures figure="7-5">Adding a Handling Event requires inserting it into a Delivery History.</Figures>
+![](figures/ch7/07fig05.jpg)
 
 Creation of the back-pointer could be encapsulated in the FACTORY (and kept in the domain layer where it belongs), but now we’ll look at an alternative design that eliminates this awkward interaction altogether.
 
@@ -399,6 +404,7 @@ To take responsibility for the queries, we’ll add a REPOSITORY for Handling Ev
 > 为了使用查询，我们为 Handling Event 增加一个 REPOSITORY。Handling Event Repository 将用来查询与特定 Cargo 有关的 Event。此外，REPOSITORY 还可以提供优化的查询，以便更高效地回答特定的问题。例如，为了推断 Cargo 的当前状态，常常需要在 Delivery History 中查找最后一次报告的装货或卸货操作，如果这个查找操作被频繁地使用，那么就可以设计一个查询直接返回相关的 Handling Event。而且，如果需要通过查询找到某次 Carrier Movement 装载的所有 Cargo，那么很容易就可以增加这个查询。
 
 <Figures figure="7-6">Implementing Delivery History’s collection of Handling Events as a query makes insertion of Handling Events simple and free of contention with the Cargo AGGREGATE.</Figures>
+![](figures/ch7/07fig06.jpg)
 
 This leaves the Delivery History with no persistent state. At this point, there is no real need to keep it around. We could derive Delivery History itself whenever it is needed to answer some question. We can derive this object because, although the ENTITY will be repeatedly recreated, the association with the same Cargo object maintains the thread of continuity between incarnations.
 
@@ -427,6 +433,7 @@ Figure 7.7 shows a model neatly partitioned by a hypothetical enthusiastic reade
 > 图 7-7 展示了一个划分整齐的模型，这里假设该模型是由本书的一位热心读者划分的。这个图是第 5 章中所提及的由基础设施驱动的打包问题的一个变形。在本例中，对象是根据其所遵循的模式来分组的。结果那些在概念上几乎没有关系（低内聚）的对象被分到了一起，而且所有 MODULE 之间的关联错综复杂（高耦合）。这种打包方式也描述了一件事情，但描述的不是运输，而是开发人员在那个时候对模型的认识。
 
 <Figures figure="7-7">These MODULES do not convey domain knowledge.</Figures>
+![](figures/ch7/07fig07.jpg)
 
 Partitioning by pattern may seem like an obvious error, but it is not really any less sensible than separating persistent objects from transient ones or any other methodical scheme that is not grounded in the meaning of the objects.
 
@@ -437,6 +444,7 @@ Instead, we should be looking for the cohesive concepts and focusing on what we 
 > 相反，我们应该寻找紧密关联的概念，并弄清楚我们打算向项目中的其他人员传递什么信息。如同应对规模较小的建模决策时，总是会有多种方法可以达成目的。图 7-8 显示了一种直观的划分方法。
 
 <Figures figure="7-8">MODULES based on broad domain concepts</Figures>
+![](figures/ch7/07fig08.jpg)
 
 The MODULE names in Figure 7.8 contribute to the team’s language. Our company does shipping for customers so that we can bill them. Our sales and marketing people deal with customers, and make agreements with them. The operations people do the shipping, getting the cargo to its specified destination. The back office takes care of billing, submitting invoices according to the pricing in the customer’s agreement. That’s one story I can tell with this set of MODULES.
 
@@ -465,6 +473,7 @@ The information needed resides in two places, which will have to be queried by t
 > 配额检查所需的信息保存在两个地方，Booking Application 必须通过查询这些信息才能确定接受或拒绝预订。图 7-9 给出了一个大体的信息流草图。
 
 <Figures figure="7-9">Our Booking Application must use information from the Sales Management System and from our own domain REPOSITORIES.</Figures>
+![](figures/ch7/07fig09.jpg)
 
 ### 7.11.1 Connecting the Two Systems 连接两个系统
 
@@ -491,6 +500,7 @@ Sometimes (as will be discussed in Chapter 11) an analysis pattern can give us a
 > 有时，分析模式可以为建模方案提供思路（第 11 章将会讨论到）。《分析模式》[Fowler 1996]一书介绍了一种用于解决这类问题的模式：ENTERPRISE SEGMENT（企业部门单元）。ENTERPRISE SEGMENT 是一组维度，它们定义了一种对业务进行划分的方式。这些维度可能包括我们在运输业务中已经提到的所有划分方法，也包括时间维度，如月初至今（month todate）。在我们的配额模型中使用这个概念，可以增强模型的表达力，并简化接口。这样，我们的领域模型和设计中就增加了一个名为 Enterprise Segment 的类，它是一个 VALUE OBJECT，每个 Cargo 都必须获得一个 Enterprise Segment 类。
 
 <Figures figure="7-10">The Allocation Checker acts as an ANTICORRUPTION LAYER presenting a selective interface to the Sales Management System in terms of our domain model.</Figures>
+![](figures/ch7/07fig10.jpg)
 
 The Allocation Checker will translate between Enterprise Segments and the category names of the external system. The Cargo Repository must also provide a query based on the Enterprise Segment. In both cases, collaboration with the Enterprise Segment object can be used to perform the operations without breaching the Segment’s encapsulation and complicating their own implementations. (Notice that the Cargo Repository is answering a query with a count, rather than a collection of instances.)
 
@@ -513,6 +523,7 @@ Both of these responsibilities seem to belong to the Allocation Checker. Changin
 > 这两个职责看起来都属于 Allocation Checker。通过修改接口就可以将这两个服务分离出来，这样交互就更整洁和明显了。
 
 <Figures figure="7-11">Domain responsibilities shifted from Booking Application to Allocation Checker</Figures>
+![](figures/ch7/07fig11.jpg)
 
 The only serious constraint imposed by this integration will be that the Sales Management System mustn’t use dimensions that the Allocation Checker can’t turn into Enterprise Segments. (Without applying the ENTERPRISE SEGMENT pattern, the same constraint would force the sales system to use only dimensions that can be used in a query to the Cargo Repository. This approach is feasible, but the sales system spills into other parts of the domain. In this design, the Cargo Repository need only be designed to handle Enterprise Segment, and changes in the sales system ripple only as far as the Allocation Checker, which was conceived as a FACADE in the first place.)
 
